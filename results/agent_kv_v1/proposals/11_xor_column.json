@@ -1,0 +1,34 @@
+{
+  "hypothesis": "The column-capacity change improved 820 to 796 cycles. Check whether equivalent traffic organization can be achieved while retaining original row stream bits.",
+  "expected": "Comparable row locality and completion cycles, with different behavior outside the observed trace.",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {
+        "op": "xor_bit",
+        "dst": 0,
+        "src": 12
+      },
+      {
+        "op": "xor_bit",
+        "dst": 1,
+        "src": 13
+      },
+      {
+        "op": "xor_bit",
+        "dst": 2,
+        "src": 14
+      },
+      {
+        "op": "xor_bit",
+        "dst": 3,
+        "src": 4
+      },
+      {
+        "op": "swap_bits",
+        "a": 4,
+        "b": 8
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "hypothesis": "Starting from the wider within-row layout, mix a slow row bit into a bank selector to test whether row-transition stalls can be staggered.",
+  "expected": "Same request balance; possibly a different conflict schedule, with no guaranteed gain.",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {
+        "op": "swap_bits",
+        "a": 0,
+        "b": 12
+      },
+      {
+        "op": "swap_bits",
+        "a": 1,
+        "b": 13
+      },
+      {
+        "op": "swap_bits",
+        "a": 2,
+        "b": 14
+      },
+      {
+        "op": "swap_bits",
+        "a": 3,
+        "b": 4
+      },
+      {
+        "op": "swap_bits",
+        "a": 4,
+        "b": 8
+      },
+      {
+        "op": "xor_bit",
+        "dst": 2,
+        "src": 9
+      }
+    ]
+  }
+}

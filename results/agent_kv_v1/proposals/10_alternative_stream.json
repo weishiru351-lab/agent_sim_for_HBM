@@ -1,0 +1,34 @@
+{
+  "hypothesis": "Change which stream dimensions select channels versus banks while preserving row capacity, probing sensitivity to FCFS issue order.",
+  "expected": "Similar load balance with potentially different queue ordering and completion time.",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {
+        "op": "swap_bits",
+        "a": 0,
+        "b": 13
+      },
+      {
+        "op": "swap_bits",
+        "a": 1,
+        "b": 14
+      },
+      {
+        "op": "swap_bits",
+        "a": 2,
+        "b": 12
+      },
+      {
+        "op": "swap_bits",
+        "a": 3,
+        "b": 4
+      },
+      {
+        "op": "swap_bits",
+        "a": 4,
+        "b": 8
+      }
+    ]
+  }
+}

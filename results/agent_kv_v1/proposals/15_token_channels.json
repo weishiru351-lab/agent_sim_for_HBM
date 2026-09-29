@@ -1,0 +1,39 @@
+{
+  "hypothesis": "Route two token bits to channels and two stream bits to banks; place the remaining stream bit in a column.",
+  "expected": "Keep channel balance while changing startup and row-transition alignment; may trade row locality for overlap.",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {
+        "op": "swap_bits",
+        "a": 0,
+        "b": 4
+      },
+      {
+        "op": "swap_bits",
+        "a": 1,
+        "b": 5
+      },
+      {
+        "op": "swap_bits",
+        "a": 2,
+        "b": 12
+      },
+      {
+        "op": "swap_bits",
+        "a": 3,
+        "b": 13
+      },
+      {
+        "op": "swap_bits",
+        "a": 4,
+        "b": 14
+      },
+      {
+        "op": "swap_bits",
+        "a": 5,
+        "b": 8
+      }
+    ]
+  }
+}

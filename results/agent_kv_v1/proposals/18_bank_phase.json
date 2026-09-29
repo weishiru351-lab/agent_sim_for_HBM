@@ -1,0 +1,39 @@
+{
+  "hypothesis": "The best permutation balances all banks but still incurs row-transition gaps. Change bank parity at a column-group boundary.",
+  "expected": "Keep aggregate bank balance while shifting which bank carries the next row transition.",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {
+        "op": "swap_bits",
+        "a": 0,
+        "b": 12
+      },
+      {
+        "op": "swap_bits",
+        "a": 1,
+        "b": 13
+      },
+      {
+        "op": "swap_bits",
+        "a": 2,
+        "b": 14
+      },
+      {
+        "op": "swap_bits",
+        "a": 3,
+        "b": 4
+      },
+      {
+        "op": "swap_bits",
+        "a": 4,
+        "b": 8
+      },
+      {
+        "op": "xor_bit",
+        "dst": 3,
+        "src": 4
+      }
+    ]
+  }
+}

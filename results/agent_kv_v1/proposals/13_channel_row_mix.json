@@ -1,0 +1,39 @@
+{
+  "hypothesis": "The prior bank-row mixture worsened the result. Test row mixing at channel level instead, preserving bijectivity and row capacity.",
+  "expected": "May stagger channel boundaries; can also leave the completion time unchanged.",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {
+        "op": "swap_bits",
+        "a": 0,
+        "b": 12
+      },
+      {
+        "op": "swap_bits",
+        "a": 1,
+        "b": 13
+      },
+      {
+        "op": "swap_bits",
+        "a": 2,
+        "b": 14
+      },
+      {
+        "op": "swap_bits",
+        "a": 3,
+        "b": 4
+      },
+      {
+        "op": "swap_bits",
+        "a": 4,
+        "b": 8
+      },
+      {
+        "op": "xor_bit",
+        "dst": 0,
+        "src": 9
+      }
+    ]
+  }
+}

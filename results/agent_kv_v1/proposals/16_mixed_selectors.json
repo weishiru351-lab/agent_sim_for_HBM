@@ -1,0 +1,39 @@
+{
+  "hypothesis": "Split both stream and token bits across channels and banks instead of assigning each type to only one level.",
+  "expected": "Similar balance, with potentially different head-of-line stalls.",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {
+        "op": "swap_bits",
+        "a": 0,
+        "b": 4
+      },
+      {
+        "op": "swap_bits",
+        "a": 1,
+        "b": 12
+      },
+      {
+        "op": "swap_bits",
+        "a": 2,
+        "b": 5
+      },
+      {
+        "op": "swap_bits",
+        "a": 3,
+        "b": 13
+      },
+      {
+        "op": "swap_bits",
+        "a": 4,
+        "b": 14
+      },
+      {
+        "op": "swap_bits",
+        "a": 5,
+        "b": 8
+      }
+    ]
+  }
+}

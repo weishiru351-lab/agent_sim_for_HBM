@@ -1,0 +1,30 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Generated simulator and plotting artifacts
+*.vvp
+matplotlib_cache/
+
+# Experiments are local by default; preserve only selected snapshots.
+/results/*
+!/results/provenance.json
+!/results/baseline_v1/
+!/results/baseline_v2/
+!/results/agent_kv_v1/
+
+# Baseline summaries already contain the complete per-search JSON records.
+/results/baseline_v1/*
+!/results/baseline_v1/benchmark.json
+!/results/baseline_v1/report.md
+!/results/baseline_v1/convergence.png
+/results/baseline_v2/*
+!/results/baseline_v2/benchmark.json
+!/results/baseline_v2/report.md
+!/results/baseline_v2/convergence.png

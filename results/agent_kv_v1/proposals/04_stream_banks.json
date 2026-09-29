@@ -1,0 +1,24 @@
+{
+  "hypothesis": "After separating four channels, route the remaining stream bit to a bank to avoid alternating rows from different streams in that bank.",
+  "expected": "Use two banks per channel and recover row locality within each stream.",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {
+        "op": "xor_bit",
+        "dst": 0,
+        "src": 12
+      },
+      {
+        "op": "xor_bit",
+        "dst": 1,
+        "src": 13
+      },
+      {
+        "op": "xor_bit",
+        "dst": 2,
+        "src": 14
+      }
+    ]
+  }
+}

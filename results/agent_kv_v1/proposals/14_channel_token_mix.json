@@ -1,0 +1,39 @@
+{
+  "hypothesis": "Mix token-bank parity into a channel selector to distribute successive tokens across channels.",
+  "expected": "Balanced totals but altered queue timing; test whether the remaining gaps are avoidable.",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {
+        "op": "swap_bits",
+        "a": 0,
+        "b": 12
+      },
+      {
+        "op": "swap_bits",
+        "a": 1,
+        "b": 13
+      },
+      {
+        "op": "swap_bits",
+        "a": 2,
+        "b": 14
+      },
+      {
+        "op": "swap_bits",
+        "a": 3,
+        "b": 4
+      },
+      {
+        "op": "swap_bits",
+        "a": 4,
+        "b": 8
+      },
+      {
+        "op": "xor_bit",
+        "dst": 1,
+        "src": 3
+      }
+    ]
+  }
+}

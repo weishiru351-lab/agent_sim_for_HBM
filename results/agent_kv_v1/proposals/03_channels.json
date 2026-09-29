@@ -1,0 +1,19 @@
+{
+  "hypothesis": "Bits 0..3 are constant while stream bits 12..14 change rapidly. First isolate the effect of using two stream bits for channel routing.",
+  "expected": "Balance channel requests; bank conflicts may remain because each channel still merges two streams.",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {
+        "op": "xor_bit",
+        "dst": 0,
+        "src": 12
+      },
+      {
+        "op": "xor_bit",
+        "dst": 1,
+        "src": 13
+      }
+    ]
+  }
+}

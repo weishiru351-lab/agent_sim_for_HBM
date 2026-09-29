@@ -1,0 +1,50 @@
+{
+  "status": "not_run",
+  "reason": "iverilog and/or vvp not available on PATH",
+  "vectors": 2071,
+  "coverage": "sampled",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {
+        "op": "swap_bits",
+        "a": 0,
+        "b": 12
+      },
+      {
+        "op": "swap_bits",
+        "a": 1,
+        "b": 13
+      },
+      {
+        "op": "swap_bits",
+        "a": 2,
+        "b": 14
+      },
+      {
+        "op": "swap_bits",
+        "a": 3,
+        "b": 4
+      },
+      {
+        "op": "swap_bits",
+        "a": 4,
+        "b": 8
+      }
+    ]
+  },
+  "config": {
+    "granule_bytes": 64,
+    "channel_bits": 2,
+    "bank_bits": 2,
+    "column_bits": 4,
+    "row_bits": 8,
+    "queue_depth": 16,
+    "issue_interval": 1,
+    "t_hit": 4,
+    "t_activate": 8,
+    "t_precharge": 8,
+    "t_transfer": 4,
+    "max_operations": 8
+  }
+}

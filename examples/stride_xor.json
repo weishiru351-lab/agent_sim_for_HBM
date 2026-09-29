@@ -1,0 +1,9 @@
+{
+  "version": 0,
+  "operations": [
+    {"op": "xor_bit", "dst": 0, "src": 6},
+    {"op": "xor_bit", "dst": 1, "src": 7},
+    {"op": "xor_bit", "dst": 2, "src": 8},
+    {"op": "xor_bit", "dst": 3, "src": 9}
+  ]
+}

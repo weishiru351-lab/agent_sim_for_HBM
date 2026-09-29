@@ -1,0 +1,29 @@
+{
+  "hypothesis": "Replace the XOR construction with a permutation to remove stream identifiers from row bits and compare two legal implementations.",
+  "expected": "Similar distribution, possibly improved locality; no presumption of beating the bit-activity heuristic.",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {
+        "op": "swap_bits",
+        "a": 0,
+        "b": 12
+      },
+      {
+        "op": "swap_bits",
+        "a": 1,
+        "b": 13
+      },
+      {
+        "op": "swap_bits",
+        "a": 2,
+        "b": 14
+      },
+      {
+        "op": "swap_bits",
+        "a": 3,
+        "b": 4
+      }
+    ]
+  }
+}

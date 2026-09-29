@@ -1,0 +1,29 @@
+{
+  "hypothesis": "Use a less frequently changing token bit for the second bank selector and preserve the low token bit as column.",
+  "expected": "Potentially improve row locality, but long runs to one bank may reduce overlap.",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {
+        "op": "swap_bits",
+        "a": 0,
+        "b": 12
+      },
+      {
+        "op": "swap_bits",
+        "a": 1,
+        "b": 13
+      },
+      {
+        "op": "swap_bits",
+        "a": 2,
+        "b": 14
+      },
+      {
+        "op": "swap_bits",
+        "a": 3,
+        "b": 8
+      }
+    ]
+  }
+}

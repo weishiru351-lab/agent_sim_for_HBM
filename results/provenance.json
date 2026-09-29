@@ -1,0 +1,67 @@
+{
+  "recorded_on": "2026-09-29",
+  "python": "3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "backend": "toy-fcfs-v1",
+  "config": {
+    "granule_bytes": 64,
+    "channel_bits": 2,
+    "bank_bits": 2,
+    "column_bits": 4,
+    "row_bits": 8,
+    "queue_depth": 16,
+    "issue_interval": 1,
+    "t_hit": 4,
+    "t_activate": 8,
+    "t_precharge": 8,
+    "t_transfer": 4,
+    "max_operations": 8
+  },
+  "agent_trace_id": "0b47aab4ee7489e7",
+  "commands": [
+    "python -m unittest discover -s tests -v",
+    "python -m hbm_toy benchmark --output results/baseline_v2 --budget 20 --count 768 --seeds 0 1 2",
+    "python -m hbm_toy session-init results/agent_kv_v1 --workload kv_interleaved --budget 20 --count 768 --seed 0",
+    "Submit saved proposals in numeric order with session-step, then session-finish.",
+    "python -m hbm_toy export-rtl results/agent_kv_v1/best_policy.json --output results/agent_kv_v1/rtl"
+  ],
+  "snapshot_scope": "Final source snapshot after documentation and packed heuristic were added; not the source snapshot at the start of the first experiment.",
+  "source_sha256": {
+    "hbm_toy/__init__.py": "de0444323193c267b535be809c2710959232b4753c84cf28119bfce45132b187",
+    "hbm_toy/__main__.py": "7fd9ca400af88fe78c5a7c7349b2e30fbdb98974f95c24c183ff303dc4d4c79b",
+    "hbm_toy/experiment.py": "3da9be77303aaa29dacc299bbf76b6b53c6a4ec0449592cc01e79a069830ff38",
+    "hbm_toy/model.py": "854821a6e15bfd064aa6a45739c12f05398fe5e50ecc92807fa2d0971f185d73",
+    "hbm_toy/rtl.py": "45ebbf42696f99d604bf1eec2f1cec782821ba2265fb0e6306939a2311e81cd8"
+  },
+  "agent_provenance": {
+    "proposer": "current conversation language model",
+    "autonomous_runtime": false,
+    "separate_child_agents": false,
+    "prior_knowledge": "Proposer helped implement the generator and saw baseline reports including holdout results; this demonstration is not a blind trial.",
+    "packed_baseline": "Added after observing the conversation-agent results; post-hoc diagnostic control.",
+    "model_id": null,
+    "model_tokens": null,
+    "model_cost": null
+  },
+  "checks": {
+    "unittest": "11 passed",
+    "rtl": "not_run: iverilog/vvp unavailable",
+    "ramulator": "not_integrated"
+  },
+  "archive_maintenance": {
+    "compacted_on": "2026-09-29",
+    "action": "Removed duplicate per-search files and matplotlib caches; kept both baseline summaries/reports/figures and the complete conversation-agent snapshot.",
+    "equivalence_check": "For each original runs/<workload>_<method>_<seed>.json, parsed JSON was exactly equal to the corresponding benchmark.json runs element. All 84 filenames matched their workload/method/seed.",
+    "removed_duplicate_runs": {
+      "baseline_v1": {
+        "records": 36,
+        "duplicate_bytes": 1777449
+      },
+      "baseline_v2": {
+        "records": 48,
+        "duplicate_bytes": 2462029
+      }
+    },
+    "preserved": "Original benchmark.json and all agent_kv_v1 files remain byte-for-byte unchanged. Report text now points to the consolidated records. Original source_sha256 values and experiment measurements are unchanged."
+  }
+}

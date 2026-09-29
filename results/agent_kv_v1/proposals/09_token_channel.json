@@ -1,0 +1,34 @@
+{
+  "hypothesis": "Allocate one channel bit to token parity and both bank bits to stream identities; keep the freed column slot for bit 8.",
+  "expected": "Four streams per channel should expose bank overlap, but channel arrivals become burstier.",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {
+        "op": "swap_bits",
+        "a": 0,
+        "b": 12
+      },
+      {
+        "op": "swap_bits",
+        "a": 1,
+        "b": 4
+      },
+      {
+        "op": "swap_bits",
+        "a": 2,
+        "b": 13
+      },
+      {
+        "op": "swap_bits",
+        "a": 3,
+        "b": 14
+      },
+      {
+        "op": "swap_bits",
+        "a": 4,
+        "b": 8
+      }
+    ]
+  }
+}

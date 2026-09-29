@@ -1,0 +1,13 @@
+{
+  "hypothesis": "For a 64-block stride, low channel/bank bits stay fixed; mixing changing higher bits may improve concurrency.",
+  "expected": "More balanced channel and bank request counts; row hit rate may change. Must evaluate completion cycles.",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {"op": "xor_bit", "dst": 0, "src": 6},
+      {"op": "xor_bit", "dst": 1, "src": 7},
+      {"op": "xor_bit", "dst": 2, "src": 8},
+      {"op": "xor_bit", "dst": 3, "src": 9}
+    ]
+  }
+}

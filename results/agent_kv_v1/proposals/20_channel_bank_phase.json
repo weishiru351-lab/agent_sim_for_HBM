@@ -1,0 +1,44 @@
+{
+  "hypothesis": "Combine a column-dependent channel rotation with bank staggering to test the remaining transfer gaps.",
+  "expected": "Preserve invertibility and balanced totals; only a measured completion-time reduction would support this hypothesis.",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {
+        "op": "swap_bits",
+        "a": 0,
+        "b": 12
+      },
+      {
+        "op": "swap_bits",
+        "a": 1,
+        "b": 13
+      },
+      {
+        "op": "swap_bits",
+        "a": 2,
+        "b": 14
+      },
+      {
+        "op": "swap_bits",
+        "a": 3,
+        "b": 4
+      },
+      {
+        "op": "swap_bits",
+        "a": 4,
+        "b": 8
+      },
+      {
+        "op": "xor_bit",
+        "dst": 0,
+        "src": 4
+      },
+      {
+        "op": "xor_bit",
+        "dst": 3,
+        "src": 5
+      }
+    ]
+  }
+}

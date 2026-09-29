@@ -1,0 +1,29 @@
+{
+  "hypothesis": "Spread adjacent token positions over the remaining bank bit to overlap service within each stream.",
+  "expected": "All 16 banks should be used, with lower completion cycles if bank service still limits throughput.",
+  "dsl": {
+    "version": 0,
+    "operations": [
+      {
+        "op": "xor_bit",
+        "dst": 0,
+        "src": 12
+      },
+      {
+        "op": "xor_bit",
+        "dst": 1,
+        "src": 13
+      },
+      {
+        "op": "xor_bit",
+        "dst": 2,
+        "src": 14
+      },
+      {
+        "op": "xor_bit",
+        "dst": 3,
+        "src": 4
+      }
+    ]
+  }
+}

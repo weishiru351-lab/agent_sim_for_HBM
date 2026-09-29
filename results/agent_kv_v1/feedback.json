@@ -1,0 +1,2088 @@
+{
+  "protocol": "hbm-file-bridge-v1",
+  "actor": "external_language_model",
+  "closed": true,
+  "config": {
+    "granule_bytes": 64,
+    "channel_bits": 2,
+    "bank_bits": 2,
+    "column_bits": 4,
+    "row_bits": 8,
+    "queue_depth": 16,
+    "issue_interval": 1,
+    "t_hit": 4,
+    "t_activate": 8,
+    "t_precharge": 8,
+    "t_transfer": 4,
+    "max_operations": 8
+  },
+  "workload": "kv_interleaved",
+  "trace_id": "0b47aab4ee7489e7",
+  "features": {
+    "requests": 768,
+    "block_bits": 16,
+    "top_block_strides": [
+      [
+        4096,
+        672
+      ],
+      [
+        -28656,
+        95
+      ]
+    ],
+    "bit_transition_rates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.12385919165580182,
+      0.061277705345501955,
+      0.02998696219035202,
+      0.014341590612777053,
+      0.00651890482398957,
+      0.002607561929595828,
+      0.001303780964797914,
+      0.0,
+      1.0,
+      0.49934810951760106,
+      0.24902216427640156,
+      0.0
+    ],
+    "bit_one_rates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.3333333333333333,
+      0.3333333333333333,
+      0.0,
+      0.5,
+      0.5,
+      0.5,
+      0.0
+    ],
+    "address_sample": [
+      0,
+      262144,
+      524288,
+      786432,
+      1048576,
+      1310720,
+      1572864,
+      1835008,
+      1024,
+      263168,
+      525312,
+      787456,
+      1049600,
+      1311744,
+      1573888,
+      1836032,
+      2048,
+      264192,
+      526336,
+      788480,
+      1050624,
+      1312768,
+      1574912,
+      1837056
+    ]
+  },
+  "objective": "minimize completion_cycles; static bijective mapping; no config or trace changes",
+  "budget": 20,
+  "backend_calls": 20,
+  "remaining_calls": 0,
+  "max_proposals": 200,
+  "proposal_schema": {
+    "hypothesis": "brief hypothesis based on feedback",
+    "expected": "predicted metric changes and tradeoffs",
+    "dsl": {
+      "version": 0,
+      "operations": []
+    }
+  },
+  "dsl_rules": "Sequential xor_bit(dst,src) and swap_bits(a,b), distinct bits in [0,block_bits); max_operations limit. Bits are block bits; byte offset unchanged.",
+  "decode_order_low_to_high": [
+    "channel",
+    "bank",
+    "column",
+    "row"
+  ],
+  "history": [
+    {
+      "candidate_id": "5fff487cbe8128b0",
+      "dsl": {
+        "version": 0,
+        "operations": []
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 18424,
+        "avg_latency": 9172.5,
+        "p95_latency": 17421,
+        "row_hit_rate": 0.0,
+        "row_conflict_rate": 0.9986979166666666,
+        "row_empty_rate": 0.0013020833333333333,
+        "channel_requests": [
+          768,
+          0,
+          0,
+          0
+        ],
+        "bank_requests": [
+          [
+            768,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.16673903603994789,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "avg_backpressure_wait": 8768.940104166666,
+        "avg_controller_wait": 379.5703125,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.006544400006532669,
+      "cached": false,
+      "actor": "shared_baseline",
+      "hypothesis": "identity"
+    },
+    {
+      "candidate_id": "e56566708f862c7a",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "xor_bit",
+            "dst": 0,
+            "src": 8
+          },
+          {
+            "op": "xor_bit",
+            "dst": 1,
+            "src": 9
+          },
+          {
+            "op": "xor_bit",
+            "dst": 2,
+            "src": 10
+          },
+          {
+            "op": "xor_bit",
+            "dst": 3,
+            "src": 11
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 6132,
+        "avg_latency": 2528.5,
+        "p95_latency": 5583,
+        "row_hit_rate": 0.0,
+        "row_conflict_rate": 0.9921875,
+        "row_empty_rate": 0.0078125,
+        "channel_requests": [
+          256,
+          256,
+          128,
+          128
+        ],
+        "bank_requests": [
+          [
+            128,
+            128,
+            0,
+            0
+          ],
+          [
+            128,
+            128,
+            0,
+            0
+          ],
+          [
+            128,
+            0,
+            0,
+            0
+          ],
+          [
+            128,
+            0,
+            0,
+            0
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.1669928245270711,
+          0.1669928245270711,
+          0.08349641226353555,
+          0.08349641226353555
+        ],
+        "avg_backpressure_wait": 2139.0859375,
+        "avg_controller_wait": 365.4479166666667,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.006625300040468574,
+      "cached": false,
+      "actor": "shared_baseline",
+      "hypothesis": "row_xor"
+    },
+    {
+      "candidate_id": "d57bffd318869ded",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "xor_bit",
+            "dst": 0,
+            "src": 12
+          },
+          {
+            "op": "xor_bit",
+            "dst": 1,
+            "src": 13
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 4600,
+        "avg_latency": 2260.5,
+        "p95_latency": 4293,
+        "row_hit_rate": 0.0,
+        "row_conflict_rate": 0.9947916666666666,
+        "row_empty_rate": 0.005208333333333333,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            192,
+            0,
+            0,
+            0
+          ],
+          [
+            192,
+            0,
+            0,
+            0
+          ],
+          [
+            192,
+            0,
+            0,
+            0
+          ],
+          [
+            192,
+            0,
+            0,
+            0
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.16695652173913045,
+          0.16695652173913045,
+          0.16695652173913045,
+          0.16695652173913045
+        ],
+        "avg_backpressure_wait": 1870.5416666666667,
+        "avg_controller_wait": 366.0,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.003890599822625518,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "Bits 0..3 are constant while stream bits 12..14 change rapidly. First isolate the effect of using two stream bits for channel routing.",
+      "expected": "Balance channel requests; bank conflicts may remain because each channel still merges two streams.",
+      "proposal_number": 3,
+      "backend_calls": 3
+    },
+    {
+      "candidate_id": "733b055274c6af8e",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "xor_bit",
+            "dst": 0,
+            "src": 12
+          },
+          {
+            "op": "xor_bit",
+            "dst": 1,
+            "src": 13
+          },
+          {
+            "op": "xor_bit",
+            "dst": 2,
+            "src": 14
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 860,
+        "avg_latency": 390.5,
+        "p95_latency": 733,
+        "row_hit_rate": 0.9375,
+        "row_conflict_rate": 0.052083333333333336,
+        "row_empty_rate": 0.010416666666666666,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            96,
+            96,
+            0,
+            0
+          ],
+          [
+            96,
+            96,
+            0,
+            0
+          ],
+          [
+            96,
+            96,
+            0,
+            0
+          ],
+          [
+            96,
+            96,
+            0,
+            0
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.8930232558139535,
+          0.8930232558139535,
+          0.8930232558139535,
+          0.8930232558139535
+        ],
+        "avg_backpressure_wait": 313.4375,
+        "avg_controller_wait": 68.13020833333333,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.00503879995085299,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "After separating four channels, route the remaining stream bit to a bank to avoid alternating rows from different streams in that bank.",
+      "expected": "Use two banks per channel and recover row locality within each stream.",
+      "proposal_number": 4,
+      "backend_calls": 4
+    },
+    {
+      "candidate_id": "0ce953ee5f89b193",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "xor_bit",
+            "dst": 0,
+            "src": 12
+          },
+          {
+            "op": "xor_bit",
+            "dst": 1,
+            "src": 13
+          },
+          {
+            "op": "xor_bit",
+            "dst": 2,
+            "src": 14
+          },
+          {
+            "op": "xor_bit",
+            "dst": 3,
+            "src": 4
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 820,
+        "avg_latency": 370.5,
+        "p95_latency": 693,
+        "row_hit_rate": 0.875,
+        "row_conflict_rate": 0.10416666666666667,
+        "row_empty_rate": 0.020833333333333332,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.9365853658536586,
+          0.9365853658536586,
+          0.9365853658536586,
+          0.9365853658536586
+        ],
+        "avg_backpressure_wait": 289.5104166666667,
+        "avg_controller_wait": 64.0625,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.0032242999877780676,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "Spread adjacent token positions over the remaining bank bit to overlap service within each stream.",
+      "expected": "All 16 banks should be used, with lower completion cycles if bank service still limits throughput.",
+      "proposal_number": 5,
+      "backend_calls": 5
+    },
+    {
+      "candidate_id": "60e9c1f4fed964c8",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "swap_bits",
+            "a": 0,
+            "b": 12
+          },
+          {
+            "op": "swap_bits",
+            "a": 1,
+            "b": 13
+          },
+          {
+            "op": "swap_bits",
+            "a": 2,
+            "b": 14
+          },
+          {
+            "op": "swap_bits",
+            "a": 3,
+            "b": 4
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 820,
+        "avg_latency": 370.5,
+        "p95_latency": 693,
+        "row_hit_rate": 0.875,
+        "row_conflict_rate": 0.10416666666666667,
+        "row_empty_rate": 0.020833333333333332,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.9365853658536586,
+          0.9365853658536586,
+          0.9365853658536586,
+          0.9365853658536586
+        ],
+        "avg_backpressure_wait": 289.5104166666667,
+        "avg_controller_wait": 64.0625,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.0035198999103158712,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "Replace the XOR construction with a permutation to remove stream identifiers from row bits and compare two legal implementations.",
+      "expected": "Similar distribution, possibly improved locality; no presumption of beating the bit-activity heuristic.",
+      "proposal_number": 6,
+      "backend_calls": 6
+    },
+    {
+      "candidate_id": "8d114d20ee74c67b",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "swap_bits",
+            "a": 0,
+            "b": 12
+          },
+          {
+            "op": "swap_bits",
+            "a": 1,
+            "b": 13
+          },
+          {
+            "op": "swap_bits",
+            "a": 2,
+            "b": 14
+          },
+          {
+            "op": "swap_bits",
+            "a": 3,
+            "b": 4
+          },
+          {
+            "op": "swap_bits",
+            "a": 4,
+            "b": 8
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 796,
+        "avg_latency": 358.5,
+        "p95_latency": 669,
+        "row_hit_rate": 0.9375,
+        "row_conflict_rate": 0.041666666666666664,
+        "row_empty_rate": 0.020833333333333332,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.964824120603015,
+          0.964824120603015,
+          0.964824120603015,
+          0.964824120603015
+        ],
+        "avg_backpressure_wait": 280.0104166666667,
+        "avg_controller_wait": 62.0625,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.004043899942189455,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "The 820-cycle candidate distributes traffic but still changes row at token bit 8. Column bit 4 now holds an originally constant low bit; swap in bit 8 to use that column capacity.",
+      "expected": "Fewer row changes without altering channel or bank counts.",
+      "proposal_number": 7,
+      "backend_calls": 7
+    },
+    {
+      "candidate_id": "9a746ffc4e618f06",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "swap_bits",
+            "a": 0,
+            "b": 12
+          },
+          {
+            "op": "swap_bits",
+            "a": 1,
+            "b": 13
+          },
+          {
+            "op": "swap_bits",
+            "a": 2,
+            "b": 14
+          },
+          {
+            "op": "swap_bits",
+            "a": 3,
+            "b": 4
+          },
+          {
+            "op": "swap_bits",
+            "a": 4,
+            "b": 8
+          },
+          {
+            "op": "xor_bit",
+            "dst": 2,
+            "src": 9
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 804,
+        "avg_latency": 362.5,
+        "p95_latency": 677,
+        "row_hit_rate": 0.9375,
+        "row_conflict_rate": 0.041666666666666664,
+        "row_empty_rate": 0.020833333333333332,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.9552238805970149,
+          0.9552238805970149,
+          0.9552238805970149,
+          0.9552238805970149
+        ],
+        "avg_backpressure_wait": 283.28125,
+        "avg_controller_wait": 62.729166666666664,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.00400479999370873,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "Starting from the wider within-row layout, mix a slow row bit into a bank selector to test whether row-transition stalls can be staggered.",
+      "expected": "Same request balance; possibly a different conflict schedule, with no guaranteed gain.",
+      "proposal_number": 8,
+      "backend_calls": 8
+    },
+    {
+      "candidate_id": "2903d34ee4df567e",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "swap_bits",
+            "a": 0,
+            "b": 12
+          },
+          {
+            "op": "swap_bits",
+            "a": 1,
+            "b": 4
+          },
+          {
+            "op": "swap_bits",
+            "a": 2,
+            "b": 13
+          },
+          {
+            "op": "swap_bits",
+            "a": 3,
+            "b": 14
+          },
+          {
+            "op": "swap_bits",
+            "a": 4,
+            "b": 8
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 797,
+        "avg_latency": 359.0,
+        "p95_latency": 670,
+        "row_hit_rate": 0.9375,
+        "row_conflict_rate": 0.041666666666666664,
+        "row_empty_rate": 0.020833333333333332,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.9636135508155583,
+          0.9636135508155583,
+          0.9636135508155583,
+          0.9636135508155583
+        ],
+        "avg_backpressure_wait": 280.4583333333333,
+        "avg_controller_wait": 62.114583333333336,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.0037788001354783773,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "Allocate one channel bit to token parity and both bank bits to stream identities; keep the freed column slot for bit 8.",
+      "expected": "Four streams per channel should expose bank overlap, but channel arrivals become burstier.",
+      "proposal_number": 9,
+      "backend_calls": 9
+    },
+    {
+      "candidate_id": "c9ec6fd47f4bdc35",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "swap_bits",
+            "a": 0,
+            "b": 13
+          },
+          {
+            "op": "swap_bits",
+            "a": 1,
+            "b": 14
+          },
+          {
+            "op": "swap_bits",
+            "a": 2,
+            "b": 12
+          },
+          {
+            "op": "swap_bits",
+            "a": 3,
+            "b": 4
+          },
+          {
+            "op": "swap_bits",
+            "a": 4,
+            "b": 8
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 796,
+        "avg_latency": 358.5,
+        "p95_latency": 669,
+        "row_hit_rate": 0.9375,
+        "row_conflict_rate": 0.041666666666666664,
+        "row_empty_rate": 0.020833333333333332,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.964824120603015,
+          0.964824120603015,
+          0.964824120603015,
+          0.964824120603015
+        ],
+        "avg_backpressure_wait": 280.0104166666667,
+        "avg_controller_wait": 62.0625,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.004691899986937642,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "Change which stream dimensions select channels versus banks while preserving row capacity, probing sensitivity to FCFS issue order.",
+      "expected": "Similar load balance with potentially different queue ordering and completion time.",
+      "proposal_number": 10,
+      "backend_calls": 10
+    },
+    {
+      "candidate_id": "d32e33ba80c81836",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "xor_bit",
+            "dst": 0,
+            "src": 12
+          },
+          {
+            "op": "xor_bit",
+            "dst": 1,
+            "src": 13
+          },
+          {
+            "op": "xor_bit",
+            "dst": 2,
+            "src": 14
+          },
+          {
+            "op": "xor_bit",
+            "dst": 3,
+            "src": 4
+          },
+          {
+            "op": "swap_bits",
+            "a": 4,
+            "b": 8
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 796,
+        "avg_latency": 358.5,
+        "p95_latency": 669,
+        "row_hit_rate": 0.9375,
+        "row_conflict_rate": 0.041666666666666664,
+        "row_empty_rate": 0.020833333333333332,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.964824120603015,
+          0.964824120603015,
+          0.964824120603015,
+          0.964824120603015
+        ],
+        "avg_backpressure_wait": 280.0104166666667,
+        "avg_controller_wait": 62.0625,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.00378839997574687,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "The column-capacity change improved 820 to 796 cycles. Check whether equivalent traffic organization can be achieved while retaining original row stream bits.",
+      "expected": "Comparable row locality and completion cycles, with different behavior outside the observed trace.",
+      "proposal_number": 11,
+      "backend_calls": 11
+    },
+    {
+      "candidate_id": "003f5f43dda0db38",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "swap_bits",
+            "a": 0,
+            "b": 12
+          },
+          {
+            "op": "swap_bits",
+            "a": 1,
+            "b": 13
+          },
+          {
+            "op": "swap_bits",
+            "a": 2,
+            "b": 14
+          },
+          {
+            "op": "swap_bits",
+            "a": 3,
+            "b": 5
+          },
+          {
+            "op": "swap_bits",
+            "a": 5,
+            "b": 8
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 837,
+        "avg_latency": 380.8541666666667,
+        "p95_latency": 710,
+        "row_hit_rate": 0.9375,
+        "row_conflict_rate": 0.041666666666666664,
+        "row_empty_rate": 0.020833333333333332,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.9175627240143369,
+          0.9175627240143369,
+          0.9175627240143369,
+          0.9175627240143369
+        ],
+        "avg_backpressure_wait": 303.9322916666667,
+        "avg_controller_wait": 66.02604166666667,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.0037780001293867826,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "Use the second token bit for bank alternation and fill its old column position from bit 8.",
+      "expected": "Longer same-bank bursts may hurt overlap despite similar row hit rate.",
+      "proposal_number": 12,
+      "backend_calls": 12
+    },
+    {
+      "candidate_id": "8a9226fb56071e45",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "swap_bits",
+            "a": 0,
+            "b": 12
+          },
+          {
+            "op": "swap_bits",
+            "a": 1,
+            "b": 13
+          },
+          {
+            "op": "swap_bits",
+            "a": 2,
+            "b": 14
+          },
+          {
+            "op": "swap_bits",
+            "a": 3,
+            "b": 4
+          },
+          {
+            "op": "swap_bits",
+            "a": 4,
+            "b": 8
+          },
+          {
+            "op": "xor_bit",
+            "dst": 0,
+            "src": 9
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 796,
+        "avg_latency": 358.5,
+        "p95_latency": 669,
+        "row_hit_rate": 0.9375,
+        "row_conflict_rate": 0.041666666666666664,
+        "row_empty_rate": 0.020833333333333332,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.964824120603015,
+          0.964824120603015,
+          0.964824120603015,
+          0.964824120603015
+        ],
+        "avg_backpressure_wait": 280.0104166666667,
+        "avg_controller_wait": 62.0625,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.004320400068536401,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "The prior bank-row mixture worsened the result. Test row mixing at channel level instead, preserving bijectivity and row capacity.",
+      "expected": "May stagger channel boundaries; can also leave the completion time unchanged.",
+      "proposal_number": 13,
+      "backend_calls": 13
+    },
+    {
+      "candidate_id": "aec5dda47a446d5f",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "swap_bits",
+            "a": 0,
+            "b": 12
+          },
+          {
+            "op": "swap_bits",
+            "a": 1,
+            "b": 13
+          },
+          {
+            "op": "swap_bits",
+            "a": 2,
+            "b": 14
+          },
+          {
+            "op": "swap_bits",
+            "a": 3,
+            "b": 4
+          },
+          {
+            "op": "swap_bits",
+            "a": 4,
+            "b": 8
+          },
+          {
+            "op": "xor_bit",
+            "dst": 1,
+            "src": 3
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 796,
+        "avg_latency": 358.5,
+        "p95_latency": 669,
+        "row_hit_rate": 0.9375,
+        "row_conflict_rate": 0.041666666666666664,
+        "row_empty_rate": 0.020833333333333332,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.964824120603015,
+          0.964824120603015,
+          0.964824120603015,
+          0.964824120603015
+        ],
+        "avg_backpressure_wait": 280.0104166666667,
+        "avg_controller_wait": 62.0625,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.004103200044482946,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "Mix token-bank parity into a channel selector to distribute successive tokens across channels.",
+      "expected": "Balanced totals but altered queue timing; test whether the remaining gaps are avoidable.",
+      "proposal_number": 14,
+      "backend_calls": 14
+    },
+    {
+      "candidate_id": "b36ad622face2cd2",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "swap_bits",
+            "a": 0,
+            "b": 4
+          },
+          {
+            "op": "swap_bits",
+            "a": 1,
+            "b": 5
+          },
+          {
+            "op": "swap_bits",
+            "a": 2,
+            "b": 12
+          },
+          {
+            "op": "swap_bits",
+            "a": 3,
+            "b": 13
+          },
+          {
+            "op": "swap_bits",
+            "a": 4,
+            "b": 14
+          },
+          {
+            "op": "swap_bits",
+            "a": 5,
+            "b": 8
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 799,
+        "avg_latency": 360.0,
+        "p95_latency": 672,
+        "row_hit_rate": 0.9375,
+        "row_conflict_rate": 0.041666666666666664,
+        "row_empty_rate": 0.020833333333333332,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.9612015018773467,
+          0.9612015018773467,
+          0.9612015018773467,
+          0.9612015018773467
+        ],
+        "avg_backpressure_wait": 281.375,
+        "avg_controller_wait": 62.197916666666664,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.004130299901589751,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "Route two token bits to channels and two stream bits to banks; place the remaining stream bit in a column.",
+      "expected": "Keep channel balance while changing startup and row-transition alignment; may trade row locality for overlap.",
+      "proposal_number": 15,
+      "backend_calls": 15
+    },
+    {
+      "candidate_id": "9ee1db5ec309824b",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "swap_bits",
+            "a": 0,
+            "b": 4
+          },
+          {
+            "op": "swap_bits",
+            "a": 1,
+            "b": 12
+          },
+          {
+            "op": "swap_bits",
+            "a": 2,
+            "b": 5
+          },
+          {
+            "op": "swap_bits",
+            "a": 3,
+            "b": 13
+          },
+          {
+            "op": "swap_bits",
+            "a": 4,
+            "b": 14
+          },
+          {
+            "op": "swap_bits",
+            "a": 5,
+            "b": 8
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 838,
+        "avg_latency": 381.3541666666667,
+        "p95_latency": 711,
+        "row_hit_rate": 0.9375,
+        "row_conflict_rate": 0.041666666666666664,
+        "row_empty_rate": 0.020833333333333332,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.9164677804295943,
+          0.9164677804295943,
+          0.9164677804295943,
+          0.9164677804295943
+        ],
+        "avg_backpressure_wait": 304.390625,
+        "avg_controller_wait": 66.06770833333333,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.005347999976947904,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "Split both stream and token bits across channels and banks instead of assigning each type to only one level.",
+      "expected": "Similar balance, with potentially different head-of-line stalls.",
+      "proposal_number": 16,
+      "backend_calls": 16
+    },
+    {
+      "candidate_id": "22e81e44c916a19f",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "swap_bits",
+            "a": 0,
+            "b": 12
+          },
+          {
+            "op": "swap_bits",
+            "a": 1,
+            "b": 13
+          },
+          {
+            "op": "swap_bits",
+            "a": 2,
+            "b": 14
+          },
+          {
+            "op": "swap_bits",
+            "a": 3,
+            "b": 8
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 837,
+        "avg_latency": 376.3333333333333,
+        "p95_latency": 710,
+        "row_hit_rate": 0.9375,
+        "row_conflict_rate": 0.041666666666666664,
+        "row_empty_rate": 0.020833333333333332,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.9175627240143369,
+          0.9175627240143369,
+          0.9175627240143369,
+          0.9175627240143369
+        ],
+        "avg_backpressure_wait": 301.1927083333333,
+        "avg_controller_wait": 66.21354166666667,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.003651699982583523,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "Use a less frequently changing token bit for the second bank selector and preserve the low token bit as column.",
+      "expected": "Potentially improve row locality, but long runs to one bank may reduce overlap.",
+      "proposal_number": 17,
+      "backend_calls": 17
+    },
+    {
+      "candidate_id": "c5fa08a618a5ff52",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "swap_bits",
+            "a": 0,
+            "b": 12
+          },
+          {
+            "op": "swap_bits",
+            "a": 1,
+            "b": 13
+          },
+          {
+            "op": "swap_bits",
+            "a": 2,
+            "b": 14
+          },
+          {
+            "op": "swap_bits",
+            "a": 3,
+            "b": 4
+          },
+          {
+            "op": "swap_bits",
+            "a": 4,
+            "b": 8
+          },
+          {
+            "op": "xor_bit",
+            "dst": 3,
+            "src": 4
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 812,
+        "avg_latency": 366.5,
+        "p95_latency": 685,
+        "row_hit_rate": 0.9375,
+        "row_conflict_rate": 0.041666666666666664,
+        "row_empty_rate": 0.020833333333333332,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.9458128078817734,
+          0.9458128078817734,
+          0.9458128078817734,
+          0.9458128078817734
+        ],
+        "avg_backpressure_wait": 286.9427083333333,
+        "avg_controller_wait": 63.395833333333336,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.003750699805095792,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "The best permutation balances all banks but still incurs row-transition gaps. Change bank parity at a column-group boundary.",
+      "expected": "Keep aggregate bank balance while shifting which bank carries the next row transition.",
+      "proposal_number": 18,
+      "backend_calls": 18
+    },
+    {
+      "candidate_id": "b60c03bf80be01cd",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "swap_bits",
+            "a": 0,
+            "b": 12
+          },
+          {
+            "op": "swap_bits",
+            "a": 1,
+            "b": 13
+          },
+          {
+            "op": "swap_bits",
+            "a": 2,
+            "b": 14
+          },
+          {
+            "op": "swap_bits",
+            "a": 3,
+            "b": 4
+          },
+          {
+            "op": "swap_bits",
+            "a": 4,
+            "b": 8
+          },
+          {
+            "op": "xor_bit",
+            "dst": 2,
+            "src": 5
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 804,
+        "avg_latency": 362.5,
+        "p95_latency": 677,
+        "row_hit_rate": 0.9375,
+        "row_conflict_rate": 0.041666666666666664,
+        "row_empty_rate": 0.020833333333333332,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.9552238805970149,
+          0.9552238805970149,
+          0.9552238805970149,
+          0.9552238805970149
+        ],
+        "avg_backpressure_wait": 285.4166666666667,
+        "avg_controller_wait": 62.9375,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.0038249001372605562,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "Mix a token-column bit into the stream-bank selector to stagger otherwise synchronized bank activity.",
+      "expected": "May hide row preparation behind another bank, at risk of fragmenting local row runs.",
+      "proposal_number": 19,
+      "backend_calls": 19
+    },
+    {
+      "candidate_id": "d3a60505f6305db2",
+      "dsl": {
+        "version": 0,
+        "operations": [
+          {
+            "op": "swap_bits",
+            "a": 0,
+            "b": 12
+          },
+          {
+            "op": "swap_bits",
+            "a": 1,
+            "b": 13
+          },
+          {
+            "op": "swap_bits",
+            "a": 2,
+            "b": 14
+          },
+          {
+            "op": "swap_bits",
+            "a": 3,
+            "b": 4
+          },
+          {
+            "op": "swap_bits",
+            "a": 4,
+            "b": 8
+          },
+          {
+            "op": "xor_bit",
+            "dst": 0,
+            "src": 4
+          },
+          {
+            "op": "xor_bit",
+            "dst": 3,
+            "src": 5
+          }
+        ]
+      },
+      "verification": {
+        "status": "pass",
+        "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+        "rank": 16,
+        "block_bits": 16,
+        "implementation_samples": 1033,
+        "rtl_status": "not_run"
+      },
+      "metrics": {
+        "backend": "toy-fcfs-v1",
+        "completed_requests": 768,
+        "completion_cycles": 812,
+        "avg_latency": 366.5,
+        "p95_latency": 685,
+        "row_hit_rate": 0.9375,
+        "row_conflict_rate": 0.041666666666666664,
+        "row_empty_rate": 0.020833333333333332,
+        "channel_requests": [
+          192,
+          192,
+          192,
+          192
+        ],
+        "bank_requests": [
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ],
+          [
+            48,
+            48,
+            48,
+            48
+          ]
+        ],
+        "channel_transfer_utilization": [
+          0.9458128078817734,
+          0.9458128078817734,
+          0.9458128078817734,
+          0.9458128078817734
+        ],
+        "avg_backpressure_wait": 291.4947916666667,
+        "avg_controller_wait": 63.875,
+        "read_requests": 720,
+        "write_requests": 48
+      },
+      "backend_seconds": 0.004085500026121736,
+      "cached": false,
+      "actor": "llm_file_bridge_current_conversation",
+      "hypothesis": "Combine a column-dependent channel rotation with bank staggering to test the remaining transfer gaps.",
+      "expected": "Preserve invertibility and balanced totals; only a measured completion-time reduction would support this hypothesis.",
+      "proposal_number": 20,
+      "backend_calls": 20
+    }
+  ],
+  "note": "No held-out metrics are exposed until finish. Tools are deterministic; this file does not contain an autonomous LLM runtime."
+}
