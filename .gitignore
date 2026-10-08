@@ -12,12 +12,18 @@ venv/
 *.vvp
 matplotlib_cache/
 
+# Paper full texts stay local; version only the catalog and bibliography.
+/paper/*
+!/paper/README.md
+!/paper/references.bib
+
 # Experiments are local by default; preserve only selected snapshots.
 /results/*
 !/results/provenance.json
 !/results/baseline_v1/
 !/results/baseline_v2/
 !/results/agent_kv_v1/
+!/results/rule_study_v1/
 
 # Baseline summaries already contain the complete per-search JSON records.
 /results/baseline_v1/*
@@ -28,3 +34,10 @@ matplotlib_cache/
 !/results/baseline_v2/benchmark.json
 !/results/baseline_v2/report.md
 !/results/baseline_v2/convergence.png
+
+# Rule-discovery study: protocol, compact raw results, and interpretation.
+/results/rule_study_v1/*
+!/results/rule_study_v1/protocol.json
+!/results/rule_study_v1/discovery.json
+!/results/rule_study_v1/validation.json
+!/results/rule_study_v1/report.md

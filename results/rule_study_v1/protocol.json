@@ -1,0 +1,136 @@
+{
+  "version": 1,
+  "created_utc": "2026-10-08T02:57:45.018896+00:00",
+  "backend": "toy-fcfs-v1",
+  "config": {
+    "granule_bytes": 64,
+    "channel_bits": 2,
+    "bank_bits": 1,
+    "column_bits": 1,
+    "row_bits": 2,
+    "queue_depth": 16,
+    "issue_interval": 1,
+    "t_hit": 4,
+    "t_activate": 8,
+    "t_precharge": 8,
+    "t_transfer": 4,
+    "max_operations": 8
+  },
+  "count": 256,
+  "discovery_cases": [
+    {
+      "name": "duplicate_ordered",
+      "family": "duplicate",
+      "order": "ordered",
+      "seed": 0
+    },
+    {
+      "name": "parity_ordered",
+      "family": "parity",
+      "order": "ordered",
+      "seed": 0
+    }
+  ],
+  "validation_cases": [
+    {
+      "name": "duplicate_ordered_101",
+      "family": "duplicate",
+      "order": "ordered",
+      "seed": 101
+    },
+    {
+      "name": "duplicate_ordered_303",
+      "family": "duplicate",
+      "order": "ordered",
+      "seed": 303
+    },
+    {
+      "name": "duplicate_shuffled_101",
+      "family": "duplicate",
+      "order": "shuffled",
+      "seed": 101
+    },
+    {
+      "name": "duplicate_shuffled_303",
+      "family": "duplicate",
+      "order": "shuffled",
+      "seed": 303
+    },
+    {
+      "name": "parity_ordered_101",
+      "family": "parity",
+      "order": "ordered",
+      "seed": 101
+    },
+    {
+      "name": "parity_ordered_303",
+      "family": "parity",
+      "order": "ordered",
+      "seed": 303
+    },
+    {
+      "name": "parity_shuffled_101",
+      "family": "parity",
+      "order": "shuffled",
+      "seed": 101
+    },
+    {
+      "name": "parity_shuffled_303",
+      "family": "parity",
+      "order": "shuffled",
+      "seed": 303
+    },
+    {
+      "name": "full_ordered",
+      "family": "full",
+      "order": "ordered",
+      "seed": 0
+    },
+    {
+      "name": "full_shuffled",
+      "family": "full",
+      "order": "shuffled",
+      "seed": 101
+    },
+    {
+      "name": "phase_mix",
+      "family": "phase_mix",
+      "order": "ordered",
+      "seed": 101
+    },
+    {
+      "name": "repeated_bursts",
+      "family": "full",
+      "order": "bursts",
+      "seed": 303
+    }
+  ],
+  "source_hashes": {
+    "model.py": "854821a6e15bfd064aa6a45739c12f05398fe5e50ecc92807fa2d0971f185d73",
+    "experiment.py": "3da9be77303aaa29dacc299bbf76b6b53c6a4ec0449592cc01e79a069830ff38",
+    "rule_study.py": "177642fea0fcacd90f1068ee3d1536a54f9fa63534e01e96ec5818cc799f9aca"
+  },
+  "frozen_baseline": "activity_policy(pack_columns=True), unchanged",
+  "proposed_rule": "joint_conditional",
+  "ablation": "joint_only",
+  "search_budget": 20,
+  "search_seeds": [
+    0,
+    1,
+    2
+  ],
+  "hypotheses_before_evaluation": [
+    "High marginal bit activity can hide redundant channel/bank selectors.",
+    "Greedy joint occupancy can avoid redundant selector bits.",
+    "Column activity should be measured within each selected channel/bank, not globally."
+  ],
+  "limits": [
+    "synthetic stress cases designed with the heuristic in view",
+    "validation generators known to the rule designer; outputs not yet evaluated",
+    "exact only over permutations, not the XOR DSL",
+    "rule recomputed from each validation trace; no validation backend feedback used",
+    "not a blind Agent-vs-human or Agent-vs-search efficiency experiment",
+    "current conversation proposed and implemented hypotheses; no autonomous Agent runtime",
+    "LLM thinking time, tokens, and human design costs not measured"
+  ]
+}

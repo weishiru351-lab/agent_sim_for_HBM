@@ -1,0 +1,5284 @@
+{
+  "source_hashes": {
+    "model.py": "854821a6e15bfd064aa6a45739c12f05398fe5e50ecc92807fa2d0971f185d73",
+    "experiment.py": "3da9be77303aaa29dacc299bbf76b6b53c6a4ec0449592cc01e79a069830ff38",
+    "rule_study.py": "177642fea0fcacd90f1068ee3d1536a54f9fa63534e01e96ec5818cc799f9aca"
+  },
+  "cases": [
+    {
+      "spec": {
+        "name": "duplicate_ordered",
+        "family": "duplicate",
+        "order": "ordered",
+        "seed": 0
+      },
+      "trace_id": "496cc18398bef21c",
+      "features": {
+        "requests": 256,
+        "block_bits": 6,
+        "top_block_strides": [
+          [
+            3,
+            128
+          ],
+          [
+            1,
+            120
+          ],
+          [
+            -63,
+            7
+          ]
+        ],
+        "bit_transition_rates": [
+          1.0,
+          1.0,
+          0.4980392156862745,
+          0.24705882352941178,
+          0.12156862745098039,
+          0.058823529411764705
+        ],
+        "bit_one_rates": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "address_sample": [
+          0,
+          192,
+          256,
+          448,
+          512,
+          704,
+          768,
+          960,
+          1024,
+          1216,
+          1280,
+          1472,
+          1536,
+          1728,
+          1792,
+          1984,
+          2048,
+          2240,
+          2304,
+          2496,
+          2560,
+          2752,
+          2816,
+          3008
+        ]
+      },
+      "methods": {
+        "identity": {
+          "dsl": {
+            "version": 0,
+            "operations": []
+          },
+          "metrics": {
+            "backend": "toy-fcfs-v1",
+            "completed_requests": 256,
+            "completion_cycles": 1020,
+            "avg_latency": 502.5,
+            "p95_latency": 950,
+            "row_hit_rate": 0.5,
+            "row_conflict_rate": 0.484375,
+            "row_empty_rate": 0.015625,
+            "channel_requests": [
+              128,
+              0,
+              0,
+              128
+            ],
+            "bank_requests": [
+              [
+                64,
+                64
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                64,
+                64
+              ]
+            ],
+            "channel_transfer_utilization": [
+              0.5019607843137255,
+              0.0,
+              0.0,
+              0.5019607843137255
+            ],
+            "avg_backpressure_wait": 368.09375,
+            "avg_controller_wait": 118.5078125,
+            "read_requests": 256,
+            "write_requests": 0
+          },
+          "verification": {
+            "status": "pass",
+            "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+            "rank": 6,
+            "block_bits": 6,
+            "implementation_samples": 64,
+            "rtl_status": "not_run"
+          },
+          "generation_seconds": 3.6999117583036423e-06,
+          "backend_seconds": 0.0012477999553084373,
+          "selection_backend_calls": 0,
+          "measurement_backend_calls": 1
+        },
+        "activity_packed": {
+          "dsl": {
+            "version": 0,
+            "operations": []
+          },
+          "metrics": {
+            "backend": "toy-fcfs-v1",
+            "completed_requests": 256,
+            "completion_cycles": 1020,
+            "avg_latency": 502.5,
+            "p95_latency": 950,
+            "row_hit_rate": 0.5,
+            "row_conflict_rate": 0.484375,
+            "row_empty_rate": 0.015625,
+            "channel_requests": [
+              128,
+              0,
+              0,
+              128
+            ],
+            "bank_requests": [
+              [
+                64,
+                64
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                64,
+                64
+              ]
+            ],
+            "channel_transfer_utilization": [
+              0.5019607843137255,
+              0.0,
+              0.0,
+              0.5019607843137255
+            ],
+            "avg_backpressure_wait": 368.09375,
+            "avg_controller_wait": 118.5078125,
+            "read_requests": 256,
+            "write_requests": 0
+          },
+          "verification": {
+            "status": "pass",
+            "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+            "rank": 6,
+            "block_bits": 6,
+            "implementation_samples": 64,
+            "rtl_status": "not_run"
+          },
+          "generation_seconds": 0.001643800176680088,
+          "backend_seconds": 0.0009699000511318445,
+          "selection_backend_calls": 0,
+          "measurement_backend_calls": 1
+        },
+        "joint_only": {
+          "dsl": {
+            "version": 0,
+            "operations": [
+              {
+                "op": "swap_bits",
+                "a": 1,
+                "b": 2
+              },
+              {
+                "op": "swap_bits",
+                "a": 2,
+                "b": 3
+              }
+            ]
+          },
+          "metrics": {
+            "backend": "toy-fcfs-v1",
+            "completed_requests": 256,
+            "completion_cycles": 764,
+            "avg_latency": 374.5,
+            "p95_latency": 706,
+            "row_hit_rate": 0.0,
+            "row_conflict_rate": 0.96875,
+            "row_empty_rate": 0.03125,
+            "channel_requests": [
+              64,
+              64,
+              64,
+              64
+            ],
+            "bank_requests": [
+              [
+                32,
+                32
+              ],
+              [
+                32,
+                32
+              ],
+              [
+                32,
+                32
+              ],
+              [
+                32,
+                32
+              ]
+            ],
+            "channel_transfer_utilization": [
+              0.33507853403141363,
+              0.33507853403141363,
+              0.33507853403141363,
+              0.33507853403141363
+            ],
+            "avg_backpressure_wait": 188.3125,
+            "avg_controller_wait": 162.390625,
+            "read_requests": 256,
+            "write_requests": 0
+          },
+          "verification": {
+            "status": "pass",
+            "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+            "rank": 6,
+            "block_bits": 6,
+            "implementation_samples": 64,
+            "rtl_status": "not_run"
+          },
+          "generation_seconds": 0.002639699960127473,
+          "backend_seconds": 0.0015944999177008867,
+          "selection_backend_calls": 0,
+          "measurement_backend_calls": 1
+        },
+        "joint_conditional": {
+          "dsl": {
+            "version": 0,
+            "operations": [
+              {
+                "op": "swap_bits",
+                "a": 1,
+                "b": 2
+              },
+              {
+                "op": "swap_bits",
+                "a": 2,
+                "b": 3
+              },
+              {
+                "op": "swap_bits",
+                "a": 3,
+                "b": 4
+              }
+            ]
+          },
+          "metrics": {
+            "backend": "toy-fcfs-v1",
+            "completed_requests": 256,
+            "completion_cycles": 508,
+            "avg_latency": 246.5,
+            "p95_latency": 466,
+            "row_hit_rate": 0.5,
+            "row_conflict_rate": 0.46875,
+            "row_empty_rate": 0.03125,
+            "channel_requests": [
+              64,
+              64,
+              64,
+              64
+            ],
+            "bank_requests": [
+              [
+                32,
+                32
+              ],
+              [
+                32,
+                32
+              ],
+              [
+                32,
+                32
+              ],
+              [
+                32,
+                32
+              ]
+            ],
+            "channel_transfer_utilization": [
+              0.5039370078740157,
+              0.5039370078740157,
+              0.5039370078740157,
+              0.5039370078740157
+            ],
+            "avg_backpressure_wait": 122.3125,
+            "avg_controller_wait": 108.390625,
+            "read_requests": 256,
+            "write_requests": 0
+          },
+          "verification": {
+            "status": "pass",
+            "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+            "rank": 6,
+            "block_bits": 6,
+            "implementation_samples": 64,
+            "rtl_status": "not_run"
+          },
+          "generation_seconds": 0.0046159999910742044,
+          "backend_seconds": 0.002050100127235055,
+          "selection_backend_calls": 0,
+          "measurement_backend_calls": 1
+        }
+      },
+      "searches": [
+        {
+          "method": "random",
+          "seed": 0,
+          "budget": 20,
+          "backend_calls": 20,
+          "best_cycles": 509,
+          "best_order": [
+            2,
+            4,
+            1,
+            3,
+            0,
+            5
+          ],
+          "history": [
+            {
+              "order": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "cycles": 1020,
+              "best_cycles": 1020
+            },
+            {
+              "order": [
+                3,
+                5,
+                0,
+                1,
+                2,
+                4
+              ],
+              "cycles": 766,
+              "best_cycles": 766
+            },
+            {
+              "order": [
+                2,
+                3,
+                5,
+                4,
+                0,
+                1
+              ],
+              "cycles": 1228,
+              "best_cycles": 766
+            },
+            {
+              "order": [
+                2,
+                1,
+                0,
+                5,
+                4,
+                3
+              ],
+              "cycles": 1528,
+              "best_cycles": 766
+            },
+            {
+              "order": [
+                2,
+                0,
+                4,
+                5,
+                1,
+                3
+              ],
+              "cycles": 908,
+              "best_cycles": 766
+            },
+            {
+              "order": [
+                4,
+                0,
+                2,
+                1,
+                3,
+                5
+              ],
+              "cycles": 765,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                4,
+                3,
+                5,
+                2,
+                1,
+                0
+              ],
+              "cycles": 1229,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                4,
+                0,
+                5,
+                2,
+                1,
+                3
+              ],
+              "cycles": 904,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                4,
+                3,
+                2,
+                0,
+                1,
+                5
+              ],
+              "cycles": 909,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                1,
+                4,
+                5,
+                0,
+                2,
+                3
+              ],
+              "cycles": 1229,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                0,
+                5,
+                2,
+                3,
+                1,
+                4
+              ],
+              "cycles": 510,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                2,
+                4,
+                5,
+                3,
+                0,
+                1
+              ],
+              "cycles": 1229,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                4,
+                1,
+                2,
+                5,
+                0,
+                3
+              ],
+              "cycles": 765,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                2,
+                4,
+                1,
+                3,
+                0,
+                5
+              ],
+              "cycles": 509,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                1,
+                0,
+                2,
+                5,
+                4,
+                3
+              ],
+              "cycles": 1532,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                5,
+                1,
+                4,
+                0,
+                2,
+                3
+              ],
+              "cycles": 1230,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                5,
+                4,
+                2,
+                3,
+                0,
+                1
+              ],
+              "cycles": 911,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                5,
+                4,
+                3,
+                2,
+                1,
+                0
+              ],
+              "cycles": 1231,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                3,
+                2,
+                0,
+                1,
+                5,
+                4
+              ],
+              "cycles": 764,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                4,
+                2,
+                1,
+                0,
+                5,
+                3
+              ],
+              "cycles": 765,
+              "best_cycles": 509
+            }
+          ],
+          "wall_seconds": 0.024387900019064546
+        },
+        {
+          "method": "random",
+          "seed": 1,
+          "budget": 20,
+          "backend_calls": 20,
+          "best_cycles": 508,
+          "best_order": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ],
+          "history": [
+            {
+              "order": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "cycles": 1020,
+              "best_cycles": 1020
+            },
+            {
+              "order": [
+                1,
+                4,
+                0,
+                5,
+                3,
+                2
+              ],
+              "cycles": 1529,
+              "best_cycles": 1020
+            },
+            {
+              "order": [
+                3,
+                5,
+                4,
+                0,
+                2,
+                1
+              ],
+              "cycles": 1230,
+              "best_cycles": 1020
+            },
+            {
+              "order": [
+                0,
+                3,
+                4,
+                2,
+                5,
+                1
+              ],
+              "cycles": 791,
+              "best_cycles": 791
+            },
+            {
+              "order": [
+                2,
+                1,
+                0,
+                4,
+                3,
+                5
+              ],
+              "cycles": 1528,
+              "best_cycles": 791
+            },
+            {
+              "order": [
+                0,
+                4,
+                5,
+                1,
+                3,
+                2
+              ],
+              "cycles": 1229,
+              "best_cycles": 791
+            },
+            {
+              "order": [
+                5,
+                0,
+                1,
+                3,
+                2,
+                4
+              ],
+              "cycles": 1530,
+              "best_cycles": 791
+            },
+            {
+              "order": [
+                2,
+                1,
+                4,
+                3,
+                5,
+                0
+              ],
+              "cycles": 791,
+              "best_cycles": 791
+            },
+            {
+              "order": [
+                3,
+                4,
+                0,
+                5,
+                1,
+                2
+              ],
+              "cycles": 765,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                5,
+                2,
+                3,
+                4,
+                0,
+                1
+              ],
+              "cycles": 910,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                2,
+                4,
+                3,
+                5,
+                1,
+                0
+              ],
+              "cycles": 909,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                3,
+                1,
+                5,
+                4,
+                0,
+                2
+              ],
+              "cycles": 1228,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                4,
+                2,
+                0,
+                1,
+                3,
+                5
+              ],
+              "cycles": 765,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                4,
+                3,
+                2,
+                1,
+                0,
+                5
+              ],
+              "cycles": 909,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                0,
+                2,
+                3,
+                4,
+                5,
+                1
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                4,
+                1,
+                0,
+                3,
+                2,
+                5
+              ],
+              "cycles": 1529,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                4,
+                2,
+                5,
+                1,
+                3,
+                0
+              ],
+              "cycles": 1229,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                3,
+                4,
+                1,
+                2,
+                0,
+                5
+              ],
+              "cycles": 509,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                0,
+                3,
+                2,
+                4,
+                5,
+                1
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                3,
+                2,
+                5,
+                1,
+                0,
+                4
+              ],
+              "cycles": 1228,
+              "best_cycles": 508
+            }
+          ],
+          "wall_seconds": 0.02484459988772869
+        },
+        {
+          "method": "random",
+          "seed": 2,
+          "budget": 20,
+          "backend_calls": 20,
+          "best_cycles": 509,
+          "best_order": [
+            3,
+            4,
+            1,
+            2,
+            0,
+            5
+          ],
+          "history": [
+            {
+              "order": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "cycles": 1020,
+              "best_cycles": 1020
+            },
+            {
+              "order": [
+                0,
+                5,
+                4,
+                1,
+                3,
+                2
+              ],
+              "cycles": 1230,
+              "best_cycles": 1020
+            },
+            {
+              "order": [
+                2,
+                4,
+                1,
+                5,
+                0,
+                3
+              ],
+              "cycles": 765,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                3,
+                5,
+                2,
+                4,
+                1,
+                0
+              ],
+              "cycles": 910,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                0,
+                5,
+                2,
+                1,
+                3,
+                4
+              ],
+              "cycles": 766,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                3,
+                4,
+                1,
+                2,
+                0,
+                5
+              ],
+              "cycles": 509,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                1,
+                0,
+                5,
+                3,
+                4,
+                2
+              ],
+              "cycles": 2764,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                4,
+                5,
+                2,
+                3,
+                0,
+                1
+              ],
+              "cycles": 911,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                3,
+                4,
+                2,
+                5,
+                1,
+                0
+              ],
+              "cycles": 909,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                3,
+                1,
+                5,
+                2,
+                4,
+                0
+              ],
+              "cycles": 903,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                3,
+                2,
+                5,
+                4,
+                1,
+                0
+              ],
+              "cycles": 1228,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                3,
+                2,
+                5,
+                1,
+                0,
+                4
+              ],
+              "cycles": 1228,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                5,
+                1,
+                2,
+                4,
+                3,
+                0
+              ],
+              "cycles": 766,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                5,
+                4,
+                3,
+                1,
+                0,
+                2
+              ],
+              "cycles": 1231,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                4,
+                2,
+                0,
+                1,
+                3,
+                5
+              ],
+              "cycles": 765,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                5,
+                0,
+                4,
+                2,
+                3,
+                1
+              ],
+              "cycles": 905,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                4,
+                1,
+                0,
+                2,
+                3,
+                5
+              ],
+              "cycles": 1017,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                1,
+                5,
+                0,
+                4,
+                3,
+                2
+              ],
+              "cycles": 1530,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                2,
+                5,
+                1,
+                0,
+                4,
+                3
+              ],
+              "cycles": 766,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                0,
+                5,
+                4,
+                3,
+                2,
+                1
+              ],
+              "cycles": 1230,
+              "best_cycles": 509
+            }
+          ],
+          "wall_seconds": 0.025391200091689825
+        },
+        {
+          "method": "local",
+          "seed": 0,
+          "budget": 20,
+          "backend_calls": 20,
+          "best_cycles": 508,
+          "best_order": [
+            2,
+            1,
+            3,
+            4,
+            0,
+            5
+          ],
+          "history": [
+            {
+              "order": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "cycles": 1020,
+              "best_cycles": 1020
+            },
+            {
+              "order": [
+                0,
+                1,
+                2,
+                5,
+                4,
+                3
+              ],
+              "cycles": 1532,
+              "best_cycles": 1020
+            },
+            {
+              "order": [
+                2,
+                1,
+                0,
+                3,
+                4,
+                5
+              ],
+              "cycles": 1016,
+              "best_cycles": 1016
+            },
+            {
+              "order": [
+                2,
+                1,
+                0,
+                4,
+                3,
+                5
+              ],
+              "cycles": 1528,
+              "best_cycles": 1016
+            },
+            {
+              "order": [
+                2,
+                1,
+                3,
+                0,
+                4,
+                5
+              ],
+              "cycles": 764,
+              "best_cycles": 764
+            },
+            {
+              "order": [
+                4,
+                1,
+                5,
+                3,
+                0,
+                2
+              ],
+              "cycles": 1229,
+              "best_cycles": 764
+            },
+            {
+              "order": [
+                2,
+                1,
+                4,
+                0,
+                3,
+                5
+              ],
+              "cycles": 908,
+              "best_cycles": 764
+            },
+            {
+              "order": [
+                2,
+                1,
+                3,
+                0,
+                5,
+                4
+              ],
+              "cycles": 764,
+              "best_cycles": 764
+            },
+            {
+              "order": [
+                2,
+                3,
+                1,
+                0,
+                4,
+                5
+              ],
+              "cycles": 764,
+              "best_cycles": 764
+            },
+            {
+              "order": [
+                5,
+                1,
+                3,
+                0,
+                4,
+                2
+              ],
+              "cycles": 910,
+              "best_cycles": 764
+            },
+            {
+              "order": [
+                2,
+                1,
+                5,
+                0,
+                4,
+                3
+              ],
+              "cycles": 1228,
+              "best_cycles": 764
+            },
+            {
+              "order": [
+                2,
+                1,
+                3,
+                4,
+                0,
+                5
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                0,
+                2,
+                3,
+                1,
+                5,
+                4
+              ],
+              "cycles": 764,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                3,
+                1,
+                2,
+                4,
+                0,
+                5
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                0,
+                1,
+                3,
+                4,
+                2,
+                5
+              ],
+              "cycles": 1804,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                4,
+                1,
+                3,
+                2,
+                0,
+                5
+              ],
+              "cycles": 792,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                5,
+                1,
+                3,
+                4,
+                0,
+                2
+              ],
+              "cycles": 910,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                2,
+                1,
+                5,
+                3,
+                0,
+                4
+              ],
+              "cycles": 903,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                2,
+                0,
+                3,
+                4,
+                1,
+                5
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                2,
+                5,
+                3,
+                4,
+                0,
+                1
+              ],
+              "cycles": 910,
+              "best_cycles": 508
+            }
+          ],
+          "wall_seconds": 0.02876390004530549
+        },
+        {
+          "method": "local",
+          "seed": 1,
+          "budget": 20,
+          "backend_calls": 20,
+          "best_cycles": 508,
+          "best_order": [
+            0,
+            3,
+            2,
+            4,
+            1,
+            5
+          ],
+          "history": [
+            {
+              "order": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "cycles": 1020,
+              "best_cycles": 1020
+            },
+            {
+              "order": [
+                0,
+                4,
+                2,
+                3,
+                1,
+                5
+              ],
+              "cycles": 509,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                2,
+                4,
+                0,
+                3,
+                1,
+                5
+              ],
+              "cycles": 509,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                3,
+                4,
+                2,
+                0,
+                1,
+                5
+              ],
+              "cycles": 909,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                0,
+                4,
+                2,
+                5,
+                1,
+                3
+              ],
+              "cycles": 765,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                1,
+                0,
+                3,
+                4,
+                5,
+                2
+              ],
+              "cycles": 1804,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                1,
+                4,
+                2,
+                3,
+                0,
+                5
+              ],
+              "cycles": 509,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                0,
+                2,
+                4,
+                3,
+                1,
+                5
+              ],
+              "cycles": 791,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                5,
+                4,
+                2,
+                3,
+                1,
+                0
+              ],
+              "cycles": 911,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                5,
+                4,
+                0,
+                1,
+                3,
+                2
+              ],
+              "cycles": 767,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                0,
+                5,
+                2,
+                3,
+                1,
+                4
+              ],
+              "cycles": 510,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                3,
+                2,
+                0,
+                1,
+                5,
+                4
+              ],
+              "cycles": 764,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                0,
+                4,
+                5,
+                3,
+                1,
+                2
+              ],
+              "cycles": 1229,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                0,
+                4,
+                2,
+                3,
+                5,
+                1
+              ],
+              "cycles": 509,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                0,
+                4,
+                2,
+                1,
+                3,
+                5
+              ],
+              "cycles": 765,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                4,
+                3,
+                5,
+                2,
+                0,
+                1
+              ],
+              "cycles": 1229,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                0,
+                3,
+                2,
+                4,
+                1,
+                5
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                0,
+                3,
+                1,
+                4,
+                2,
+                5
+              ],
+              "cycles": 1528,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                0,
+                3,
+                5,
+                4,
+                1,
+                2
+              ],
+              "cycles": 1228,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                4,
+                3,
+                2,
+                0,
+                1,
+                5
+              ],
+              "cycles": 909,
+              "best_cycles": 508
+            }
+          ],
+          "wall_seconds": 0.02310580015182495
+        },
+        {
+          "method": "local",
+          "seed": 2,
+          "budget": 20,
+          "backend_calls": 20,
+          "best_cycles": 509,
+          "best_order": [
+            4,
+            1,
+            2,
+            3,
+            5,
+            0
+          ],
+          "history": [
+            {
+              "order": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "cycles": 1020,
+              "best_cycles": 1020
+            },
+            {
+              "order": [
+                5,
+                1,
+                2,
+                3,
+                4,
+                0
+              ],
+              "cycles": 510,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                2,
+                1,
+                5,
+                3,
+                4,
+                0
+              ],
+              "cycles": 903,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                5,
+                2,
+                1,
+                3,
+                4,
+                0
+              ],
+              "cycles": 510,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                5,
+                1,
+                4,
+                3,
+                2,
+                0
+              ],
+              "cycles": 1230,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                5,
+                4,
+                2,
+                3,
+                1,
+                0
+              ],
+              "cycles": 911,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                0,
+                4,
+                1,
+                3,
+                2,
+                5
+              ],
+              "cycles": 1529,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                5,
+                1,
+                2,
+                4,
+                3,
+                0
+              ],
+              "cycles": 766,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                5,
+                1,
+                3,
+                2,
+                4,
+                0
+              ],
+              "cycles": 793,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                1,
+                4,
+                5,
+                0,
+                2,
+                3
+              ],
+              "cycles": 1229,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                5,
+                0,
+                2,
+                3,
+                4,
+                1
+              ],
+              "cycles": 510,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                5,
+                1,
+                2,
+                3,
+                0,
+                4
+              ],
+              "cycles": 510,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                5,
+                3,
+                2,
+                1,
+                4,
+                0
+              ],
+              "cycles": 910,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                3,
+                4,
+                2,
+                5,
+                1,
+                0
+              ],
+              "cycles": 909,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                5,
+                1,
+                2,
+                0,
+                4,
+                3
+              ],
+              "cycles": 766,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                2,
+                3,
+                4,
+                1,
+                5,
+                0
+              ],
+              "cycles": 908,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                4,
+                5,
+                3,
+                1,
+                0,
+                2
+              ],
+              "cycles": 1231,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                1,
+                5,
+                2,
+                3,
+                4,
+                0
+              ],
+              "cycles": 510,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                4,
+                1,
+                2,
+                3,
+                5,
+                0
+              ],
+              "cycles": 509,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                4,
+                5,
+                2,
+                3,
+                1,
+                0
+              ],
+              "cycles": 911,
+              "best_cycles": 509
+            }
+          ],
+          "wall_seconds": 0.024644300108775496
+        }
+      ],
+      "exact": {
+        "space": "all bit permutations, lexicographic output-to-input order; XOR excluded",
+        "backend_calls": 720,
+        "wall_seconds": 0.9239483999554068,
+        "best_cycles": 508,
+        "best_dsl": {
+          "version": 0,
+          "operations": [
+            {
+              "op": "swap_bits",
+              "a": 1,
+              "b": 2
+            },
+            {
+              "op": "swap_bits",
+              "a": 2,
+              "b": 3
+            },
+            {
+              "op": "swap_bits",
+              "a": 3,
+              "b": 4
+            }
+          ]
+        },
+        "minimizer_count": 24,
+        "cycles_in_permutation_order": [
+          1020,
+          1020,
+          1532,
+          1532,
+          1532,
+          1532,
+          1591,
+          1591,
+          1804,
+          1804,
+          1804,
+          1804,
+          1815,
+          1815,
+          2444,
+          2444,
+          2444,
+          2444,
+          1927,
+          1927,
+          2764,
+          2764,
+          2764,
+          2764,
+          1016,
+          1016,
+          1528,
+          1528,
+          1528,
+          1528,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          791,
+          791,
+          908,
+          908,
+          1228,
+          1228,
+          903,
+          903,
+          1228,
+          1228,
+          1016,
+          1016,
+          1528,
+          1528,
+          1528,
+          1528,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          791,
+          791,
+          908,
+          908,
+          1228,
+          1228,
+          903,
+          903,
+          1228,
+          1228,
+          1017,
+          1017,
+          1529,
+          1529,
+          1529,
+          1529,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          909,
+          909,
+          792,
+          792,
+          909,
+          909,
+          1229,
+          1229,
+          904,
+          904,
+          1229,
+          1229,
+          1018,
+          1018,
+          1530,
+          1530,
+          1530,
+          1530,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          910,
+          910,
+          793,
+          793,
+          910,
+          910,
+          1230,
+          1230,
+          905,
+          905,
+          1230,
+          1230,
+          1020,
+          1020,
+          1532,
+          1532,
+          1532,
+          1532,
+          1591,
+          1591,
+          1804,
+          1804,
+          1804,
+          1804,
+          1815,
+          1815,
+          2444,
+          2444,
+          2444,
+          2444,
+          1927,
+          1927,
+          2764,
+          2764,
+          2764,
+          2764,
+          1016,
+          1016,
+          1528,
+          1528,
+          1528,
+          1528,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          791,
+          791,
+          908,
+          908,
+          1228,
+          1228,
+          903,
+          903,
+          1228,
+          1228,
+          1016,
+          1016,
+          1528,
+          1528,
+          1528,
+          1528,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          791,
+          791,
+          908,
+          908,
+          1228,
+          1228,
+          903,
+          903,
+          1228,
+          1228,
+          1017,
+          1017,
+          1529,
+          1529,
+          1529,
+          1529,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          909,
+          909,
+          792,
+          792,
+          909,
+          909,
+          1229,
+          1229,
+          904,
+          904,
+          1229,
+          1229,
+          1018,
+          1018,
+          1530,
+          1530,
+          1530,
+          1530,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          910,
+          910,
+          793,
+          793,
+          910,
+          910,
+          1230,
+          1230,
+          905,
+          905,
+          1230,
+          1230,
+          1016,
+          1016,
+          1528,
+          1528,
+          1528,
+          1528,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          791,
+          791,
+          908,
+          908,
+          1228,
+          1228,
+          903,
+          903,
+          1228,
+          1228,
+          1016,
+          1016,
+          1528,
+          1528,
+          1528,
+          1528,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          791,
+          791,
+          908,
+          908,
+          1228,
+          1228,
+          903,
+          903,
+          1228,
+          1228,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          908,
+          908,
+          908,
+          908,
+          1228,
+          1228,
+          1228,
+          1228,
+          1228,
+          1228,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          909,
+          909,
+          909,
+          909,
+          909,
+          909,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          910,
+          910,
+          910,
+          910,
+          910,
+          910,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          1016,
+          1016,
+          1528,
+          1528,
+          1528,
+          1528,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          791,
+          791,
+          908,
+          908,
+          1228,
+          1228,
+          903,
+          903,
+          1228,
+          1228,
+          1016,
+          1016,
+          1528,
+          1528,
+          1528,
+          1528,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          791,
+          791,
+          908,
+          908,
+          1228,
+          1228,
+          903,
+          903,
+          1228,
+          1228,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          908,
+          908,
+          908,
+          908,
+          1228,
+          1228,
+          1228,
+          1228,
+          1228,
+          1228,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          909,
+          909,
+          909,
+          909,
+          909,
+          909,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          910,
+          910,
+          910,
+          910,
+          910,
+          910,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          1017,
+          1017,
+          1529,
+          1529,
+          1529,
+          1529,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          909,
+          909,
+          792,
+          792,
+          909,
+          909,
+          1229,
+          1229,
+          904,
+          904,
+          1229,
+          1229,
+          1017,
+          1017,
+          1529,
+          1529,
+          1529,
+          1529,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          909,
+          909,
+          792,
+          792,
+          909,
+          909,
+          1229,
+          1229,
+          904,
+          904,
+          1229,
+          1229,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          909,
+          909,
+          909,
+          909,
+          909,
+          909,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          909,
+          909,
+          909,
+          909,
+          909,
+          909,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          767,
+          767,
+          511,
+          511,
+          767,
+          767,
+          767,
+          767,
+          511,
+          511,
+          767,
+          767,
+          911,
+          911,
+          911,
+          911,
+          911,
+          911,
+          1231,
+          1231,
+          1231,
+          1231,
+          1231,
+          1231,
+          1018,
+          1018,
+          1530,
+          1530,
+          1530,
+          1530,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          910,
+          910,
+          793,
+          793,
+          910,
+          910,
+          1230,
+          1230,
+          905,
+          905,
+          1230,
+          1230,
+          1018,
+          1018,
+          1530,
+          1530,
+          1530,
+          1530,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          910,
+          910,
+          793,
+          793,
+          910,
+          910,
+          1230,
+          1230,
+          905,
+          905,
+          1230,
+          1230,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          910,
+          910,
+          910,
+          910,
+          910,
+          910,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          910,
+          910,
+          910,
+          910,
+          910,
+          910,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          767,
+          767,
+          511,
+          511,
+          767,
+          767,
+          767,
+          767,
+          511,
+          511,
+          767,
+          767,
+          911,
+          911,
+          911,
+          911,
+          911,
+          911,
+          1231,
+          1231,
+          1231,
+          1231,
+          1231,
+          1231
+        ]
+      }
+    },
+    {
+      "spec": {
+        "name": "parity_ordered",
+        "family": "parity",
+        "order": "ordered",
+        "seed": 0
+      },
+      "trace_id": "db37415421c50c4e",
+      "features": {
+        "requests": 256,
+        "block_bits": 6,
+        "top_block_strides": [
+          [
+            3,
+            184
+          ],
+          [
+            -1,
+            64
+          ],
+          [
+            -61,
+            7
+          ]
+        ],
+        "bit_transition_rates": [
+          1.0,
+          0.5019607843137255,
+          0.4980392156862745,
+          0.24705882352941178,
+          0.12156862745098039,
+          0.058823529411764705
+        ],
+        "bit_one_rates": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "address_sample": [
+          0,
+          192,
+          384,
+          320,
+          512,
+          704,
+          896,
+          832,
+          1024,
+          1216,
+          1408,
+          1344,
+          1536,
+          1728,
+          1920,
+          1856,
+          2048,
+          2240,
+          2432,
+          2368,
+          2560,
+          2752,
+          2944,
+          2880
+        ]
+      },
+      "methods": {
+        "identity": {
+          "dsl": {
+            "version": 0,
+            "operations": []
+          },
+          "metrics": {
+            "backend": "toy-fcfs-v1",
+            "completed_requests": 256,
+            "completion_cycles": 1016,
+            "avg_latency": 500.5,
+            "p95_latency": 946,
+            "row_hit_rate": 0.5,
+            "row_conflict_rate": 0.484375,
+            "row_empty_rate": 0.015625,
+            "channel_requests": [
+              64,
+              64,
+              64,
+              64
+            ],
+            "bank_requests": [
+              [
+                64,
+                0
+              ],
+              [
+                0,
+                64
+              ],
+              [
+                0,
+                64
+              ],
+              [
+                64,
+                0
+              ]
+            ],
+            "channel_transfer_utilization": [
+              0.25196850393700787,
+              0.25196850393700787,
+              0.25196850393700787,
+              0.25196850393700787
+            ],
+            "avg_backpressure_wait": 264.625,
+            "avg_controller_wait": 220.0,
+            "read_requests": 256,
+            "write_requests": 0
+          },
+          "verification": {
+            "status": "pass",
+            "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+            "rank": 6,
+            "block_bits": 6,
+            "implementation_samples": 64,
+            "rtl_status": "not_run"
+          },
+          "generation_seconds": 1.00000761449337e-06,
+          "backend_seconds": 0.001551399938762188,
+          "selection_backend_calls": 0,
+          "measurement_backend_calls": 1
+        },
+        "activity_packed": {
+          "dsl": {
+            "version": 0,
+            "operations": []
+          },
+          "metrics": {
+            "backend": "toy-fcfs-v1",
+            "completed_requests": 256,
+            "completion_cycles": 1016,
+            "avg_latency": 500.5,
+            "p95_latency": 946,
+            "row_hit_rate": 0.5,
+            "row_conflict_rate": 0.484375,
+            "row_empty_rate": 0.015625,
+            "channel_requests": [
+              64,
+              64,
+              64,
+              64
+            ],
+            "bank_requests": [
+              [
+                64,
+                0
+              ],
+              [
+                0,
+                64
+              ],
+              [
+                0,
+                64
+              ],
+              [
+                64,
+                0
+              ]
+            ],
+            "channel_transfer_utilization": [
+              0.25196850393700787,
+              0.25196850393700787,
+              0.25196850393700787,
+              0.25196850393700787
+            ],
+            "avg_backpressure_wait": 264.625,
+            "avg_controller_wait": 220.0,
+            "read_requests": 256,
+            "write_requests": 0
+          },
+          "verification": {
+            "status": "pass",
+            "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+            "rank": 6,
+            "block_bits": 6,
+            "implementation_samples": 64,
+            "rtl_status": "not_run"
+          },
+          "generation_seconds": 0.0007404000498354435,
+          "backend_seconds": 0.0017293000128120184,
+          "selection_backend_calls": 0,
+          "measurement_backend_calls": 1
+        },
+        "joint_only": {
+          "dsl": {
+            "version": 0,
+            "operations": [
+              {
+                "op": "swap_bits",
+                "a": 2,
+                "b": 3
+              }
+            ]
+          },
+          "metrics": {
+            "backend": "toy-fcfs-v1",
+            "completed_requests": 256,
+            "completion_cycles": 764,
+            "avg_latency": 374.5,
+            "p95_latency": 706,
+            "row_hit_rate": 0.0,
+            "row_conflict_rate": 0.96875,
+            "row_empty_rate": 0.03125,
+            "channel_requests": [
+              64,
+              64,
+              64,
+              64
+            ],
+            "bank_requests": [
+              [
+                32,
+                32
+              ],
+              [
+                32,
+                32
+              ],
+              [
+                32,
+                32
+              ],
+              [
+                32,
+                32
+              ]
+            ],
+            "channel_transfer_utilization": [
+              0.33507853403141363,
+              0.33507853403141363,
+              0.33507853403141363,
+              0.33507853403141363
+            ],
+            "avg_backpressure_wait": 188.3125,
+            "avg_controller_wait": 162.390625,
+            "read_requests": 256,
+            "write_requests": 0
+          },
+          "verification": {
+            "status": "pass",
+            "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+            "rank": 6,
+            "block_bits": 6,
+            "implementation_samples": 64,
+            "rtl_status": "not_run"
+          },
+          "generation_seconds": 0.0029152000788599253,
+          "backend_seconds": 0.0011132999788969755,
+          "selection_backend_calls": 0,
+          "measurement_backend_calls": 1
+        },
+        "joint_conditional": {
+          "dsl": {
+            "version": 0,
+            "operations": [
+              {
+                "op": "swap_bits",
+                "a": 2,
+                "b": 3
+              },
+              {
+                "op": "swap_bits",
+                "a": 3,
+                "b": 4
+              }
+            ]
+          },
+          "metrics": {
+            "backend": "toy-fcfs-v1",
+            "completed_requests": 256,
+            "completion_cycles": 508,
+            "avg_latency": 246.5,
+            "p95_latency": 466,
+            "row_hit_rate": 0.5,
+            "row_conflict_rate": 0.46875,
+            "row_empty_rate": 0.03125,
+            "channel_requests": [
+              64,
+              64,
+              64,
+              64
+            ],
+            "bank_requests": [
+              [
+                32,
+                32
+              ],
+              [
+                32,
+                32
+              ],
+              [
+                32,
+                32
+              ],
+              [
+                32,
+                32
+              ]
+            ],
+            "channel_transfer_utilization": [
+              0.5039370078740157,
+              0.5039370078740157,
+              0.5039370078740157,
+              0.5039370078740157
+            ],
+            "avg_backpressure_wait": 122.3125,
+            "avg_controller_wait": 108.390625,
+            "read_requests": 256,
+            "write_requests": 0
+          },
+          "verification": {
+            "status": "pass",
+            "method": "GF(2) full-rank check plus interpreter/compiler and inverse checks",
+            "rank": 6,
+            "block_bits": 6,
+            "implementation_samples": 64,
+            "rtl_status": "not_run"
+          },
+          "generation_seconds": 0.0032806999515742064,
+          "backend_seconds": 0.0015523000620305538,
+          "selection_backend_calls": 0,
+          "measurement_backend_calls": 1
+        }
+      },
+      "searches": [
+        {
+          "method": "random",
+          "seed": 0,
+          "budget": 20,
+          "backend_calls": 20,
+          "best_cycles": 509,
+          "best_order": [
+            2,
+            4,
+            1,
+            3,
+            0,
+            5
+          ],
+          "history": [
+            {
+              "order": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "cycles": 1016,
+              "best_cycles": 1016
+            },
+            {
+              "order": [
+                3,
+                5,
+                0,
+                1,
+                2,
+                4
+              ],
+              "cycles": 766,
+              "best_cycles": 766
+            },
+            {
+              "order": [
+                2,
+                3,
+                5,
+                4,
+                0,
+                1
+              ],
+              "cycles": 1228,
+              "best_cycles": 766
+            },
+            {
+              "order": [
+                2,
+                1,
+                0,
+                5,
+                4,
+                3
+              ],
+              "cycles": 1528,
+              "best_cycles": 766
+            },
+            {
+              "order": [
+                2,
+                0,
+                4,
+                5,
+                1,
+                3
+              ],
+              "cycles": 908,
+              "best_cycles": 766
+            },
+            {
+              "order": [
+                4,
+                0,
+                2,
+                1,
+                3,
+                5
+              ],
+              "cycles": 765,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                4,
+                3,
+                5,
+                2,
+                1,
+                0
+              ],
+              "cycles": 1229,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                4,
+                0,
+                5,
+                2,
+                1,
+                3
+              ],
+              "cycles": 1229,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                4,
+                3,
+                2,
+                0,
+                1,
+                5
+              ],
+              "cycles": 909,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                1,
+                4,
+                5,
+                0,
+                2,
+                3
+              ],
+              "cycles": 1229,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                0,
+                5,
+                2,
+                3,
+                1,
+                4
+              ],
+              "cycles": 510,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                2,
+                4,
+                5,
+                3,
+                0,
+                1
+              ],
+              "cycles": 1229,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                4,
+                1,
+                2,
+                5,
+                0,
+                3
+              ],
+              "cycles": 765,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                2,
+                4,
+                1,
+                3,
+                0,
+                5
+              ],
+              "cycles": 509,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                1,
+                0,
+                2,
+                5,
+                4,
+                3
+              ],
+              "cycles": 1528,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                5,
+                1,
+                4,
+                0,
+                2,
+                3
+              ],
+              "cycles": 1230,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                5,
+                4,
+                2,
+                3,
+                0,
+                1
+              ],
+              "cycles": 911,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                5,
+                4,
+                3,
+                2,
+                1,
+                0
+              ],
+              "cycles": 1231,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                3,
+                2,
+                0,
+                1,
+                5,
+                4
+              ],
+              "cycles": 764,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                4,
+                2,
+                1,
+                0,
+                5,
+                3
+              ],
+              "cycles": 765,
+              "best_cycles": 509
+            }
+          ],
+          "wall_seconds": 0.03597009996883571
+        },
+        {
+          "method": "random",
+          "seed": 1,
+          "budget": 20,
+          "backend_calls": 20,
+          "best_cycles": 508,
+          "best_order": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ],
+          "history": [
+            {
+              "order": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "cycles": 1016,
+              "best_cycles": 1016
+            },
+            {
+              "order": [
+                1,
+                4,
+                0,
+                5,
+                3,
+                2
+              ],
+              "cycles": 765,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                3,
+                5,
+                4,
+                0,
+                2,
+                1
+              ],
+              "cycles": 1230,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                0,
+                3,
+                4,
+                2,
+                5,
+                1
+              ],
+              "cycles": 908,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                2,
+                1,
+                0,
+                4,
+                3,
+                5
+              ],
+              "cycles": 1528,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                0,
+                4,
+                5,
+                1,
+                3,
+                2
+              ],
+              "cycles": 1229,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                5,
+                0,
+                1,
+                3,
+                2,
+                4
+              ],
+              "cycles": 510,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                2,
+                1,
+                4,
+                3,
+                5,
+                0
+              ],
+              "cycles": 791,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                3,
+                4,
+                0,
+                5,
+                1,
+                2
+              ],
+              "cycles": 765,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                5,
+                2,
+                3,
+                4,
+                0,
+                1
+              ],
+              "cycles": 910,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                2,
+                4,
+                3,
+                5,
+                1,
+                0
+              ],
+              "cycles": 909,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                3,
+                1,
+                5,
+                4,
+                0,
+                2
+              ],
+              "cycles": 1228,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                4,
+                2,
+                0,
+                1,
+                3,
+                5
+              ],
+              "cycles": 765,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                4,
+                3,
+                2,
+                1,
+                0,
+                5
+              ],
+              "cycles": 909,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                0,
+                2,
+                3,
+                4,
+                5,
+                1
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                4,
+                1,
+                0,
+                3,
+                2,
+                5
+              ],
+              "cycles": 509,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                4,
+                2,
+                5,
+                1,
+                3,
+                0
+              ],
+              "cycles": 1229,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                3,
+                4,
+                1,
+                2,
+                0,
+                5
+              ],
+              "cycles": 889,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                0,
+                3,
+                2,
+                4,
+                5,
+                1
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                3,
+                2,
+                5,
+                1,
+                0,
+                4
+              ],
+              "cycles": 1228,
+              "best_cycles": 508
+            }
+          ],
+          "wall_seconds": 0.03710409998893738
+        },
+        {
+          "method": "random",
+          "seed": 2,
+          "budget": 20,
+          "backend_calls": 20,
+          "best_cycles": 765,
+          "best_order": [
+            2,
+            4,
+            1,
+            5,
+            0,
+            3
+          ],
+          "history": [
+            {
+              "order": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "cycles": 1016,
+              "best_cycles": 1016
+            },
+            {
+              "order": [
+                0,
+                5,
+                4,
+                1,
+                3,
+                2
+              ],
+              "cycles": 1230,
+              "best_cycles": 1016
+            },
+            {
+              "order": [
+                2,
+                4,
+                1,
+                5,
+                0,
+                3
+              ],
+              "cycles": 765,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                3,
+                5,
+                2,
+                4,
+                1,
+                0
+              ],
+              "cycles": 910,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                0,
+                5,
+                2,
+                1,
+                3,
+                4
+              ],
+              "cycles": 766,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                3,
+                4,
+                1,
+                2,
+                0,
+                5
+              ],
+              "cycles": 889,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                1,
+                0,
+                5,
+                3,
+                4,
+                2
+              ],
+              "cycles": 903,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                4,
+                5,
+                2,
+                3,
+                0,
+                1
+              ],
+              "cycles": 911,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                3,
+                4,
+                2,
+                5,
+                1,
+                0
+              ],
+              "cycles": 909,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                3,
+                1,
+                5,
+                2,
+                4,
+                0
+              ],
+              "cycles": 1228,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                3,
+                2,
+                5,
+                4,
+                1,
+                0
+              ],
+              "cycles": 1228,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                3,
+                2,
+                5,
+                1,
+                0,
+                4
+              ],
+              "cycles": 1228,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                5,
+                1,
+                2,
+                4,
+                3,
+                0
+              ],
+              "cycles": 766,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                5,
+                4,
+                3,
+                1,
+                0,
+                2
+              ],
+              "cycles": 1231,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                4,
+                2,
+                0,
+                1,
+                3,
+                5
+              ],
+              "cycles": 765,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                5,
+                0,
+                4,
+                2,
+                3,
+                1
+              ],
+              "cycles": 1230,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                4,
+                1,
+                0,
+                2,
+                3,
+                5
+              ],
+              "cycles": 765,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                1,
+                5,
+                0,
+                4,
+                3,
+                2
+              ],
+              "cycles": 766,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                2,
+                5,
+                1,
+                0,
+                4,
+                3
+              ],
+              "cycles": 766,
+              "best_cycles": 765
+            },
+            {
+              "order": [
+                0,
+                5,
+                4,
+                3,
+                2,
+                1
+              ],
+              "cycles": 1230,
+              "best_cycles": 765
+            }
+          ],
+          "wall_seconds": 0.03688549995422363
+        },
+        {
+          "method": "local",
+          "seed": 0,
+          "budget": 20,
+          "backend_calls": 20,
+          "best_cycles": 508,
+          "best_order": [
+            0,
+            1,
+            3,
+            4,
+            2,
+            5
+          ],
+          "history": [
+            {
+              "order": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "cycles": 1016,
+              "best_cycles": 1016
+            },
+            {
+              "order": [
+                0,
+                1,
+                2,
+                5,
+                4,
+                3
+              ],
+              "cycles": 1528,
+              "best_cycles": 1016
+            },
+            {
+              "order": [
+                2,
+                1,
+                0,
+                3,
+                4,
+                5
+              ],
+              "cycles": 1016,
+              "best_cycles": 1016
+            },
+            {
+              "order": [
+                0,
+                1,
+                2,
+                4,
+                3,
+                5
+              ],
+              "cycles": 1528,
+              "best_cycles": 1016
+            },
+            {
+              "order": [
+                0,
+                1,
+                3,
+                2,
+                4,
+                5
+              ],
+              "cycles": 764,
+              "best_cycles": 764
+            },
+            {
+              "order": [
+                4,
+                1,
+                5,
+                3,
+                0,
+                2
+              ],
+              "cycles": 1229,
+              "best_cycles": 764
+            },
+            {
+              "order": [
+                0,
+                1,
+                4,
+                2,
+                3,
+                5
+              ],
+              "cycles": 908,
+              "best_cycles": 764
+            },
+            {
+              "order": [
+                0,
+                1,
+                3,
+                2,
+                5,
+                4
+              ],
+              "cycles": 764,
+              "best_cycles": 764
+            },
+            {
+              "order": [
+                0,
+                3,
+                1,
+                2,
+                4,
+                5
+              ],
+              "cycles": 764,
+              "best_cycles": 764
+            },
+            {
+              "order": [
+                5,
+                1,
+                3,
+                2,
+                4,
+                0
+              ],
+              "cycles": 910,
+              "best_cycles": 764
+            },
+            {
+              "order": [
+                0,
+                1,
+                5,
+                2,
+                4,
+                3
+              ],
+              "cycles": 1228,
+              "best_cycles": 764
+            },
+            {
+              "order": [
+                0,
+                1,
+                3,
+                4,
+                2,
+                5
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                0,
+                2,
+                3,
+                1,
+                5,
+                4
+              ],
+              "cycles": 764,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                3,
+                1,
+                0,
+                4,
+                2,
+                5
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                2,
+                1,
+                3,
+                4,
+                0,
+                5
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                4,
+                1,
+                3,
+                0,
+                2,
+                5
+              ],
+              "cycles": 909,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                5,
+                1,
+                3,
+                4,
+                2,
+                0
+              ],
+              "cycles": 910,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                2,
+                1,
+                5,
+                3,
+                0,
+                4
+              ],
+              "cycles": 903,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                0,
+                2,
+                3,
+                4,
+                1,
+                5
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                0,
+                5,
+                3,
+                4,
+                2,
+                1
+              ],
+              "cycles": 910,
+              "best_cycles": 508
+            }
+          ],
+          "wall_seconds": 0.03148219990544021
+        },
+        {
+          "method": "local",
+          "seed": 1,
+          "budget": 20,
+          "backend_calls": 20,
+          "best_cycles": 508,
+          "best_order": [
+            1,
+            0,
+            3,
+            4,
+            5,
+            2
+          ],
+          "history": [
+            {
+              "order": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "cycles": 1016,
+              "best_cycles": 1016
+            },
+            {
+              "order": [
+                0,
+                4,
+                2,
+                3,
+                1,
+                5
+              ],
+              "cycles": 509,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                2,
+                4,
+                0,
+                3,
+                1,
+                5
+              ],
+              "cycles": 509,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                3,
+                4,
+                2,
+                0,
+                1,
+                5
+              ],
+              "cycles": 909,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                0,
+                4,
+                2,
+                5,
+                1,
+                3
+              ],
+              "cycles": 765,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                1,
+                0,
+                3,
+                4,
+                5,
+                2
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                5,
+                0,
+                3,
+                4,
+                1,
+                2
+              ],
+              "cycles": 910,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                1,
+                0,
+                3,
+                2,
+                5,
+                4
+              ],
+              "cycles": 764,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                1,
+                3,
+                0,
+                4,
+                5,
+                2
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                3,
+                0,
+                1,
+                4,
+                5,
+                2
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                2,
+                0,
+                3,
+                4,
+                5,
+                1
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                5,
+                4,
+                0,
+                1,
+                3,
+                2
+              ],
+              "cycles": 767,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                1,
+                5,
+                3,
+                4,
+                0,
+                2
+              ],
+              "cycles": 910,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                0
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                3,
+                2,
+                0,
+                1,
+                5,
+                4
+              ],
+              "cycles": 764,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                1,
+                0,
+                2,
+                4,
+                5,
+                3
+              ],
+              "cycles": 1528,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                1,
+                0,
+                3,
+                4,
+                2,
+                5
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                1,
+                0,
+                3,
+                5,
+                4,
+                2
+              ],
+              "cycles": 764,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                4,
+                3,
+                5,
+                2,
+                0,
+                1
+              ],
+              "cycles": 1229,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                1,
+                4,
+                3,
+                0,
+                5,
+                2
+              ],
+              "cycles": 909,
+              "best_cycles": 508
+            }
+          ],
+          "wall_seconds": 0.03240839997306466
+        },
+        {
+          "method": "local",
+          "seed": 2,
+          "budget": 20,
+          "backend_calls": 20,
+          "best_cycles": 508,
+          "best_order": [
+            0,
+            3,
+            1,
+            4,
+            2,
+            5
+          ],
+          "history": [
+            {
+              "order": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "cycles": 1016,
+              "best_cycles": 1016
+            },
+            {
+              "order": [
+                5,
+                1,
+                2,
+                3,
+                4,
+                0
+              ],
+              "cycles": 510,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                2,
+                1,
+                5,
+                3,
+                4,
+                0
+              ],
+              "cycles": 903,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                5,
+                2,
+                1,
+                3,
+                4,
+                0
+              ],
+              "cycles": 510,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                5,
+                1,
+                4,
+                3,
+                2,
+                0
+              ],
+              "cycles": 1230,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                5,
+                4,
+                2,
+                3,
+                1,
+                0
+              ],
+              "cycles": 911,
+              "best_cycles": 510
+            },
+            {
+              "order": [
+                0,
+                4,
+                1,
+                3,
+                2,
+                5
+              ],
+              "cycles": 509,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                0,
+                4,
+                1,
+                2,
+                3,
+                5
+              ],
+              "cycles": 765,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                0,
+                4,
+                2,
+                3,
+                1,
+                5
+              ],
+              "cycles": 509,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                5,
+                4,
+                1,
+                3,
+                2,
+                0
+              ],
+              "cycles": 891,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                0,
+                4,
+                3,
+                1,
+                2,
+                5
+              ],
+              "cycles": 909,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                1,
+                4,
+                5,
+                0,
+                2,
+                3
+              ],
+              "cycles": 1229,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                0,
+                1,
+                4,
+                3,
+                2,
+                5
+              ],
+              "cycles": 791,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                0,
+                5,
+                1,
+                3,
+                2,
+                4
+              ],
+              "cycles": 510,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                0,
+                4,
+                1,
+                3,
+                5,
+                2
+              ],
+              "cycles": 509,
+              "best_cycles": 509
+            },
+            {
+              "order": [
+                0,
+                3,
+                1,
+                4,
+                2,
+                5
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                3,
+                4,
+                2,
+                5,
+                1,
+                0
+              ],
+              "cycles": 909,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                0,
+                3,
+                1,
+                5,
+                2,
+                4
+              ],
+              "cycles": 764,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                0,
+                3,
+                1,
+                4,
+                5,
+                2
+              ],
+              "cycles": 508,
+              "best_cycles": 508
+            },
+            {
+              "order": [
+                0,
+                3,
+                4,
+                1,
+                2,
+                5
+              ],
+              "cycles": 908,
+              "best_cycles": 508
+            }
+          ],
+          "wall_seconds": 0.02495999983511865
+        }
+      ],
+      "exact": {
+        "space": "all bit permutations, lexicographic output-to-input order; XOR excluded",
+        "backend_calls": 720,
+        "wall_seconds": 0.876339599955827,
+        "best_cycles": 508,
+        "best_dsl": {
+          "version": 0,
+          "operations": [
+            {
+              "op": "swap_bits",
+              "a": 2,
+              "b": 3
+            },
+            {
+              "op": "swap_bits",
+              "a": 3,
+              "b": 4
+            }
+          ]
+        },
+        "minimizer_count": 36,
+        "cycles_in_permutation_order": [
+          1016,
+          1016,
+          1528,
+          1528,
+          1528,
+          1528,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          791,
+          791,
+          908,
+          908,
+          1228,
+          1228,
+          903,
+          903,
+          1228,
+          1228,
+          1016,
+          1016,
+          1528,
+          1528,
+          1528,
+          1528,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          791,
+          791,
+          908,
+          908,
+          1228,
+          1228,
+          903,
+          903,
+          1228,
+          1228,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          908,
+          908,
+          908,
+          908,
+          1228,
+          1228,
+          1228,
+          1228,
+          1228,
+          1228,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          909,
+          909,
+          909,
+          909,
+          909,
+          909,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          910,
+          910,
+          910,
+          910,
+          910,
+          910,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          1016,
+          1016,
+          1528,
+          1528,
+          1528,
+          1528,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          791,
+          791,
+          908,
+          908,
+          1228,
+          1228,
+          903,
+          903,
+          1228,
+          1228,
+          1016,
+          1016,
+          1528,
+          1528,
+          1528,
+          1528,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          791,
+          791,
+          908,
+          908,
+          1228,
+          1228,
+          903,
+          903,
+          1228,
+          1228,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          908,
+          908,
+          908,
+          908,
+          1228,
+          1228,
+          1228,
+          1228,
+          1228,
+          1228,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          909,
+          909,
+          909,
+          909,
+          909,
+          909,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          910,
+          910,
+          910,
+          910,
+          910,
+          910,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          1016,
+          1016,
+          1528,
+          1528,
+          1528,
+          1528,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          791,
+          791,
+          908,
+          908,
+          1228,
+          1228,
+          903,
+          903,
+          1228,
+          1228,
+          1016,
+          1016,
+          1528,
+          1528,
+          1528,
+          1528,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          791,
+          791,
+          908,
+          908,
+          1228,
+          1228,
+          903,
+          903,
+          1228,
+          1228,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          908,
+          908,
+          908,
+          908,
+          1228,
+          1228,
+          1228,
+          1228,
+          1228,
+          1228,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          909,
+          909,
+          909,
+          909,
+          909,
+          909,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          910,
+          910,
+          910,
+          910,
+          910,
+          910,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          908,
+          908,
+          908,
+          908,
+          1228,
+          1228,
+          1228,
+          1228,
+          1228,
+          1228,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          908,
+          908,
+          908,
+          908,
+          1228,
+          1228,
+          1228,
+          1228,
+          1228,
+          1228,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          764,
+          764,
+          508,
+          508,
+          764,
+          764,
+          908,
+          908,
+          908,
+          908,
+          908,
+          908,
+          1228,
+          1228,
+          1228,
+          1228,
+          1228,
+          1228,
+          765,
+          765,
+          765,
+          765,
+          765,
+          765,
+          889,
+          889,
+          889,
+          889,
+          889,
+          889,
+          909,
+          909,
+          909,
+          909,
+          909,
+          909,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          766,
+          766,
+          766,
+          766,
+          766,
+          766,
+          890,
+          890,
+          890,
+          890,
+          890,
+          890,
+          910,
+          910,
+          910,
+          910,
+          910,
+          910,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          909,
+          909,
+          909,
+          909,
+          909,
+          909,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          909,
+          909,
+          909,
+          909,
+          909,
+          909,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          765,
+          765,
+          509,
+          509,
+          765,
+          765,
+          909,
+          909,
+          909,
+          909,
+          909,
+          909,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          765,
+          765,
+          765,
+          765,
+          765,
+          765,
+          889,
+          889,
+          889,
+          889,
+          889,
+          889,
+          909,
+          909,
+          909,
+          909,
+          909,
+          909,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          1229,
+          767,
+          767,
+          767,
+          767,
+          767,
+          767,
+          891,
+          891,
+          891,
+          891,
+          891,
+          891,
+          911,
+          911,
+          911,
+          911,
+          911,
+          911,
+          1231,
+          1231,
+          1231,
+          1231,
+          1231,
+          1231,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          910,
+          910,
+          910,
+          910,
+          910,
+          910,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          910,
+          910,
+          910,
+          910,
+          910,
+          910,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          766,
+          766,
+          510,
+          510,
+          766,
+          766,
+          910,
+          910,
+          910,
+          910,
+          910,
+          910,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          766,
+          766,
+          766,
+          766,
+          766,
+          766,
+          890,
+          890,
+          890,
+          890,
+          890,
+          890,
+          910,
+          910,
+          910,
+          910,
+          910,
+          910,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          1230,
+          767,
+          767,
+          767,
+          767,
+          767,
+          767,
+          891,
+          891,
+          891,
+          891,
+          891,
+          891,
+          911,
+          911,
+          911,
+          911,
+          911,
+          911,
+          1231,
+          1231,
+          1231,
+          1231,
+          1231,
+          1231
+        ]
+      }
+    }
+  ]
+}

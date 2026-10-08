@@ -2,7 +2,9 @@
 
 研究如何用 AI Agent 在有限的性能评价预算内，找到适合特定内存访问负载的地址映射策略。背景是大模型推理中不断变化的 KV cache 布局与访问模式。
 
-**当前是可运行的 Python 玩具原型。** 后端为自写的 `toy-fcfs-v1` 抽象模型，尚未接入 Ramulator。第一版固定布局、单一介质和请求调度，只搜索静态地址映射；真实平台与研究贡献仍在论证中。
+**研究主线是 Agent 主导策略探索。** Agent 负责理解负载、提出瓶颈假设、构造候选、选择实验、分配评价预算，并根据反馈修正搜索方向。启发式和传统搜索器作为强对照及可调用工具；探索后提炼可复用规则是有价值的支线。主要证据应来自 Agent 在公平条件下的搜索效果与成本，具体见 [研究定位](docs/RESEARCH_POSITIONING.md#agent-mainline)。
+
+**当前是可运行的 Python 玩具原型。** 后端为自写的 `toy-fcfs-v1` 抽象模型，尚未接入 Ramulator。第一版固定布局、单一介质和请求调度，只搜索静态地址映射；真实平台与具体 Agent 方法仍在论证中。
 
 ## 当前能做什么
 
@@ -11,6 +13,7 @@
 | JSON DSL | 支持顺序执行 `swap_bits` / `xor_bit`，含可逆性、满秩与编译一致性检查 |
 | 性能评价 | 多 channel/bank、行状态、FCFS、有限队列与传输总线的抽象模型 |
 | 搜索对照 | 随机、局部、位活动启发式，以及进一步安排 column 的启发式 |
+| 规则发现诊断 | 联合位分布与 bank 内变化规则、720 种位排列的精确对照、冻结后的验证与反例分析 |
 | 母 Agent | 当前对话通过文件读取反馈、提交假设与候选；没有常驻模型服务 |
 | RTL | 可生成地址映射模块、testbench 和向量；首轮因缺少仿真工具记为 `not_run` |
 | 性能/RTL 子 Agent、Ramulator | 目标架构中的组件，尚未实现或接入 |
@@ -27,12 +30,14 @@ python -m hbm_toy benchmark --budget 20 --count 768 --seeds 0 1 2
 
 最后一条命令创建 `results/run_<时间戳>/`，保存报告和原始结果。matplotlib 为可选绘图依赖；新实验默认被 Git 忽略。模型文件接口、配置、DSL、时序假设和 RTL 命令见 [运行指南](docs/TOY_GUIDE.md)。
 
+支线的规则发现实验另见 [实验报告与复现命令](results/rule_study_v1/report.md)：保持旧启发式与模拟器不变，在缩小的空间里检查新规则的收益和失效条件，为后续 Agent 探索提供开发案例与诊断工具。
+
 ## 总体流程（目标架构）
 
 ```mermaid
 flowchart TD
     W["固定工作负载与硬件配置"] --> M["母 Agent：提出假设、生成策略、统筹预算"]
-    M -.-> S["传统搜索工具：后续可选"]
+    M -.-> S["传统搜索工具：母 Agent 按需调用，后续可选"]
     S --> M
     M --> D["候选 DSL"]
     D --> C["确定性合法性检查与统一编译"]
@@ -56,21 +61,23 @@ flowchart TD
 
 ## 文件结构与职责
 
-以下列出纳入版本管理的文件。缓存和后续临时实验目录不在表内；`results/` 中的三组实验作为固定快照保留。
+以下列出项目文件与维护者本地论文全文。缓存和后续临时实验目录不在表内；`results/` 保留首轮三组实验及一组规则发现实验的固定快照。`paper/` 按文献指南的 R 编号管理 20 篇论文，**Git 只跟踪其中的 `README.md` 和 `references.bib`，PDF 被忽略**。下列 PDF 文件名表示下载后的本地结构，刚克隆仓库时没有这些文件；按需恢复方法见 [论文库说明](paper/README.md)。
 
 ```text
 .
 ├── README.md                         # 项目入口、状态、流程与文件导航
-├── .gitignore                        # 排除缓存、编译产物及未选入归档的实验
-├── .gitattributes                    # 统一文本 LF 换行，图片按二进制保存
+├── .gitignore                        # 排除本地论文 PDF、缓存、编译产物及临时实验
+├── .gitattributes                    # 统一文本 LF 换行，图片和 PDF 按二进制保存
 ├── hbm_toy/                          # 确定性工具实现；不是独立子 Agent
 │   ├── __init__.py                   # Python 包说明与版本号
 │   ├── __main__.py                   # 命令行、批量基线实验、报告与可选绘图
 │   ├── model.py                      # 硬件配置、DSL、位矩阵、请求生成与性能模型
 │   ├── experiment.py                 # 搜索器、评价缓存、预算和模型文件协议
+│   ├── rule_study.py                 # 规则发现实验、合成反例、精确枚举与冻结后的验证
 │   └── rtl.py                        # RTL/testbench/向量生成与可选仿真
 ├── tests/                            # 核心行为的自动验证
-│   └── test_toy.py                   # 地址语义、手算时序、缓存/预算、协议与 RTL 状态
+│   ├── test_toy.py                   # 地址语义、手算时序、缓存/预算、协议与 RTL 状态
+│   └── test_rule_study.py            # 全排列编译/逆映射、相关位、操作预算与搜索重放
 ├── examples/                         # 可直接使用的最小输入
 │   ├── identity.json                 # 不改变地址位的空操作策略
 │   ├── stride_xor.json               # 固定步长场景的 XOR 映射策略
@@ -78,9 +85,32 @@ flowchart TD
 ├── docs/                             # 详细说明；按用途分开维护
 │   ├── TOY_GUIDE.md                   # 运行方法、DSL/RTL 概念、模型语义与后端契约
 │   ├── INITIAL_RESULTS.md            # 首轮实验解读、局限、归档与当时的环境记录
-│   ├── RESEARCH.md                   # 文献阅读顺序、逐篇说明与已核验入口
+│   ├── LITERATURE_GUIDE.md           # 文献阅读顺序、逐篇说明与已核验入口
 │   └── RESEARCH_POSITIONING.md       # 平台路线、Agent 定位、评价方法与开发阶段
-└── results/                          # 支撑首轮结论的选定实验归档
+├── paper/                            # 仅 README/bib 纳入 Git；下列 PDF 为本地下载件
+│   ├── README.md                     # 20 篇全文索引、来源与版本差异
+│   ├── references.bib                # 20 条 BibTeX 题录、引用键与本地附件路径
+│   ├── R01_Shuhai_FCCM2020.pdf        # 真实 FPGA HBM 的带宽与映射特征
+│   ├── R02_SDAM_ASPLOS2022.pdf        # 软件定义、按数据选择地址映射
+│   ├── R03_Flatfish_TCAD2022.pdf      # 用强化学习生成应用相关地址映射
+│   ├── R04_XOR_Address_Mapping_MEMSYS2025.pdf  # XOR 映射的数学模型与优化
+│   ├── R05_AgentDSE_arXiv2606.21836v1.pdf     # Agent 主导体系结构搜索
+│   ├── R06_ArchEval_arXiv2607.03601v1.pdf     # 体系结构 Agent 的能力评价
+│   ├── R07_DReAM_arXiv1509.03721v1.pdf       # 运行时动态重排地址映射
+│   ├── R08_PAE_ISCA2018.pdf           # GPU 地址位熵与 PAE 映射
+│   ├── R09_ArchGym_ISCA2023.pdf       # 统一仿真接口与搜索算法比较
+│   ├── R10_gem5_CoPilot_arXiv2510.19577v1.pdf # gem5 的 Agent 探索助手
+│   ├── R11_ChatNeuroSim_arXiv2603.08745v1.pdf # 存内计算配置与优化 Agent
+│   ├── R12_PagedAttention_arXiv2309.06180v1.pdf # KV 分块管理与服务系统
+│   ├── R13_vAttention_arXiv2405.04437v1.pdf   # 虚拟连续的动态 KV 管理
+│   ├── R14_PFM_arXiv2608.06989v1.pdf         # NPU/PIM 共享数据的双视图
+│   ├── R15_PATTON_arXiv2609.11392v1.pdf      # 面向 LLM 服务的 PIM 运行时
+│   ├── R16_AlphaEvolve_arXiv2506.13131v1.pdf # 代码生成、评价与演化搜索
+│   ├── R17_LLAMBO_ICLR2024.pdf        # 用语言模型增强贝叶斯优化
+│   ├── R18_Ramulator2_arXiv2308.11030v1.pdf  # 模块化 DRAM 时序仿真器
+│   ├── R19_DRAMSys4_IJPP2022.pdf      # DRAM 仿真框架与系统分析
+│   └── R20_UMDAM_ISCAS2026.pdf        # NPU/PIM 的统一数据布局与地址映射
+└── results/                          # 支撑实验结论的选定归档
     ├── provenance.json               # 环境、命令、源码哈希、先验信息及归档整理记录
     ├── baseline_v1/                  # 增加 column 启发式之前的基线实验
     │   ├── benchmark.json            # 配置、静态基线及 36 次搜索的完整历史
@@ -90,6 +120,11 @@ flowchart TD
     │   ├── benchmark.json            # 配置、静态基线及 48 次搜索的完整历史
     │   ├── report.md                 # 自动生成的基线统计报告
     │   └── convergence.png           # 普通搜索器的收敛曲线
+    ├── rule_study_v1/                # 联合统计规则的发现、验证及失败样例
+    │   ├── protocol.json             # 预先声明的假设、验证集合、预算与冻结源码哈希
+    │   ├── discovery.json            # 两个发现样例的规则、搜索与全部排列评价
+    │   ├── validation.json           # 12 个验证变体与原有 8 条轨迹的结果
+    │   └── report.md                 # 结果解读：机制、收益、反例与复现步骤
     └── agent_kv_v1/                  # 当前对话驱动的一次 KV 玩具实验
         ├── state.json                # 固定配置、预算与完整会话状态；会话已关闭
         ├── feedback.json             # 模型可见的特征、DSL 规则、预算与历史反馈
@@ -129,11 +164,15 @@ flowchart TD
 | --- | --- |
 | 运行实验、理解 DSL、性能模型和 RTL、接入模型文件接口 | [运行指南](docs/TOY_GUIDE.md) |
 | 首轮结果、为何尚不能证明 Agent 更好、如何追溯原始数据 | [实验解读](docs/INITIAL_RESULTS.md) |
-| 按优先级读文献、区分全文与题录及发表状态 | [文献阅读指南](docs/RESEARCH.md) |
+| Agent 如何帮助发现可固化规则，以及新规则为什么仍会失败 | [规则发现实验](results/rule_study_v1/report.md) |
+| 按优先级读文献、区分全文与题录及发表状态 | [文献阅读指南](docs/LITERATURE_GUIDE.md) |
+| 按需下载 20 篇论文、管理 BibTeX、核对来源与版本 | [论文库](paper/README.md) · [引用文件](paper/references.bib) |
 | 比较硬件/软件路线、确定 Agent 的贡献与公平评价方法 | [研究定位](docs/RESEARCH_POSITIONING.md) |
 
 ## 首轮结论与下一步
 
 模拟 KV 多流负载中，identity 为 **18424 玩具周期**，当前对话 Agent 与事后补充的简单启发式均达到 **796 周期**。这说明流程能运行、映射会影响模型结果；**尚未证明 Agent 优于强基线，也不是 HBM 实测或推理加速结论**。本轮只有一次 Agent 实验，并非严格盲测。
 
-下一步先取得真实请求模式，确认合理默认策略和强基线之上的优化余量，再选择平台、接入真实时序后端。工程阶段、验收标准和待确认资源见 [研究定位](docs/RESEARCH_POSITIONING.md#roadmap)。
+后续规则发现实验中，联合统计规则在两个诊断样例上达到 720 种位排列中的最优；冻结后的 12 个变体中，相对旧规则 8 胜、3 平、1 负，在原有 KV 变体上也有退化。这是支线诊断结果，可用于研究 Agent 如何识别假设失效并调整探索方向；尚未证明新规则可通用或 Agent 搜索更强。
+
+下一步优先完成 [Agent 主导的受控探索实验](docs/RESEARCH_POSITIONING.md#next-agent-study)：冻结工具、反馈边界与预算，让 Agent 逐轮自主决定候选和实验，与使用相同信息及工具的传统方法比较。同时取得真实请求模式、确认优化余量，随后用真实时序后端复核。工程阶段、验收标准和待确认资源见 [研究定位](docs/RESEARCH_POSITIONING.md#roadmap)。
