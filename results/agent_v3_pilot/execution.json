@@ -1,0 +1,110 @@
+{
+  "context_policy": "Four fresh child contexts; fork_turns=none; inherited model and reasoning settings; no model override.",
+  "launch_order": [
+    "old_summary",
+    "new_summary",
+    "old_phase",
+    "new_phase"
+  ],
+  "max_active_workers": 3,
+  "coordinator_received_partial_results": true,
+  "partial_results_relayed_to_workers": false,
+  "access_control": "Instruction-level file boundaries, not an OS sandbox between workers. Each worker reported compliance.",
+  "model_runtime_id": null,
+  "model_tokens": null,
+  "model_cost": null,
+  "conditions": {
+    "old_summary": {
+      "worker": "/root/v3_old_summary",
+      "task_windows": {
+        "N01_burst": {
+          "first_adaptive_submission_utc": "2026-10-08T08:51:07.342338+00:00",
+          "finished_utc": "2026-10-08T08:53:07.393249+00:00",
+          "backend_calls": 20,
+          "proposals": 20
+        },
+        "N02_paced": {
+          "first_adaptive_submission_utc": "2026-10-08T08:51:07.396070+00:00",
+          "finished_utc": "2026-10-08T08:53:07.444027+00:00",
+          "backend_calls": 20,
+          "proposals": 20
+        },
+        "N03_gap": {
+          "first_adaptive_submission_utc": "2026-10-08T08:51:07.446171+00:00",
+          "finished_utc": "2026-10-08T08:53:07.485885+00:00",
+          "backend_calls": 20,
+          "proposals": 22
+        }
+      }
+    },
+    "new_summary": {
+      "worker": "/root/v3_new_summary",
+      "task_windows": {
+        "N01_burst": {
+          "first_adaptive_submission_utc": "2026-10-08T08:51:25.105859+00:00",
+          "finished_utc": "2026-10-08T08:54:29.147049+00:00",
+          "backend_calls": 20,
+          "proposals": 20
+        },
+        "N02_paced": {
+          "first_adaptive_submission_utc": "2026-10-08T08:51:25.169827+00:00",
+          "finished_utc": "2026-10-08T08:54:29.185551+00:00",
+          "backend_calls": 20,
+          "proposals": 20
+        },
+        "N03_gap": {
+          "first_adaptive_submission_utc": "2026-10-08T08:51:25.219840+00:00",
+          "finished_utc": "2026-10-08T08:54:29.227278+00:00",
+          "backend_calls": 20,
+          "proposals": 20
+        }
+      }
+    },
+    "old_phase": {
+      "worker": "/root/v3_old_phase",
+      "task_windows": {
+        "N01_burst": {
+          "first_adaptive_submission_utc": "2026-10-08T08:51:28.545259+00:00",
+          "finished_utc": "2026-10-08T08:53:46.470116+00:00",
+          "backend_calls": 20,
+          "proposals": 20
+        },
+        "N02_paced": {
+          "first_adaptive_submission_utc": "2026-10-08T08:51:28.589338+00:00",
+          "finished_utc": "2026-10-08T08:53:46.512063+00:00",
+          "backend_calls": 20,
+          "proposals": 20
+        },
+        "N03_gap": {
+          "first_adaptive_submission_utc": "2026-10-08T08:51:28.633977+00:00",
+          "finished_utc": "2026-10-08T08:53:46.556416+00:00",
+          "backend_calls": 20,
+          "proposals": 20
+        }
+      }
+    },
+    "new_phase": {
+      "worker": "/root/v3_new_phase",
+      "task_windows": {
+        "N01_burst": {
+          "first_adaptive_submission_utc": "2026-10-08T08:55:47.735090+00:00",
+          "finished_utc": "2026-10-08T08:59:12.665195+00:00",
+          "backend_calls": 20,
+          "proposals": 20
+        },
+        "N02_paced": {
+          "first_adaptive_submission_utc": "2026-10-08T08:55:47.785465+00:00",
+          "finished_utc": "2026-10-08T08:59:12.697168+00:00",
+          "backend_calls": 20,
+          "proposals": 20
+        },
+        "N03_gap": {
+          "first_adaptive_submission_utc": "2026-10-08T08:55:47.837451+00:00",
+          "finished_utc": "2026-10-08T08:59:12.741294+00:00",
+          "backend_calls": 20,
+          "proposals": 20
+        }
+      }
+    }
+  }
+}

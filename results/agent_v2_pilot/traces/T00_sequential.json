@@ -1,0 +1,1350 @@
+{
+  "version": 1,
+  "provenance": "synthetic Agent V2 pilot; not measured HBM/KV traffic",
+  "requests": [
+    {
+      "request_id": 0,
+      "address": 0,
+      "arrival": 0,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 1,
+      "address": 64,
+      "arrival": 0,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 2,
+      "address": 128,
+      "arrival": 0,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 3,
+      "address": 192,
+      "arrival": 0,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 4,
+      "address": 256,
+      "arrival": 0,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 5,
+      "address": 320,
+      "arrival": 0,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 6,
+      "address": 384,
+      "arrival": 0,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 7,
+      "address": 448,
+      "arrival": 0,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 8,
+      "address": 512,
+      "arrival": 1,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 9,
+      "address": 576,
+      "arrival": 1,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 10,
+      "address": 640,
+      "arrival": 1,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 11,
+      "address": 704,
+      "arrival": 1,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 12,
+      "address": 768,
+      "arrival": 1,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 13,
+      "address": 832,
+      "arrival": 1,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 14,
+      "address": 896,
+      "arrival": 1,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 15,
+      "address": 960,
+      "arrival": 1,
+      "kind": "write",
+      "stream": 0
+    },
+    {
+      "request_id": 16,
+      "address": 1024,
+      "arrival": 2,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 17,
+      "address": 1088,
+      "arrival": 2,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 18,
+      "address": 1152,
+      "arrival": 2,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 19,
+      "address": 1216,
+      "arrival": 2,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 20,
+      "address": 1280,
+      "arrival": 2,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 21,
+      "address": 1344,
+      "arrival": 2,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 22,
+      "address": 1408,
+      "arrival": 2,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 23,
+      "address": 1472,
+      "arrival": 2,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 24,
+      "address": 1536,
+      "arrival": 3,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 25,
+      "address": 1600,
+      "arrival": 3,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 26,
+      "address": 1664,
+      "arrival": 3,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 27,
+      "address": 1728,
+      "arrival": 3,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 28,
+      "address": 1792,
+      "arrival": 3,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 29,
+      "address": 1856,
+      "arrival": 3,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 30,
+      "address": 1920,
+      "arrival": 3,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 31,
+      "address": 1984,
+      "arrival": 3,
+      "kind": "write",
+      "stream": 0
+    },
+    {
+      "request_id": 32,
+      "address": 2048,
+      "arrival": 4,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 33,
+      "address": 2112,
+      "arrival": 4,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 34,
+      "address": 2176,
+      "arrival": 4,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 35,
+      "address": 2240,
+      "arrival": 4,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 36,
+      "address": 2304,
+      "arrival": 4,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 37,
+      "address": 2368,
+      "arrival": 4,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 38,
+      "address": 2432,
+      "arrival": 4,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 39,
+      "address": 2496,
+      "arrival": 4,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 40,
+      "address": 2560,
+      "arrival": 5,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 41,
+      "address": 2624,
+      "arrival": 5,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 42,
+      "address": 2688,
+      "arrival": 5,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 43,
+      "address": 2752,
+      "arrival": 5,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 44,
+      "address": 2816,
+      "arrival": 5,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 45,
+      "address": 2880,
+      "arrival": 5,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 46,
+      "address": 2944,
+      "arrival": 5,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 47,
+      "address": 3008,
+      "arrival": 5,
+      "kind": "write",
+      "stream": 0
+    },
+    {
+      "request_id": 48,
+      "address": 3072,
+      "arrival": 6,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 49,
+      "address": 3136,
+      "arrival": 6,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 50,
+      "address": 3200,
+      "arrival": 6,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 51,
+      "address": 3264,
+      "arrival": 6,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 52,
+      "address": 3328,
+      "arrival": 6,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 53,
+      "address": 3392,
+      "arrival": 6,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 54,
+      "address": 3456,
+      "arrival": 6,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 55,
+      "address": 3520,
+      "arrival": 6,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 56,
+      "address": 3584,
+      "arrival": 7,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 57,
+      "address": 3648,
+      "arrival": 7,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 58,
+      "address": 3712,
+      "arrival": 7,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 59,
+      "address": 3776,
+      "arrival": 7,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 60,
+      "address": 3840,
+      "arrival": 7,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 61,
+      "address": 3904,
+      "arrival": 7,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 62,
+      "address": 3968,
+      "arrival": 7,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 63,
+      "address": 4032,
+      "arrival": 7,
+      "kind": "write",
+      "stream": 0
+    },
+    {
+      "request_id": 64,
+      "address": 0,
+      "arrival": 8,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 65,
+      "address": 64,
+      "arrival": 8,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 66,
+      "address": 128,
+      "arrival": 8,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 67,
+      "address": 192,
+      "arrival": 8,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 68,
+      "address": 256,
+      "arrival": 8,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 69,
+      "address": 320,
+      "arrival": 8,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 70,
+      "address": 384,
+      "arrival": 8,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 71,
+      "address": 448,
+      "arrival": 8,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 72,
+      "address": 512,
+      "arrival": 9,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 73,
+      "address": 576,
+      "arrival": 9,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 74,
+      "address": 640,
+      "arrival": 9,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 75,
+      "address": 704,
+      "arrival": 9,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 76,
+      "address": 768,
+      "arrival": 9,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 77,
+      "address": 832,
+      "arrival": 9,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 78,
+      "address": 896,
+      "arrival": 9,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 79,
+      "address": 960,
+      "arrival": 9,
+      "kind": "write",
+      "stream": 0
+    },
+    {
+      "request_id": 80,
+      "address": 1024,
+      "arrival": 10,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 81,
+      "address": 1088,
+      "arrival": 10,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 82,
+      "address": 1152,
+      "arrival": 10,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 83,
+      "address": 1216,
+      "arrival": 10,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 84,
+      "address": 1280,
+      "arrival": 10,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 85,
+      "address": 1344,
+      "arrival": 10,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 86,
+      "address": 1408,
+      "arrival": 10,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 87,
+      "address": 1472,
+      "arrival": 10,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 88,
+      "address": 1536,
+      "arrival": 11,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 89,
+      "address": 1600,
+      "arrival": 11,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 90,
+      "address": 1664,
+      "arrival": 11,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 91,
+      "address": 1728,
+      "arrival": 11,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 92,
+      "address": 1792,
+      "arrival": 11,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 93,
+      "address": 1856,
+      "arrival": 11,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 94,
+      "address": 1920,
+      "arrival": 11,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 95,
+      "address": 1984,
+      "arrival": 11,
+      "kind": "write",
+      "stream": 0
+    },
+    {
+      "request_id": 96,
+      "address": 2048,
+      "arrival": 12,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 97,
+      "address": 2112,
+      "arrival": 12,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 98,
+      "address": 2176,
+      "arrival": 12,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 99,
+      "address": 2240,
+      "arrival": 12,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 100,
+      "address": 2304,
+      "arrival": 12,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 101,
+      "address": 2368,
+      "arrival": 12,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 102,
+      "address": 2432,
+      "arrival": 12,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 103,
+      "address": 2496,
+      "arrival": 12,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 104,
+      "address": 2560,
+      "arrival": 13,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 105,
+      "address": 2624,
+      "arrival": 13,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 106,
+      "address": 2688,
+      "arrival": 13,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 107,
+      "address": 2752,
+      "arrival": 13,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 108,
+      "address": 2816,
+      "arrival": 13,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 109,
+      "address": 2880,
+      "arrival": 13,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 110,
+      "address": 2944,
+      "arrival": 13,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 111,
+      "address": 3008,
+      "arrival": 13,
+      "kind": "write",
+      "stream": 0
+    },
+    {
+      "request_id": 112,
+      "address": 3072,
+      "arrival": 14,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 113,
+      "address": 3136,
+      "arrival": 14,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 114,
+      "address": 3200,
+      "arrival": 14,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 115,
+      "address": 3264,
+      "arrival": 14,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 116,
+      "address": 3328,
+      "arrival": 14,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 117,
+      "address": 3392,
+      "arrival": 14,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 118,
+      "address": 3456,
+      "arrival": 14,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 119,
+      "address": 3520,
+      "arrival": 14,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 120,
+      "address": 3584,
+      "arrival": 15,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 121,
+      "address": 3648,
+      "arrival": 15,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 122,
+      "address": 3712,
+      "arrival": 15,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 123,
+      "address": 3776,
+      "arrival": 15,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 124,
+      "address": 3840,
+      "arrival": 15,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 125,
+      "address": 3904,
+      "arrival": 15,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 126,
+      "address": 3968,
+      "arrival": 15,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 127,
+      "address": 4032,
+      "arrival": 15,
+      "kind": "write",
+      "stream": 0
+    },
+    {
+      "request_id": 128,
+      "address": 0,
+      "arrival": 16,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 129,
+      "address": 64,
+      "arrival": 16,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 130,
+      "address": 128,
+      "arrival": 16,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 131,
+      "address": 192,
+      "arrival": 16,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 132,
+      "address": 256,
+      "arrival": 16,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 133,
+      "address": 320,
+      "arrival": 16,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 134,
+      "address": 384,
+      "arrival": 16,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 135,
+      "address": 448,
+      "arrival": 16,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 136,
+      "address": 512,
+      "arrival": 17,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 137,
+      "address": 576,
+      "arrival": 17,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 138,
+      "address": 640,
+      "arrival": 17,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 139,
+      "address": 704,
+      "arrival": 17,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 140,
+      "address": 768,
+      "arrival": 17,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 141,
+      "address": 832,
+      "arrival": 17,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 142,
+      "address": 896,
+      "arrival": 17,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 143,
+      "address": 960,
+      "arrival": 17,
+      "kind": "write",
+      "stream": 0
+    },
+    {
+      "request_id": 144,
+      "address": 1024,
+      "arrival": 18,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 145,
+      "address": 1088,
+      "arrival": 18,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 146,
+      "address": 1152,
+      "arrival": 18,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 147,
+      "address": 1216,
+      "arrival": 18,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 148,
+      "address": 1280,
+      "arrival": 18,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 149,
+      "address": 1344,
+      "arrival": 18,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 150,
+      "address": 1408,
+      "arrival": 18,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 151,
+      "address": 1472,
+      "arrival": 18,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 152,
+      "address": 1536,
+      "arrival": 19,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 153,
+      "address": 1600,
+      "arrival": 19,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 154,
+      "address": 1664,
+      "arrival": 19,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 155,
+      "address": 1728,
+      "arrival": 19,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 156,
+      "address": 1792,
+      "arrival": 19,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 157,
+      "address": 1856,
+      "arrival": 19,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 158,
+      "address": 1920,
+      "arrival": 19,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 159,
+      "address": 1984,
+      "arrival": 19,
+      "kind": "write",
+      "stream": 0
+    },
+    {
+      "request_id": 160,
+      "address": 2048,
+      "arrival": 20,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 161,
+      "address": 2112,
+      "arrival": 20,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 162,
+      "address": 2176,
+      "arrival": 20,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 163,
+      "address": 2240,
+      "arrival": 20,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 164,
+      "address": 2304,
+      "arrival": 20,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 165,
+      "address": 2368,
+      "arrival": 20,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 166,
+      "address": 2432,
+      "arrival": 20,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 167,
+      "address": 2496,
+      "arrival": 20,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 168,
+      "address": 2560,
+      "arrival": 21,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 169,
+      "address": 2624,
+      "arrival": 21,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 170,
+      "address": 2688,
+      "arrival": 21,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 171,
+      "address": 2752,
+      "arrival": 21,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 172,
+      "address": 2816,
+      "arrival": 21,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 173,
+      "address": 2880,
+      "arrival": 21,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 174,
+      "address": 2944,
+      "arrival": 21,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 175,
+      "address": 3008,
+      "arrival": 21,
+      "kind": "write",
+      "stream": 0
+    },
+    {
+      "request_id": 176,
+      "address": 3072,
+      "arrival": 22,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 177,
+      "address": 3136,
+      "arrival": 22,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 178,
+      "address": 3200,
+      "arrival": 22,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 179,
+      "address": 3264,
+      "arrival": 22,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 180,
+      "address": 3328,
+      "arrival": 22,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 181,
+      "address": 3392,
+      "arrival": 22,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 182,
+      "address": 3456,
+      "arrival": 22,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 183,
+      "address": 3520,
+      "arrival": 22,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 184,
+      "address": 3584,
+      "arrival": 23,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 185,
+      "address": 3648,
+      "arrival": 23,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 186,
+      "address": 3712,
+      "arrival": 23,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 187,
+      "address": 3776,
+      "arrival": 23,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 188,
+      "address": 3840,
+      "arrival": 23,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 189,
+      "address": 3904,
+      "arrival": 23,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 190,
+      "address": 3968,
+      "arrival": 23,
+      "kind": "read",
+      "stream": 0
+    },
+    {
+      "request_id": 191,
+      "address": 4032,
+      "arrival": 23,
+      "kind": "write",
+      "stream": 0
+    }
+  ]
+}

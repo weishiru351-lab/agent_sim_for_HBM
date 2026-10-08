@@ -66,6 +66,72 @@ python -m hbm_toy session-finish results/my_session
 
 这是实验纪律，不是文件系统权限隔离。严格的盲测还需要把生成器和测试集放到模型不可读的独立评价环境。当前首轮对话参与了实现且看到其他基线报告，因此不构成严格盲测。文件协议不记录对话 token、费用、精确模型版本或完整提示上下文；相关字段为空，不应按零成本解释。
 
+<a id="fixed-trace-v2"></a>
+## 固定请求轨迹与 Agent V2
+
+文件接口现在可用 `session-init --trace` 读取外部 JSON 轨迹。示例格式如下；`address` 是字节地址，必须按配置中的 `granule_bytes` 对齐，`arrival` 是非负的玩具时间，`request_id` 唯一。`kind` 和 `stream` 可省略，默认为 `read` 和 `0`。
+
+```json
+{
+  "version": 1,
+  "requests": [
+    {"request_id": 0, "address": 0, "arrival": 0, "kind": "read", "stream": 0},
+    {"request_id": 1, "address": 64, "arrival": 0, "kind": "write", "stream": 0}
+  ]
+}
+```
+
+将轨迹保存为 `trace.json`，使用默认配置启动：
+
+```powershell
+python -m hbm_toy session-init results/my_trace_session --trace trace.json --budget 20
+python -m hbm_toy session-step results/my_trace_session --proposal examples/proposal.json
+python -m hbm_toy session-finish results/my_trace_session
+```
+
+这里的提案示例只说明命令用法，仍需根据实际轨迹生成候选。自定义配置使用全局 `--config` 参数；例如六位小试验的配置为 `{"channel_bits":2,"bank_bits":1,"column_bits":1,"row_bits":2}`，其他字段沿用默认值。
+
+- 初始化会校验请求并复制为会话内的 `trace.json`，后续只评价该固定快照；改动外部原文件不影响会话，改动会话快照会触发哈希错误。
+- `feedback.json` 包括整体及四个窗口的活动统计、地址位成对联合分布和全部已执行候选反馈，不包含精确最优或其他方法的结果。原始快照可供各方法使用。
+- 默认 `--space linear` 允许交换与 XOR；`--space permutation` 只允许交换。线性模式的共同起点是 identity / row-XOR，排列模式是 identity / reverse-bits，均计入预算。
+- V2 每次实际后端调用计入预算，包含失败调用；同一语义映射的缓存命中与非法提案不计数，提案总数最多为预算的 10 倍。失败和缓存状态分别记录。
+- 固定轨迹模式的 `session-finish` 仅关闭搜索并保存最佳候选，**不会伪造一个测试集或额外运行合成变体**。若需要泛化评价，应另行冻结有来源的验证轨迹。
+
+四步小试验由 `python -m hbm_toy.agent_v2 prepare/start/compare --output <新目录>` 组织：先生成任务与统计，再由外部模型冻结全部无反馈候选，`start` 才揭示共同起点性能；Agent 通过现有 step/finish 命令逐轮探索；全部关闭后 `compare` 运行对照，最后执行精确枚举。
+
+已完成的 [Agent V2 实验报告](../results/agent_v2_pilot/report.md)包含 5 条轨迹、曲线、45 个运行的完整记录及复现说明。此试验的 720 排列空间是人为缩小的子空间，不是完整 DSL 的最优性证明。V1 自动生成负载的接口仍保留原来的变体评价行为，不能将两种 `finish` 混为一谈。
+
+<a id="factorial-v3"></a>
+## Agent V3：独立上下文与提示/反馈对照
+
+V3 使用新接口 `python -m hbm_toy.agent_v3`，保留原 V2 代码与冻结归档。四个条件为 `old_summary`、`new_summary`、`old_phase`、`new_phase`，分别组合原/新提示与汇总/分批反馈。每条件使用一个不继承母对话的模型上下文，各自完成三条任务；同一条件内的任务共享上下文，不能视作完全独立的模型重复运行。
+
+```powershell
+python -m hbm_toy.agent_v3 prepare --folder results/run_v3_new
+# 查看 inputs/，在 one_shot/ 中为每任务写入 18 份不重复提案；此时未运行性能评价。
+python -m hbm_toy.agent_v3 start --folder results/run_v3_new
+# 将每组独立上下文指向自己的 briefings/<条件>.json 与 sessions/<条件>/。
+python -m hbm_toy.agent_v3 step --folder results/run_v3_new/sessions/new_phase/N01_burst --proposal examples/proposal.json
+python -m hbm_toy.agent_v3 finish --folder results/run_v3_new/sessions/new_phase/N01_burst --note "记录停止原因"
+# 全部 12 个会话结束后，才允许运行普通对照与精确参照。
+python -m hbm_toy.agent_v3 compare --folder results/run_v3_new
+```
+
+提案仍需 `hypothesis`、`expected`、`dsl`；示例命令中的提案仅展示格式，不保证适合任务。输入文件包含 activity/joint 启发式 DSL，模型可自行选择是否评价。每会话共同起点占两次预算，总上限 20 次实际后端调用；缓存不重复计数，非法提案不计数，执行失败计数。
+
+`phase` 组从**同一次连续模拟**的事件中提取前/后批次的平均延迟、排队、行状态和最后完成时刻，不在分界处重置队列。`summary` 组不收到这些字段；所有组仍能读取同一原始轨迹、静态统计及预先指定的分界。增加反馈不额外执行模拟器，但可能增加日志处理和模型阅读成本。各批最后完成时刻不能相加。
+
+源码、提示、简报、输入及无反馈提案均有冻结检查。V3 的 JSON 承诺使用规范化内容哈希，文本源码哈希按统一换行读取，跨平台换行不会改变承诺。不同上下文的读文件范围通过实验指令约束，**不是文件系统级隔离**。查看本条件以外的反馈或事先调用模拟器，会破坏实验约定。
+
+`prepare` 生成的是固定三条任务；重复执行只能复测，不能获得新的未见任务。更换任务生成器应建立新的实验版本。当前对话额外提交的无反馈批次带有旧实验背景，作为补充参考，不能当作四个独立模型上下文各自的严格消融。
+
+完成后的候选重放及曲线生成：
+
+```powershell
+python -m hbm_toy.agent_v3_report replay results/agent_v3_pilot
+python -m hbm_toy.agent_v3_report render results/agent_v3_pilot
+```
+
 ## DSL 与地址语义
 
 DSL 是 Domain-Specific Language（领域专用语言），针对特定问题提供表达规则，可以处于不同抽象层次。SQL、正则表达式都是例子。[概念介绍](https://martinfowler.com/bliki/DslQandA.html)

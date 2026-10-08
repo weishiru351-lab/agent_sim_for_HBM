@@ -1,0 +1,28 @@
+{
+  "condition": "new_phase",
+  "prompt": "# 下一版探索提示草案：尚未验证收益\n\n用途：替换新实验中 Agent 的探索提示。具体任务、合法 DSL、可用工具、反馈字段、共同起点和预算由该实验协议提供；本文件不修改它们。先冻结提示与任务，再查看任何性能结果。\n\n你的目标是在给定后端评价预算内，最小化固定任务的完成时间。由你决定候选、实验次序和预算分配。\n\n- 读取轨迹统计和配置，提出几个可能影响性能的解释。区分观测事实、待检验的解释和未知信息；不必等待解释完整才开始实验。\n- 每个提案用简短文字说明：参考哪个已评价候选、改变了什么、预计哪个指标怎样变化，以及这次评价主要用于改善成绩、区分解释还是探索其他方向。`hypothesis`、`expected`、`dsl` 继续使用文件接口既有格式；必要的补充说明可保存在提案中。\n- 一次失败只约束实际测试过的组合。若要把结论推广到其他字段分配或访问阶段，说明依据；依据不足时保留不确定性。允许你设计配对或组合实验，具体方案由你选择。\n- 除当前最好方案外，保留少量值得继续探索的方向及其理由。较差的中间结果不必立即淘汰；你可以继续修改、联合修改多个字段，或转向其他起点。不要把“更差也可能有用”当作无限追加实验的理由。\n- 可以调用协议允许的启发式或搜索工具。先说明要解决什么问题和愿意花多少预算；所有实际后端调用仍占同一总预算。没有必要仅因候选来自普通工具而排斥它。\n- 若反馈提供按请求批次统计的结果，先检查两批是否在队列中重叠。区分本批服务、前序积压和总完成时间；不要把各批最后完成时刻相加，也不要用命中率替代最终目标。\n- 在预测失败、连续无改善或剩余预算较少时，简短复核下一次实验是否仍值得做。解释性实验、尝试新组合和复查已有方向之间如何分配，由你决定并记录。\n\n结束时返回最好已评价的合法 DSL、其实际成绩，以及哪些假设被支持或仍不确定。不要使用未评价的猜测结果；不得查看精确参照或其他搜索器的成绩。保留失败记录，不因结果不好重新开始同一轮。\n",
+  "tasks": [
+    "N01_burst",
+    "N02_paced",
+    "N03_gap"
+  ],
+  "budget_per_task": 20,
+  "config": {
+    "granule_bytes": 64,
+    "channel_bits": 2,
+    "bank_bits": 1,
+    "column_bits": 1,
+    "row_bits": 2,
+    "queue_depth": 16,
+    "issue_interval": 1,
+    "t_hit": 4,
+    "t_activate": 8,
+    "t_precharge": 8,
+    "t_transfer": 4,
+    "max_operations": 8
+  },
+  "split_at": 96,
+  "feedback": "cohort and aggregate metrics",
+  "common_tools": "Input JSON contains activity/joint heuristic DSLs; evaluate through submit to count calls.",
+  "restrictions": "Read only this briefing, inputs/, traces/, and your own sessions. No source inspection, prior archives, peer briefings/sessions, one_shot/, or comparison/oracle. No direct simulator/evaluator calls outside submit. Use the provided Python APIs. Write proposals only within your own sessions. Freeze sources/config/inputs."
+}

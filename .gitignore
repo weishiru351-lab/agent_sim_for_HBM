@@ -24,6 +24,9 @@ matplotlib_cache/
 !/results/baseline_v2/
 !/results/agent_kv_v1/
 !/results/rule_study_v1/
+!/results/agent_v2_pilot/
+!/results/agent_v2_diagnosis/
+!/results/agent_v3_pilot/
 
 # Baseline summaries already contain the complete per-search JSON records.
 /results/baseline_v1/*
@@ -41,3 +44,29 @@ matplotlib_cache/
 !/results/rule_study_v1/discovery.json
 !/results/rule_study_v1/validation.json
 !/results/rule_study_v1/report.md
+
+# Agent V2: comparison.json includes full histories; omit duplicate live sessions.
+/results/agent_v2_pilot/*
+!/results/agent_v2_pilot/protocol.json
+!/results/agent_v2_pilot/comparison.json
+!/results/agent_v2_pilot/report.md
+!/results/agent_v2_pilot/convergence.png
+!/results/agent_v2_pilot/traces/
+!/results/agent_v2_pilot/one_shot/
+
+# Post-search failure diagnosis; never replace the original search scores.
+/results/agent_v2_diagnosis/*
+!/results/agent_v2_diagnosis/diagnosis.json
+!/results/agent_v2_diagnosis/report.md
+
+# Independent-context prompt/feedback factorial pilot; full histories in comparison.
+/results/agent_v3_pilot/*
+!/results/agent_v3_pilot/protocol.json
+!/results/agent_v3_pilot/execution.json
+!/results/agent_v3_pilot/comparison.json
+!/results/agent_v3_pilot/report.md
+!/results/agent_v3_pilot/convergence.png
+!/results/agent_v3_pilot/briefings/
+!/results/agent_v3_pilot/inputs/
+!/results/agent_v3_pilot/traces/
+!/results/agent_v3_pilot/one_shot/

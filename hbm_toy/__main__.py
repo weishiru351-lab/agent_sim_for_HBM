@@ -115,6 +115,8 @@ def main():
     init.add_argument("--budget", type=int, default=20)
     init.add_argument("--count", type=int, default=768)
     init.add_argument("--seed", type=int, default=0)
+    init.add_argument("--trace", type=Path, help="Freeze an external version-1 JSON request trace")
+    init.add_argument("--space", choices=("linear", "permutation"), default="linear")
     step = commands.add_parser("session-step", help="Evaluate one model proposal and export feedback")
     step.add_argument("folder", type=Path)
     step.add_argument("--proposal", required=True, type=Path)
@@ -134,7 +136,8 @@ def main():
             benchmark(args, cfg)
             return
         if args.command == "session-init":
-            result = session_init(args.folder, cfg, args.workload, args.count, args.seed, args.budget)
+            result = session_init(args.folder, cfg, args.workload, args.count, args.seed, args.budget,
+                                  trace_path=args.trace, space=args.space)
             print(f"Feedback: {args.folder / 'feedback.json'}; backend calls: {result['backend_calls']}")
             return
         if args.command == "session-step":
@@ -142,7 +145,7 @@ def main():
         elif args.command == "session-finish":
             result = session_finish(args.folder)
             print(json.dumps({"best_cycles": result["best"]["metrics"]["completion_cycles"],
-                              "holdout_cycles": result["holdout"]["completion_cycles"],
+                              "holdout_cycles": result.get("holdout", {}).get("completion_cycles"),
                               "backend_calls": result["backend_calls"]}, indent=2))
             return
         elif args.command == "evaluate":

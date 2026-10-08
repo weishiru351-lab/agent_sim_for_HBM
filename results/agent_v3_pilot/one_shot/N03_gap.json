@@ -1,0 +1,444 @@
+[
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [3, 2, 4, 0] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 2
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [3, 4, 1, 0] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [3, 4, 2, 0] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [3, 4, 0, 2] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 3
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [3, 4, 2, 1] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [3, 4, 0, 1] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [4, 2, 3, 0] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 2
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [4, 0, 3, 2] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 3
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [3, 0, 2, 4] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [0, 2, 3, 4] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 2
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [0, 2, 4, 3] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 2
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [0, 2, 3, 5] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 2
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 5
+        },
+        {
+          "op": "swap_bits",
+          "a": 4,
+          "b": 5
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [3, 2, 0, 4] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 2
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [3, 2, 4, 1] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 2
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [4, 1, 3, 0] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [4, 3, 5, 0] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 5
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [4, 1, 2, 3] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Coordinator pre-feedback proposal: test channel/bank/column roles [0, 3, 4, 2] across the two known request cohorts.",
+    "expected": "A possible balance/locality compromise; not guaranteed to improve the shared starts. Entire batch fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 4
+        }
+      ]
+    }
+  }
+]

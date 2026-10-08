@@ -1,0 +1,71 @@
+{
+  "version": 2,
+  "created_utc": "2026-10-08T08:04:15.425452+00:00",
+  "backend": "toy-fcfs-v1",
+  "config": {
+    "granule_bytes": 64,
+    "channel_bits": 2,
+    "bank_bits": 1,
+    "column_bits": 1,
+    "row_bits": 2,
+    "queue_depth": 16,
+    "issue_interval": 1,
+    "t_hit": 4,
+    "t_activate": 8,
+    "t_precharge": 8,
+    "t_transfer": 4,
+    "max_operations": 8
+  },
+  "space": "swap_bits only; all six-bit permutations (720)",
+  "budget": 20,
+  "shared_start": [
+    "identity",
+    "reverse_bits"
+  ],
+  "source_hashes": {
+    "model.py": "854821a6e15bfd064aa6a45739c12f05398fe5e50ecc92807fa2d0971f185d73",
+    "experiment.py": "3e8859b8bd2ae47210805f83167f010f127dd7668ef5f359cc1b4559802cae26",
+    "rule_study.py": "177642fea0fcacd90f1068ee3d1536a54f9fa63534e01e96ec5818cc799f9aca",
+    "trace_bridge.py": "cb3b2a22d7c446869c38f1bc9925687d81231c1625b1575ffc7f719cf30c99a0",
+    "agent_v2.py": "f07598c21d17a2d7f7e3ade48484bcea595d816bab1da50385a684d6bc941adb"
+  },
+  "trace_ids": {
+    "T00_sequential": "bd7f0d1af41468f6",
+    "T01_regular": "2680241e8e97567b",
+    "T02_correlated": "82b5cc82ef029955",
+    "T03_shuffled": "cdb31a4e8169981a",
+    "T04_phases": "0f8e7d2ab045a892"
+  },
+  "baseline_seeds": [
+    0,
+    1,
+    2
+  ],
+  "agent_runs_per_task": 1,
+  "methods": [
+    "frozen heuristics",
+    "random",
+    "joint-seeded local",
+    "model one-shot",
+    "feedback Agent"
+  ],
+  "prompt": "Read fixed trace/statistics. Minimize completion_cycles using up to 20 backend calls including identity and reverse. Submit legal swap_bits DSL with a brief testable hypothesis and prediction; use feedback to decide the next proposal. No trace/config changes, no oracle or competitor results during search. One-shot: freeze 18 candidates before any task performance is revealed; no subsequent revision.",
+  "one_shot_frozen": {
+    "T00_sequential": "afb082e99ac595130d418a7e50802728e0cc8c632d787af885836a1208791646",
+    "T01_regular": "4dab070ac0b20bdf23c24650d2a29e3b592bb81a4ea3aeb6ab9a2250ffa57f45",
+    "T02_correlated": "402cc9407e81168083120d5223eb5dd2b272585f12a1c30d888ea58bf532a17e",
+    "T03_shuffled": "809885080b2506f9d2d3819d64a67af31e441afdd2e57700137b53c7cd971998",
+    "T04_phases": "74176c54b05265c98d4313e4719affdb771c432c860934a6e56c3c7a768dde48"
+  },
+  "information": "All methods have the same raw trace, config and statistics. Adaptive methods receive their own metrics. One-shot intentionally receives no performance feedback. Heuristic functions are the same available tools; backend calls are counted per run.",
+  "cost_boundary": "Every unique actual backend execution counts, including failures. Cache hits and invalid proposals do not; proposal cap=200. Oracle calls are separate, after search. Feature extraction/verification/file I/O/model thinking are not backend time.",
+  "limits": [
+    "Agent both designed and ran tasks: not blind or preregistered external evaluation",
+    "one conversation run per task; same model also generated one-shot batch",
+    "one-shot commitment precedes all performance; prior task design/old experiments known",
+    "six-bit synthetic toy; no real HBM or LLM serving performance claim",
+    "no full XOR-space optimum; no held-out generalization assessment",
+    "model token count, runtime identifier, fees and isolated inference time unavailable"
+  ],
+  "search_started_utc": "2026-10-08T08:05:18.544451+00:00"
+}

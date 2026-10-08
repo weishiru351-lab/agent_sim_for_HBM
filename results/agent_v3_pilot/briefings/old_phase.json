@@ -1,0 +1,28 @@
+{
+  "condition": "old_phase",
+  "prompt": "Read the fixed trace/statistics. Minimize completion_cycles using up to 20 actual backend calls including identity and reverse. Submit legal swap_bits DSL with a brief testable hypothesis and prediction; use your feedback to decide the next proposal. You may use the available activity/joint heuristic proposals; evaluating them counts. No trace/config changes, oracle, competitor scores, or additional uncounted simulation during search.",
+  "tasks": [
+    "N01_burst",
+    "N02_paced",
+    "N03_gap"
+  ],
+  "budget_per_task": 20,
+  "config": {
+    "granule_bytes": 64,
+    "channel_bits": 2,
+    "bank_bits": 1,
+    "column_bits": 1,
+    "row_bits": 2,
+    "queue_depth": 16,
+    "issue_interval": 1,
+    "t_hit": 4,
+    "t_activate": 8,
+    "t_precharge": 8,
+    "t_transfer": 4,
+    "max_operations": 8
+  },
+  "split_at": 96,
+  "feedback": "cohort and aggregate metrics",
+  "common_tools": "Input JSON contains activity/joint heuristic DSLs; evaluate through submit to count calls.",
+  "restrictions": "Read only this briefing, inputs/, traces/, and your own sessions. No source inspection, prior archives, peer briefings/sessions, one_shot/, or comparison/oracle. No direct simulator/evaluator calls outside submit. Use the provided Python APIs. Write proposals only within your own sessions. Freeze sources/config/inputs."
+}

@@ -1,3 +1,7 @@
 * text=auto eol=lf
 *.png binary
 *.pdf binary
+# Preserve the byte hashes frozen before the Agent V2 experiment.
+/results/agent_v2_pilot/one_shot/*.json -text whitespace=cr-at-eol
+# The failure diagnosis records the exact bytes of its source comparison.
+/results/agent_v2_pilot/comparison.json -text whitespace=cr-at-eol

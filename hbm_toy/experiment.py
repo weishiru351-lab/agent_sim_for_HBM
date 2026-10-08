@@ -80,8 +80,8 @@ class Evaluator:
         if check["status"] != "pass":
             raise ValueError("Functional mapping check failed")
         start = time.perf_counter()
-        metrics = simulate(self.requests, policy, self.cfg)
         self.backend_calls += 1
+        metrics = simulate(self.requests, policy, self.cfg)
         result = {"candidate_id": key, "dsl": policy.to_dict(), "verification": check,
                   "metrics": metrics, "backend_seconds": time.perf_counter() - start,
                   "cached": False}
@@ -143,7 +143,10 @@ def write_feedback(folder, state):
         "note": "No held-out metrics are exposed until finish. Tools are deterministic; this file does not contain an autonomous LLM runtime."})
 
 
-def session_init(folder, cfg, name, count, seed, budget):
+def session_init(folder, cfg, name, count, seed, budget, trace_path=None, space="linear"):
+    if trace_path is not None:
+        from .trace_bridge import init
+        return init(folder, cfg, trace_path, budget, space)
     if budget < 2:
         raise ValueError("Budget must include at least the two baseline evaluations")
     folder = Path(folder)
@@ -163,6 +166,9 @@ def session_init(folder, cfg, name, count, seed, budget):
 def session_step(folder, proposal_path):
     folder = Path(folder)
     state = read(folder / "state.json")
+    if state["protocol"] == "hbm-file-bridge-v2":
+        from .trace_bridge import step
+        return step(folder, proposal_path)
     if state["closed"] or state["backend_calls"] >= state["budget"]:
         raise ValueError("Session is closed or evaluation budget exhausted")
     if len(state["history"]) >= state["budget"] * 10:
@@ -201,6 +207,9 @@ def session_step(folder, proposal_path):
 def session_finish(folder):
     folder = Path(folder)
     state = read(folder / "state.json")
+    if state["protocol"] == "hbm-file-bridge-v2":
+        from .trace_bridge import finish
+        return finish(folder)
     if state["closed"]:
         return read(folder / "result.json")
     valid = [entry for entry in state["history"] if "metrics" in entry]

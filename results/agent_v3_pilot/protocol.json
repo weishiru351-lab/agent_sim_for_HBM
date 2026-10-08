@@ -1,0 +1,87 @@
+{
+  "version": 3,
+  "created_utc": "2026-10-08T08:47:52.246762+00:00",
+  "config": {
+    "granule_bytes": 64,
+    "channel_bits": 2,
+    "bank_bits": 1,
+    "column_bits": 1,
+    "row_bits": 2,
+    "queue_depth": 16,
+    "issue_interval": 1,
+    "t_hit": 4,
+    "t_activate": 8,
+    "t_precharge": 8,
+    "t_transfer": 4,
+    "max_operations": 8
+  },
+  "budget": 20,
+  "tasks": [
+    "N01_burst",
+    "N02_paced",
+    "N03_gap"
+  ],
+  "conditions": [
+    "old_summary",
+    "new_summary",
+    "old_phase",
+    "new_phase"
+  ],
+  "split_at": 96,
+  "space": "all 720 six-bit permutations; swap_bits only; static mapping",
+  "prompts": {
+    "old": "Read the fixed trace/statistics. Minimize completion_cycles using up to 20 actual backend calls including identity and reverse. Submit legal swap_bits DSL with a brief testable hypothesis and prediction; use your feedback to decide the next proposal. You may use the available activity/joint heuristic proposals; evaluating them counts. No trace/config changes, oracle, competitor scores, or additional uncounted simulation during search.",
+    "new": "# 下一版探索提示草案：尚未验证收益\n\n用途：替换新实验中 Agent 的探索提示。具体任务、合法 DSL、可用工具、反馈字段、共同起点和预算由该实验协议提供；本文件不修改它们。先冻结提示与任务，再查看任何性能结果。\n\n你的目标是在给定后端评价预算内，最小化固定任务的完成时间。由你决定候选、实验次序和预算分配。\n\n- 读取轨迹统计和配置，提出几个可能影响性能的解释。区分观测事实、待检验的解释和未知信息；不必等待解释完整才开始实验。\n- 每个提案用简短文字说明：参考哪个已评价候选、改变了什么、预计哪个指标怎样变化，以及这次评价主要用于改善成绩、区分解释还是探索其他方向。`hypothesis`、`expected`、`dsl` 继续使用文件接口既有格式；必要的补充说明可保存在提案中。\n- 一次失败只约束实际测试过的组合。若要把结论推广到其他字段分配或访问阶段，说明依据；依据不足时保留不确定性。允许你设计配对或组合实验，具体方案由你选择。\n- 除当前最好方案外，保留少量值得继续探索的方向及其理由。较差的中间结果不必立即淘汰；你可以继续修改、联合修改多个字段，或转向其他起点。不要把“更差也可能有用”当作无限追加实验的理由。\n- 可以调用协议允许的启发式或搜索工具。先说明要解决什么问题和愿意花多少预算；所有实际后端调用仍占同一总预算。没有必要仅因候选来自普通工具而排斥它。\n- 若反馈提供按请求批次统计的结果，先检查两批是否在队列中重叠。区分本批服务、前序积压和总完成时间；不要把各批最后完成时刻相加，也不要用命中率替代最终目标。\n- 在预测失败、连续无改善或剩余预算较少时，简短复核下一次实验是否仍值得做。解释性实验、尝试新组合和复查已有方向之间如何分配，由你决定并记录。\n\n结束时返回最好已评价的合法 DSL、其实际成绩，以及哪些假设被支持或仍不确定。不要使用未评价的猜测结果；不得查看精确参照或其他搜索器的成绩。保留失败记录，不因结果不好重新开始同一轮。\n"
+  },
+  "source_hashes": {
+    "hbm_toy/model.py": "854821a6e15bfd064aa6a45739c12f05398fe5e50ecc92807fa2d0971f185d73",
+    "hbm_toy/experiment.py": "3e8859b8bd2ae47210805f83167f010f127dd7668ef5f359cc1b4559802cae26",
+    "hbm_toy/rule_study.py": "177642fea0fcacd90f1068ee3d1536a54f9fa63534e01e96ec5818cc799f9aca",
+    "hbm_toy/trace_bridge.py": "cb3b2a22d7c446869c38f1bc9925687d81231c1625b1575ffc7f719cf30c99a0",
+    "hbm_toy/agent_v2.py": "f07598c21d17a2d7f7e3ade48484bcea595d816bab1da50385a684d6bc941adb",
+    "hbm_toy/agent_v2_diagnosis.py": "7156414df53d0726aec85389b947ae15868402ac52a7bb00e2384e7fb65a7dde",
+    "hbm_toy/agent_v3.py": "6bfd90b1f4a535ee064683da258a9f92fbac02c31bdc85247ce46dd91886ed3c",
+    "examples/agent_v3_prompt.md": "e2c82cec66b7d20593bf97070ad99437026dc007b539919e20d89598d99ff612"
+  },
+  "trace_ids": {
+    "N01_burst": "fa958be195c8db98",
+    "N02_paced": "c0a487712bd5b7d3",
+    "N03_gap": "79d543d1131b5f83"
+  },
+  "shared_start": [
+    "identity",
+    "reverse_bits"
+  ],
+  "baseline_seeds": [
+    0,
+    1,
+    2
+  ],
+  "started_utc": "2026-10-08T08:48:28.682012+00:00",
+  "one_shot_commitments": {
+    "N01_burst": "46bd153a2d278ba640391d0864700583fca5006fb0722378b418311f82cd9ab8",
+    "N02_paced": "20585a82a948764c7ded17896b4473f1337ec3299b255479b1c67030c1519015",
+    "N03_gap": "16a395b92dc02046d17956807d62aa5a2493926bcc0e2692c317a4a1aa5661c6"
+  },
+  "context_design": "Four fresh non-forked model contexts, one per condition; three tasks within a condition share that context. Sibling files/results prohibited by experiment instructions, not filesystem security isolation.",
+  "feedback_design": "All conditions see identical input statistics, phase boundary, and heuristic DSL tools. Phase conditions additionally receive cohort metrics extracted from the SAME simulation, without resets or extra runs.",
+  "one_shot_design": "Supplementary coordinator-generated batch frozen before any new performance. Coordinator knows V2 diagnosis; different context from the four workers, so NOT a clean ablation of any worker.",
+  "cost_boundary": "Unique executed candidates and backend failures count; cache hits and invalid DSL do not; 200 proposal cap. Time includes event extraction. Oracle revealed only after all searches; model cost unavailable.",
+  "limits": [
+    "Synthetic toy, one model run per condition per task; no significance claim",
+    "Task designer knows generators, no external blind test",
+    "Prompt and feedback effects are exploratory observations, not established causality",
+    "Explicit known midpoint, not automatic phase detection",
+    "No Ramulator, real KV trace, or held-out generalization assessment"
+  ],
+  "input_commitments": {
+    "inputs/N01_burst.json": "38473bd2f04af386f0bd829458c1b8aaae1785ce1524153f7b6796be7bdb54c3",
+    "inputs/N02_paced.json": "bd81bc37841979330ed6d044b11c6c5b44b7202aef9454233486d73c1e0108fa",
+    "inputs/N03_gap.json": "cfe668641a3e36cacbe876c9cb2b716a543007806745b84ba79696681417484a",
+    "briefings/new_phase.json": "f4e3f75209fe68292108facd93a96d33196b4a633ade6997149ca5c1b760167d",
+    "briefings/new_summary.json": "5a68838c748f46321eb020873fcf27cd85b042f4ac38ab0f5f5b48564bd0d770",
+    "briefings/old_phase.json": "2854b1a34980b2aea295698ff1c5d952f840db4f17f5eeb9e60c4a6a8f67747f",
+    "briefings/old_summary.json": "6189b779a3e5f7f1c56759c5a5c6b483c245ecfa7ad3c06e63cbe95feee819cc"
+  },
+  "protocol_commitment": "a00c161bbde1b26e4a611b0f6e4599fda90b9cef60b4d61c1fe76daddfd5bff3"
+}

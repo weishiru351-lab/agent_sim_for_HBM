@@ -1,0 +1,389 @@
+[
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 1.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 1
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 2.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 3
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 3.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 2
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 4.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 2
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 3
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 5.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 3
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 6.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 1
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 2
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 7.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 1
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 2
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 3
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 8.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 1
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 3
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 3
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 9.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 2
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 3
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 10.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 11.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 12.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 2
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 13.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 14.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 1
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 4
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 15.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 5
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 5
+        },
+        {
+          "op": "swap_bits",
+          "a": 4,
+          "b": 5
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 16.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 2
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 5
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 5
+        },
+        {
+          "op": "swap_bits",
+          "a": 4,
+          "b": 5
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 17.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 5
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 5
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 5
+        },
+        {
+          "op": "swap_bits",
+          "a": 4,
+          "b": 5
+        }
+      ]
+    }
+  },
+  {
+    "hypothesis": "Sequential locality: keep low active bits in channels and banks; test whether moving column into bank exposes more overlap. Predetermined diversification 18.",
+    "expected": "Compare parallelism versus locality; batch is fixed without performance feedback.",
+    "dsl": {
+      "version": 0,
+      "operations": [
+        {
+          "op": "swap_bits",
+          "a": 0,
+          "b": 2
+        },
+        {
+          "op": "swap_bits",
+          "a": 1,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 2,
+          "b": 4
+        },
+        {
+          "op": "swap_bits",
+          "a": 3,
+          "b": 4
+        }
+      ]
+    }
+  }
+]
