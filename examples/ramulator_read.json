@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "provenance": "Synthetic read-only bridge smoke test; not measured KV or HBM traffic",
+  "requests": [
+    {"request_id": 0, "address": 0, "arrival": 0},
+    {"request_id": 1, "address": 64, "arrival": 0},
+    {"request_id": 2, "address": 256, "arrival": 1},
+    {"request_id": 3, "address": 512, "arrival": 1},
+    {"request_id": 4, "address": 1024, "arrival": 2},
+    {"request_id": 5, "address": 0, "arrival": 100},
+    {"request_id": 6, "address": 2048, "arrival": 100},
+    {"request_id": 7, "address": 4032, "arrival": 101}
+  ]
+}

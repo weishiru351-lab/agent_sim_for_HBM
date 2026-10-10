@@ -1,0 +1,24 @@
+{
+  "ramulator2": {
+    "version": "2.1",
+    "repository": "https://github.com/CMU-SAFARI/ramulator2",
+    "commit": "72427a1bba3771564c4fb0e494ba02242fd1eaa7",
+    "archive_url": "https://codeload.github.com/CMU-SAFARI/ramulator2/zip/72427a1bba3771564c4fb0e494ba02242fd1eaa7",
+    "archive_sha256": "1adf024f4020e2a240d040a21fee264ad193d48b4a9a137b7ed8db7769b1d724",
+    "directory": "ramulator2-72427a1bba3771564c4fb0e494ba02242fd1eaa7"
+  },
+  "yaml-cpp": {
+    "repository": "https://github.com/jbeder/yaml-cpp",
+    "commit": "56e3bb550c91fd7005566f19c079cb7a503223cf",
+    "archive_url": "https://codeload.github.com/jbeder/yaml-cpp/zip/yaml-cpp-0.9.0",
+    "archive_sha256": "1c22709eb1fcde200c87ef4e878ce2c9477cc05eae84ebf1f72ec5b356468fee",
+    "directory": "yaml-cpp-yaml-cpp-0.9.0"
+  },
+  "fmt": {
+    "repository": "https://github.com/fmtlib/fmt",
+    "commit": "e69e5f977d458f2650bb346dadf2ad30c5320281",
+    "archive_url": "https://codeload.github.com/fmtlib/fmt/zip/10.2.1",
+    "archive_sha256": "d368f9c39a33a3aef800f5be372ec1df1c12ad57ada1f60adc62f24c0e348469",
+    "directory": "fmt-10.2.1"
+  }
+}

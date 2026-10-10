@@ -7,6 +7,9 @@ venv/
 .env
 .env.*
 !.env.example
+# Downloaded upstream sources and local build environments are reproducible inputs.
+/.local/
+/build/
 
 # Generated simulator and plotting artifacts
 *.vvp
