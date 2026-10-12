@@ -110,6 +110,7 @@ flowchart TD
 ```text
 .
 ├── README.md                     # 项目定位、进展、流程与导航
+├── DSL_TUTORIAL.md                # 零基础 DSL 教程：层级定位、位操作实例与运行方法
 ├── hbm_toy/                      # 玩具模型、搜索工具与实验接口
 │   ├── __main__.py               # 命令行与批量基线实验入口
 │   ├── model.py                  # 硬件配置、地址 DSL、请求生成与性能模型
@@ -149,6 +150,7 @@ flowchart TD
 
 | 想了解什么 | 文档 |
 | --- | --- |
+| 从具体地址看懂当前 DSL 原语，以及它能改哪一层 | [DSL 入门教程](DSL_TUTORIAL.md) |
 | 运行实验、理解 DSL、性能模型和 RTL、接入模型文件接口 | [运行指南](docs/TOY_GUIDE.md) |
 | 首轮结果、为何尚不能证明 Agent 更好、如何追溯原始数据 | [实验解读](docs/INITIAL_RESULTS.md) |
 | Agent 如何帮助发现可固化规则，以及新规则为什么仍会失败 | [规则发现实验](results/rule_study_v1/report.md) |

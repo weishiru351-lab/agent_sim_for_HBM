@@ -138,6 +138,8 @@ python -m hbm_toy.agent_v3_report render results/agent_v3_pilot
 
 ## DSL 与地址语义
 
+首次接触地址位操作，先看根目录的 [DSL 入门教程](../DSL_TUTORIAL.md)：从字节地址、块编号和字段拆分讲起，用具体数值演示交换、异或及组合顺序，并区分负载、布局、硬件配置与映射策略。本节维护运行契约。
+
 DSL 是 Domain-Specific Language（领域专用语言），针对特定问题提供表达规则，可以处于不同抽象层次。SQL、正则表达式都是例子。[概念介绍](https://martinfowler.com/bliki/DslQandA.html)
 
 本项目用可组合的原语表达策略：原语规定能做什么，语法规定如何组合，语义规定执行顺序，约束规定合法范围和无别名要求。JSON 只是书写格式；第一版不另造文本语法，也不局限于从几种完整预设方案中选择。
