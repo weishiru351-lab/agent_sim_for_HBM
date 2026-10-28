@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "workload": {"kind": "address_trace", "file": "ramulator_read.json"},
+  "hardware": "memory_hardware.json",
+  "execution": {"kind": "fixed_arrivals"},
+  "design_space": {"vary": ["dram_address_mapping"], "mapping_family": "linear", "max_mapping_operations": 8},
+  "evaluation": {"backend": "fcfs", "objective": "completion_cycles"},
+  "budget": 20
+}

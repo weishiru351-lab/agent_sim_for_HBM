@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/CMU-SAFARI/MQSim",
+  "commit": "51f0f2d3fed92d88ef4a0fa61a38024b07bf9d16",
+  "reviewed": "2026-10-20",
+  "trace_sector_bytes": 512,
+  "trace_time_unit": "NANOSECOND",
+  "native_result_latency_unit": "integer microseconds (truncated)",
+  "installation_and_execution": "not performed"
+}

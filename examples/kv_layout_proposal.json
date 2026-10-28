@@ -1,0 +1,49 @@
+{
+  "hypothesis": "Keep K token-contiguous; tile V to reduce its dimension-grouped reads, and interleave their storage chunks.",
+  "expected": "V read traffic may decrease at the cost of more append traffic; measure the complete serial execution.",
+  "dsl": {
+    "dram_address_mapping": {
+      "version": 0,
+      "operations": []
+    },
+    "kv_layout": {
+      "version": 2,
+      "objects": {
+        "K": {
+          "version": 1,
+          "tile": {
+            "token": 1,
+            "dimension": 128
+          },
+          "order": [
+            "token_outer",
+            "dimension_outer",
+            "token_inner",
+            "dimension_inner"
+          ]
+        },
+        "V": {
+          "version": 1,
+          "tile": {
+            "token": 4,
+            "dimension": 8
+          },
+          "order": [
+            "token_outer",
+            "dimension_outer",
+            "token_inner",
+            "dimension_inner"
+          ]
+        }
+      },
+      "composition": {
+        "kind": "interleave",
+        "order": [
+          "K",
+          "V"
+        ],
+        "chunk_bytes": 256
+      }
+    }
+  }
+}

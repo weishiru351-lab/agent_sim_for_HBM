@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "workload": {
+    "kind": "kv_events",
+    "data": {
+      "version": 2,
+      "objects": {"T": {"tokens": 32, "dimensions": 32, "element_bytes": 2}},
+      "events": [
+        {"op": "append", "object": "T", "count": 32},
+        {"op": "read", "object": "T", "tokens": [0, 1], "dimensions": [16, 17], "group_by": "token"},
+        {"op": "end"}
+      ]
+    }
+  },
+  "hardware": {"channels": 4, "banks_per_channel": 8, "rows": 512, "columns": 1024, "granule_bytes": 64},
+  "execution": {"kind": "serial_groups", "base_address": 0},
+  "design_space": {"vary": ["kv_layout", "dram_address_mapping"]},
+  "initial_design": {
+    "kv_layout": {
+      "version": 2,
+      "objects": {
+        "T": {"version": 1, "tile": {"token": 16, "dimension": 16},
+              "order": ["dimension_outer", "token_outer", "token_inner", "dimension_inner"]}
+      },
+      "composition": {"kind": "concat", "order": ["T"], "alignment_bytes": 64}
+    },
+    "dram_address_mapping": {"version": 0, "operations": []}
+  },
+  "evaluation": {"backend": "fcfs", "objective": "completion_cycles"},
+  "budget": 2
+}

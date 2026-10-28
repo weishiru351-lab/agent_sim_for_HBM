@@ -8,31 +8,33 @@ import tempfile
 import unittest
 from unittest.mock import Mock, patch
 
-from hbm_toy import ramulator_backend as bridge
-from hbm_toy.experiment import save, read
-from hbm_toy.model import Policy, Request
+from agent_design_search.spaces.dram_dsl import Policy
+from agent_design_search.performance.ramulator import adapter as bridge
+from agent_design_search.json_io import save, read
+from agent_design_search.contracts import Request
+from agent_design_search.execution.memory_system import route_requests
 
 
 class RamulatorBridgeTests(unittest.TestCase):
     def test_hand_calculated_coordinates_and_single_dsl_application(self):
         cfg = bridge.DEFAULT_CONFIG
         requests = [Request(7, 64, 3), Request(9, 4032, 4)]
-        tx = bridge.compile_transactions(requests, Policy(), cfg)
+        tx = bridge.compile_transactions(route_requests(requests, Policy(), cfg), cfg)
         self.assertEqual([t['addr_vec'] for t in tx], [
             [1, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 1],
             [3, 0, 0, 0, 1, 3, 2], [3, 0, 0, 0, 1, 3, 3]])
         self.assertEqual([t['physical_address'] for t in tx[:2]], [32, 160])
         policy = Policy((('swap_bits', 0, 4), ('xor_bit', 1, 4)))
         # Block 1 -> block 16 -> block 18: channel 2, bank 0, row 1, column 0.
-        tx = bridge.compile_transactions(requests[:1], policy, cfg)
+        tx = bridge.compile_transactions(route_requests(requests[:1], policy, cfg), cfg)
         self.assertEqual(tx[0]['addr_vec'], [2, 0, 0, 0, 0, 1, 0])
         self.assertEqual((tx[0]['request_id'], tx[0]['arrival']), (7, 3))
 
     def test_no_aliases_and_roundtrip_over_full_small_domain(self):
-        cfg = replace(bridge.DEFAULT_CONFIG, bank_bits=5)
+        cfg = replace(bridge.DEFAULT_CONFIG, banks_per_channel=32)
         requests = [Request(i, i * 64, i // 8) for i in range(cfg.blocks)]
         policy = Policy((('swap_bits', 0, 8), ('xor_bit', 2, 7)))
-        txs = bridge.compile_transactions(requests, policy, cfg)
+        txs = bridge.compile_transactions(route_requests(requests, policy, cfg), cfg)
         self.assertEqual(len({t['physical_address'] for t in txs}), cfg.blocks * 2)
         self.assertEqual(sum(t['size_bytes'] for t in txs), cfg.blocks * 64)
         self.assertEqual({t['addr_vec'][1] for t in txs}, {0, 1})
@@ -43,15 +45,15 @@ class RamulatorBridgeTests(unittest.TestCase):
         cfg = bridge.DEFAULT_CONFIG
         for requests in ([], [Request(0, 0, 0, 'write')], [Request(0, 1, 0)]):
             with self.assertRaises(ValueError):
-                bridge.compile_transactions(requests, Policy(), cfg)
-        for key, value in [('channel_bits', 4), ('bank_bits', 6), ('column_bits', 5), ('row_bits', 15), ('granule_bytes', 32)]:
+                bridge.compile_transactions(route_requests(requests, Policy(), cfg), cfg)
+        for key, value in [('channels', 16), ('banks_per_channel', 64), ('columns', 32), ('rows', 32768), ('granule_bytes', 32)]:
             with self.assertRaises(ValueError):
-                bridge.compile_transactions([Request(0, 0, 0)], Policy(), replace(cfg, **{key: value}))
+                bridge.compile_transactions(route_requests([Request(0, 0, 0)], Policy(), replace(cfg, **{key: value})), replace(cfg, **{key: value}))
 
     def fixture(self):
         requests = [Request(0, 0, 0), Request(1, 64, 5)]
         bundle = {'upstream_commit': bridge.REVISION, 'requests': [asdict(r) for r in requests],
-                  'transactions': bridge.compile_transactions(requests, Policy(), bridge.DEFAULT_CONFIG)}
+                  'transactions': bridge.compile_transactions(route_requests(requests, Policy(), bridge.DEFAULT_CONFIG), bridge.DEFAULT_CONFIG)}
         bundle['bundle_id'] = bridge.content_hash(bundle)
         result = {'backend': 'ramulator-2.1-hbm2-read-v1', 'upstream_commit': bridge.REVISION,
                   'bundle_id': bundle['bundle_id'], 'accepted_transactions': 4, 'completed_transactions': 4,
@@ -61,6 +63,22 @@ class RamulatorBridgeTests(unittest.TestCase):
                                      'arrival': tx['arrival'], 'accepted': tx['arrival'] + 1, 'finish': finish})
         result['events'].reverse()
         return bundle, result
+
+    def test_prepare_uses_separate_geometry_and_queue_parameters(self):
+        cfg = bridge.DEFAULT_CONFIG
+        transfers = route_requests([Request(0, 0, 0)], Policy(), cfg)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'bundle.json'
+            with patch.object(bridge, 'profile', return_value={'test': 'config only'}) as profile:
+                result = bridge.prepare(transfers, path, cfg, queue_depth=32)
+            profile.assert_called_once_with(cfg, 32)
+            bundle = read(path)
+            self.assertEqual((result['simulation_status'], len(bundle['transactions'])), ('not_run', 2))
+            self.assertEqual(bundle['routed_requests'][0]['channel'], 0)
+            self.assertNotIn('dsl', bundle)
+        with patch.object(bridge.subprocess, 'run', return_value=Mock(returncode=0, stdout='{}')) as run:
+            bridge.profile(cfg, 32)
+        self.assertEqual(run.call_args.args[0][-2:], ['--queue-depth', '32'])
 
     def test_completion_requires_both_halves_despite_out_of_order_events(self):
         bundle, result = self.fixture()

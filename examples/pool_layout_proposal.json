@@ -1,0 +1,18 @@
+{
+  "hypothesis": "Keep K on DRAM and place tiled V on the packaged SSD through its LBA interface.",
+  "expected": "Expose charged host read-modify-write and block traffic; this is an engineering example, not an optimized policy.",
+  "dsl": {
+    "kv_layout": {
+      "version": 3,
+      "objects": {
+        "K": {"version": 1, "tile": {"token": 1, "dimension": 128}, "order": ["token_outer", "dimension_outer", "token_inner", "dimension_inner"]},
+        "V": {"version": 1, "tile": {"token": 4, "dimension": 8}, "order": ["token_outer", "dimension_outer", "token_inner", "dimension_inner"]}
+      },
+      "groups": [
+        {"composition": {"kind": "concat", "order": ["K"], "alignment_bytes": 512}, "placement": {"regions": ["dram"], "stripe_bytes": 512}},
+        {"composition": {"kind": "concat", "order": ["V"], "alignment_bytes": 512}, "placement": {"regions": ["ssd"], "stripe_bytes": 512}}
+      ]
+    },
+    "dram_address_mapping": {"version": 1, "groups": {"dram": {"version": 0, "operations": []}}}
+  }
+}

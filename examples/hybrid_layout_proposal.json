@@ -1,0 +1,18 @@
+{
+  "hypothesis": "Place K on the two DRAM resources and tiled V on the two NAND resources.",
+  "expected": "Replay preserved bytes and expose charged NAND read-modify-program operations; this is an engineering example.",
+  "dsl": {
+    "kv_layout": {
+      "version": 3,
+      "objects": {
+        "K": {"version": 1, "tile": {"token": 1, "dimension": 128}, "order": ["token_outer", "dimension_outer", "token_inner", "dimension_inner"]},
+        "V": {"version": 1, "tile": {"token": 4, "dimension": 8}, "order": ["token_outer", "dimension_outer", "token_inner", "dimension_inner"]}
+      },
+      "groups": [
+        {"composition": {"kind": "concat", "order": ["K"], "alignment_bytes": 256}, "placement": {"regions": ["dram0", "dram1"], "stripe_bytes": 256}},
+        {"composition": {"kind": "concat", "order": ["V"], "alignment_bytes": 256}, "placement": {"regions": ["nand0", "nand1"], "stripe_bytes": 256}}
+      ]
+    },
+    "dram_address_mapping": {"version": 1, "groups": {"shared": {"version": 0, "operations": []}}}
+  }
+}

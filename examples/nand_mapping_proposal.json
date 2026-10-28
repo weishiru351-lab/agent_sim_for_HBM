@@ -1,0 +1,12 @@
+{
+  "hypothesis": "Concentrating four consecutive logical pages on one die exposes its serialization cost.",
+  "expected": "More completion time than stripe_pages=1, with unchanged useful bytes and page operations.",
+  "dsl": {
+    "nand_page_mapping": {"version": 1, "targets": {"n0": {"axis_order": ["channel", "die"], "stripe_pages": 4}}},
+    "kv_layout": {
+      "version": 3,
+      "objects": {"V": {"version": 1, "tile": {"token": 1, "dimension": 16}, "order": ["token_outer", "dimension_outer", "token_inner", "dimension_inner"]}},
+      "groups": [{"composition": {"kind": "concat", "order": ["V"], "alignment_bytes": 8}, "placement": {"regions": ["nand"], "stripe_bytes": 8}}]
+    }
+  }
+}

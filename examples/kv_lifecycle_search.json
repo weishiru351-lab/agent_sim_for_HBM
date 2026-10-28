@@ -1,0 +1,95 @@
+{
+  "version": 3,
+  "workload": {"kind": "kv_events", "data": {
+    "version": 3,
+    "objects": {
+      "K0": {"tokens": 2, "dimensions": 16, "element_bytes": 2},
+      "V0": {"tokens": 2, "dimensions": 16, "element_bytes": 2},
+      "K1": {"tokens": 4, "dimensions": 16, "element_bytes": 2},
+      "V1": {"tokens": 4, "dimensions": 16, "element_bytes": 2}
+    },
+    "events": [
+      {"op": "create", "object": "K0"},
+      {"op": "create", "object": "V0"},
+      {"op": "create", "object": "K1"},
+      {"op": "create", "object": "V1"},
+      {"op": "append", "object": "K0", "count": 1},
+      {"op": "append", "object": "V0", "count": 1},
+      {"op": "read", "object": "K0", "tokens": [0, 1], "dimensions": [0, 16], "group_by": "dimension"},
+      {"op": "read", "object": "V0", "tokens": [0, 1], "dimensions": [0, 16], "group_by": "token"},
+      {"op": "append", "object": "K0", "count": 1},
+      {"op": "append", "object": "V0", "count": 1},
+      {"op": "append", "object": "K1", "count": 1},
+      {"op": "append", "object": "V1", "count": 1},
+      {"op": "read", "object": "K0", "tokens": [0, 2], "dimensions": [0, 16], "group_by": "dimension"},
+      {"op": "read", "object": "V0", "tokens": [0, 2], "dimensions": [0, 16], "group_by": "token"},
+      {"op": "append", "object": "K1", "count": 1},
+      {"op": "append", "object": "V1", "count": 1},
+      {"op": "read", "object": "K1", "tokens": [0, 2], "dimensions": [0, 16], "group_by": "dimension"},
+      {"op": "read", "object": "V1", "tokens": [0, 2], "dimensions": [0, 16], "group_by": "token"},
+      {"op": "invalidate", "object": "K0"},
+      {"op": "invalidate", "object": "V0"},
+      {"op": "invalidate", "object": "K1"},
+      {"op": "invalidate", "object": "V1"},
+      {"op": "create", "object": "K0"},
+      {"op": "create", "object": "V0"},
+      {"op": "append", "object": "K0", "count": 1},
+      {"op": "append", "object": "V0", "count": 1},
+      {"op": "read", "object": "K0", "tokens": [0, 1], "dimensions": [0, 16], "group_by": "dimension"},
+      {"op": "read", "object": "V0", "tokens": [0, 1], "dimensions": [0, 16], "group_by": "token"},
+      {"op": "invalidate", "object": "K0"},
+      {"op": "invalidate", "object": "V0"},
+      {"op": "end"}
+    ]
+  }},
+  "hardware": {
+    "version": 1,
+    "modules": ["hybrid", "storage"],
+    "targets": {
+      "d0": {"module": "hybrid", "medium": "dram", "geometry": {"channels": 1, "banks_per_channel": 1, "rows": 4, "columns": 8, "granule_bytes": 16}, "clock_period_ps": 1, "mapping_group": "dram", "links": ["bus"]},
+      "n0": {"module": "hybrid", "medium": "nand", "geometry": {"channels": 1, "dies_per_channel": 1, "planes_per_die": 1, "blocks_per_plane": 8, "pages_per_block": 4, "page_bytes": 32}, "logical_pages": 16, "management_bytes": 512, "links": ["bus"]},
+      "s0": {"module": "storage", "medium": "ssd", "geometry": {"logical_blocks": 8, "block_bytes": 64}, "max_transfer_blocks": 4, "host_buffer_bytes": 64, "links": ["bus"]}
+    },
+    "regions": {
+      "dram": {"target": "d0", "base_address": 0, "size_bytes": 256},
+      "nand": {"target": "n0", "base_address": 0, "size_bytes": 512},
+      "ssd": {"target": "s0", "base_address": 0, "size_bytes": 512}
+    },
+    "pools": {"memory": ["dram", "nand", "ssd"]},
+    "links": {"bus": {"bytes_per_beat": 16, "beat_ps": 10, "latency_ps": 0}}
+  },
+  "execution": {"kind": "serial_groups", "allocation": "policy_first_fit", "migration": {"kind": "policy", "buffer_bytes": 64}},
+  "design_space": {
+    "vary": ["kv_layout", "dram_address_mapping", "allocation_policy", "migration_policy"],
+    "layout_options": {"pool": "memory", "alignment_bytes": [64], "chunk_bytes": [64]},
+    "migration_options": {"triggers": ["on_full", "before_read"], "destinations": ["nand", "ssd"]}
+  },
+  "evaluation": {
+    "backend": "fcfs", "objective": "completion_ps",
+    "allocation_parameters": {"create_ps": 5, "invalidate_ps": 3, "reserve_ps": 7, "release_ps": 11},
+    "migration_parameters": {"publish_ps": 13, "copy_ps_per_byte": 1},
+    "nand_parameters": {"n0": {"read_ps": 30, "program_ps": 100, "erase_ps": 200, "transfer_ps": 10, "lookup_ps": 2, "merge_ps": 3, "bind_ps": 5}},
+    "ssd_parameters": {"s0": {"read_ps": 30, "write_ps": 100, "queue_depth": 2, "merge_ps": 3}}
+  },
+  "budget": 20,
+  "initial_design": {
+    "dram_address_mapping": {"version": 1, "groups": {"dram": {"version": 0, "operations": []}}},
+    "allocation_policy": {"version": 1, "reserve_on": {"K0": "first_access", "V0": "first_access", "K1": "first_access", "V1": "first_access"}},
+    "migration_policy": {"version": 1, "objects": {"K0": {"trigger": "on_full", "destination": "nand"}, "V0": {"trigger": "on_full", "destination": "nand"}, "K1": {"trigger": "never"}, "V1": {"trigger": "never"}}},
+    "kv_layout": {
+      "version": 3,
+      "objects": {
+        "K0": {"version": 1, "tile": {"token": 1, "dimension": 16}, "order": ["token_outer", "dimension_outer", "token_inner", "dimension_inner"]},
+        "V0": {"version": 1, "tile": {"token": 1, "dimension": 16}, "order": ["token_outer", "dimension_outer", "token_inner", "dimension_inner"]},
+        "K1": {"version": 1, "tile": {"token": 1, "dimension": 16}, "order": ["token_outer", "dimension_outer", "token_inner", "dimension_inner"]},
+        "V1": {"version": 1, "tile": {"token": 1, "dimension": 16}, "order": ["token_outer", "dimension_outer", "token_inner", "dimension_inner"]}
+      },
+      "groups": [
+        {"composition": {"kind": "concat", "order": ["K0"], "alignment_bytes": 64}, "placement": {"regions": ["dram"], "stripe_bytes": 64}},
+        {"composition": {"kind": "concat", "order": ["V0"], "alignment_bytes": 64}, "placement": {"regions": ["dram"], "stripe_bytes": 64}},
+        {"composition": {"kind": "concat", "order": ["K1"], "alignment_bytes": 64}, "placement": {"regions": ["dram"], "stripe_bytes": 64}},
+        {"composition": {"kind": "concat", "order": ["V1"], "alignment_bytes": 64}, "placement": {"regions": ["dram"], "stripe_bytes": 64}}
+      ]
+    }
+  }
+}

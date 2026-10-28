@@ -1,5 +1,7 @@
 # Toy mapping benchmark
 
+Historical address-mapping baseline; see the [current experiment index](../../docs/experiments.md) for later capabilities and results.
+
 Synthetic requests, toy cycles; **not measured HBM performance**.
 All methods below are ordinary algorithms, not LLM agents.
 

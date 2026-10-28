@@ -1,0 +1,53 @@
+{
+  "version": 3,
+  "workload": {"kind": "kv_events", "data": {
+    "version": 3,
+    "objects": {
+      "A": {"tokens": 2, "dimensions": 32, "element_bytes": 2},
+      "B": {"tokens": 2, "dimensions": 32, "element_bytes": 2}
+    },
+    "events": [
+      {"op": "create", "object": "A"},
+      {"op": "append", "object": "A", "count": 2},
+      {"op": "read", "object": "A", "tokens": [0, 2], "dimensions": [0, 32], "group_by": "token"},
+      {"op": "invalidate", "object": "A"},
+      {"op": "create", "object": "B"},
+      {"op": "append", "object": "B", "count": 2},
+      {"op": "read", "object": "B", "tokens": [0, 2], "dimensions": [0, 32], "group_by": "token"},
+      {"op": "invalidate", "object": "B"},
+      {"op": "create", "object": "A"},
+      {"op": "append", "object": "A", "count": 2},
+      {"op": "read", "object": "A", "tokens": [0, 2], "dimensions": [0, 32], "group_by": "token"},
+      {"op": "invalidate", "object": "A"},
+      {"op": "end"}
+    ]
+  }},
+  "hardware": {
+    "version": 1,
+    "modules": ["hybrid", "storage"],
+    "targets": {
+      "d0": {"module": "hybrid", "medium": "dram", "geometry": {"channels": 1, "banks_per_channel": 1, "rows": 4, "columns": 2, "granule_bytes": 16}, "clock_period_ps": 1000, "mapping_group": "dram", "links": ["bus"]},
+      "n0": {"module": "hybrid", "medium": "nand", "geometry": {"channels": 1, "dies_per_channel": 1, "planes_per_die": 1, "blocks_per_plane": 8, "pages_per_block": 4, "page_bytes": 32}, "logical_pages": 8, "management_bytes": 512, "links": ["bus"]},
+      "s0": {"module": "storage", "medium": "ssd", "geometry": {"logical_blocks": 4, "block_bytes": 64}, "max_transfer_blocks": 4, "host_buffer_bytes": 64, "links": ["bus"]}
+    },
+    "regions": {
+      "dram": {"target": "d0", "base_address": 0, "size_bytes": 64},
+      "nand": {"target": "n0", "base_address": 0, "size_bytes": 64},
+      "ssd": {"target": "s0", "base_address": 0, "size_bytes": 64}
+    },
+    "pools": {"memory": ["dram", "nand", "ssd"]},
+    "links": {"bus": {"bytes_per_beat": 16, "beat_ps": 100, "latency_ps": 10}}
+  },
+  "execution": {"kind": "serial_groups", "allocation": "group_first_fit"},
+  "design_space": {
+    "vary": ["kv_layout", "dram_address_mapping"],
+    "layout_options": {"pool": "memory", "alignment_bytes": [64], "chunk_bytes": [64]}
+  },
+  "evaluation": {
+    "backend": "fcfs", "objective": "completion_ps",
+    "allocation_parameters": {"create_ps": 500, "invalidate_ps": 300},
+    "nand_parameters": {"n0": {"read_ps": 30000, "program_ps": 100000, "erase_ps": 200000, "transfer_ps": 1000, "lookup_ps": 20, "merge_ps": 30, "bind_ps": 50}},
+    "ssd_parameters": {"s0": {"read_ps": 60000, "write_ps": 180000, "queue_depth": 2, "merge_ps": 200}}
+  },
+  "budget": 20
+}

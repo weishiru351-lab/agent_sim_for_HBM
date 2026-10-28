@@ -1,0 +1,33 @@
+{
+  "version": 3,
+  "workload": {"kind": "kv_events", "file": "kv_workload.json"},
+  "hardware": {
+    "version": 1,
+    "modules": ["memory_module", "ssd_device"],
+    "targets": {
+      "d0": {"module": "memory_module", "medium": "dram", "geometry": {"channels": 4, "banks_per_channel": 4, "rows": 8, "columns": 8, "granule_bytes": 64}, "clock_period_ps": 1000, "mapping_group": "dram", "links": ["host", "memory_bus"]},
+      "s0": {"module": "ssd_device", "medium": "ssd", "geometry": {"logical_blocks": 64, "block_bytes": 512}, "max_transfer_blocks": 8, "host_buffer_bytes": 512, "links": ["host", "storage_bus"]}
+    },
+    "regions": {
+      "dram": {"target": "d0", "base_address": 0, "size_bytes": 65536},
+      "ssd": {"target": "s0", "base_address": 0, "size_bytes": 32768}
+    },
+    "pools": {"memory": ["dram", "ssd"]},
+    "links": {
+      "host": {"bytes_per_beat": 64, "beat_ps": 2000, "latency_ps": 1000},
+      "memory_bus": {"bytes_per_beat": 64, "beat_ps": 1000, "latency_ps": 500},
+      "storage_bus": {"bytes_per_beat": 128, "beat_ps": 4000, "latency_ps": 1000}
+    }
+  },
+  "execution": {"kind": "serial_groups"},
+  "design_space": {
+    "vary": ["kv_layout", "dram_address_mapping"],
+    "layout_options": {"pool": "memory", "alignment_bytes": [512], "chunk_bytes": [512, 1024]}
+  },
+  "evaluation": {
+    "backend": "fcfs",
+    "objective": "completion_ps",
+    "ssd_parameters": {"s0": {"read_ps": 60000000, "write_ps": 180000000, "queue_depth": 4, "merge_ps": 2000}}
+  },
+  "budget": 20
+}

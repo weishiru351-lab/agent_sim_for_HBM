@@ -1,0 +1,18 @@
+{
+  "hypothesis": "Keep K and V in separate groups, each striped across four module regions.",
+  "expected": "Preserve contents and expose each group's resource and shared-link costs; this is an engineering example.",
+  "dsl": {
+    "kv_layout": {
+      "version": 3,
+      "objects": {
+        "K": {"version": 1, "tile": {"token": 1, "dimension": 128}, "order": ["token_outer", "dimension_outer", "token_inner", "dimension_inner"]},
+        "V": {"version": 1, "tile": {"token": 1, "dimension": 128}, "order": ["token_outer", "dimension_outer", "token_inner", "dimension_inner"]}
+      },
+      "groups": [
+        {"composition": {"kind": "concat", "order": ["K"], "alignment_bytes": 64}, "placement": {"regions": ["r0", "r1", "r2", "r3"], "stripe_bytes": 64}},
+        {"composition": {"kind": "concat", "order": ["V"], "alignment_bytes": 64}, "placement": {"regions": ["r4", "r5", "r6", "r7"], "stripe_bytes": 64}}
+      ]
+    },
+    "dram_address_mapping": {"version": 1, "groups": {"shared": {"version": 0, "operations": []}}}
+  }
+}

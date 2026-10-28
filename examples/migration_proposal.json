@@ -1,0 +1,14 @@
+{
+  "hypothesis": "Move a full object to NAND only before its first subsequent read.",
+  "expected": "Copy the first generation once, skip the unread second generation; this functional example does not assume migration beats never.",
+  "dsl": {
+    "dram_address_mapping": {"version": 1, "groups": {"dram": {"version": 0, "operations": []}}},
+    "allocation_policy": {"version": 1, "reserve_on": {"A": "create"}},
+    "migration_policy": {"version": 1, "objects": {"A": {"trigger": "before_read", "destination": "cold"}}},
+    "kv_layout": {
+      "version": 3,
+      "objects": {"A": {"version": 1, "tile": {"token": 1, "dimension": 4}, "order": ["token_outer", "dimension_outer", "token_inner", "dimension_inner"]}},
+      "groups": [{"composition": {"kind": "concat", "order": ["A"], "alignment_bytes": 8}, "placement": {"regions": ["main"], "stripe_bytes": 8}}]
+    }
+  }
+}

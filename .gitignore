@@ -30,6 +30,9 @@ matplotlib_cache/
 !/results/agent_v2_pilot/
 !/results/agent_v2_diagnosis/
 !/results/agent_v3_pilot/
+!/results/kv_layout_v1/
+/results/kv_layout_v1/*
+!/results/kv_layout_v1/study.json
 
 # Baseline summaries already contain the complete per-search JSON records.
 /results/baseline_v1/*

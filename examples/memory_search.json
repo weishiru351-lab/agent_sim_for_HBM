@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "workload": {
+    "kind": "kv_events",
+    "file": "kv_workload.json"
+  },
+  "hardware": "memory_hardware.json",
+  "execution": {
+    "kind": "serial_groups",
+    "base_address": 0
+  },
+  "design_space": {
+    "vary": [
+      "kv_layout",
+      "dram_address_mapping"
+    ],
+    "mapping_family": "linear",
+    "max_mapping_operations": 8,
+    "layout_options": {
+      "alignment_bytes": [
+        64,
+        256
+      ],
+      "chunk_bytes": [
+        64,
+        256,
+        4096
+      ]
+    }
+  },
+  "evaluation": {
+    "backend": "fcfs",
+    "objective": "completion_cycles"
+  },
+  "budget": 20
+}

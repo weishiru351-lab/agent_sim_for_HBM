@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "kind": "ssd_host",
+  "arrival_mode": "fixed_arrivals",
+  "capacity_bytes": 8192,
+  "requests": [
+    {"request_id": 0, "arrival_ps": 0, "address_bytes": 0, "size_bytes": 4096, "kind": "write"},
+    {"request_id": 1, "arrival_ps": 1000000, "address_bytes": 4096, "size_bytes": 4096, "kind": "write"},
+    {"request_id": 2, "arrival_ps": 1000000000, "address_bytes": 0, "size_bytes": 512, "kind": "read"}
+  ],
+  "provenance": {
+    "kind": "synthetic",
+    "source": "repository interface example",
+    "note": "Fixed open-loop arrivals, not a model capture; no completion dependency or content-validation claim."
+  }
+}

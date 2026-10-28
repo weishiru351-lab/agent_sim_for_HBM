@@ -1,5 +1,7 @@
 # Toy mapping benchmark
 
+Historical address-mapping baseline with the post-hoc column heuristic; see the [current experiment index](../../docs/experiments.md). This report does not describe the current joint design space.
+
 Synthetic requests, toy cycles; **not measured HBM performance**.
 All methods below are ordinary algorithms, not LLM agents.
 

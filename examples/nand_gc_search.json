@@ -1,0 +1,44 @@
+{
+  "version": 3,
+  "hardware": {
+    "version": 1, "modules": ["m0"],
+    "targets": {
+      "n0": {
+        "module": "m0", "medium": "nand",
+        "geometry": {"channels": 1, "dies_per_channel": 2, "planes_per_die": 1, "blocks_per_plane": 2, "pages_per_block": 4, "page_bytes": 8},
+        "logical_pages": 8, "management_bytes": 128, "links": ["host"]
+      }
+    },
+    "regions": {"nand": {"target": "n0", "base_address": 0, "size_bytes": 64}},
+    "pools": {"memory": ["nand"]},
+    "links": {"host": {"bytes_per_beat": 8, "beat_ps": 10, "latency_ps": 0}}
+  },
+  "workload": {"kind": "kv_events", "data": {
+    "version": 3, "objects": {"V": {"tokens": 12, "dimensions": 2, "element_bytes": 2}},
+    "events": [
+      {"op": "create", "object": "V"}, {"op": "append", "object": "V", "count": 12},
+      {"op": "read", "object": "V", "tokens": [0, 12], "dimensions": [0, 2], "group_by": "token"},
+      {"op": "invalidate", "object": "V"},
+      {"op": "create", "object": "V"}, {"op": "append", "object": "V", "count": 12},
+      {"op": "read", "object": "V", "tokens": [0, 12], "dimensions": [0, 2], "group_by": "token"},
+      {"op": "invalidate", "object": "V"},
+      {"op": "create", "object": "V"}, {"op": "append", "object": "V", "count": 12},
+      {"op": "read", "object": "V", "tokens": [0, 12], "dimensions": [0, 2], "group_by": "token"},
+      {"op": "end"}
+    ]
+  }},
+  "execution": {
+    "kind": "serial_groups", "allocation": "group_first_fit",
+    "nand": {"kind": "channel_die", "buffer_pages": 2, "gc": "foreground_greedy"}
+  },
+  "design_space": {
+    "vary": ["nand_page_mapping"], "nand_options": {"stripe_pages": [1, 2, 4, 8]},
+    "layout_options": {"pool": "memory", "alignment_bytes": [8], "chunk_bytes": [8]}
+  },
+  "evaluation": {
+    "backend": "fcfs", "objective": "completion_ps",
+    "allocation_parameters": {"create_ps": 2, "invalidate_ps": 2},
+    "nand_parameters": {"n0": {"read_ps": 30, "program_ps": 100, "erase_ps": 200, "transfer_ps": 10, "lookup_ps": 2, "merge_ps": 3, "bind_ps": 5}}
+  },
+  "budget": 4
+}

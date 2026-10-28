@@ -1,0 +1,92 @@
+{
+  "version": 2,
+  "objects": {
+    "K": {
+      "tokens": 16,
+      "dimensions": 128,
+      "element_bytes": 2
+    },
+    "V": {
+      "tokens": 16,
+      "dimensions": 128,
+      "element_bytes": 2
+    }
+  },
+  "events": [
+    {
+      "op": "append",
+      "object": "K",
+      "count": 4
+    },
+    {
+      "op": "append",
+      "object": "V",
+      "count": 4
+    },
+    {
+      "op": "read",
+      "object": "K",
+      "tokens": [
+        0,
+        4
+      ],
+      "dimensions": [
+        0,
+        128
+      ],
+      "group_by": "token"
+    },
+    {
+      "op": "read",
+      "object": "V",
+      "tokens": [
+        0,
+        4
+      ],
+      "dimensions": [
+        0,
+        128
+      ],
+      "group_by": "dimension"
+    },
+    {
+      "op": "append",
+      "object": "K",
+      "count": 4
+    },
+    {
+      "op": "append",
+      "object": "V",
+      "count": 4
+    },
+    {
+      "op": "read",
+      "object": "K",
+      "tokens": [
+        0,
+        8
+      ],
+      "dimensions": [
+        0,
+        128
+      ],
+      "group_by": "token"
+    },
+    {
+      "op": "read",
+      "object": "V",
+      "tokens": [
+        0,
+        8
+      ],
+      "dimensions": [
+        0,
+        128
+      ],
+      "group_by": "dimension"
+    },
+    {
+      "op": "end"
+    }
+  ]
+}

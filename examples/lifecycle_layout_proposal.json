@@ -1,0 +1,18 @@
+{
+  "hypothesis": "Reuse group reservations across object lifetimes while placing A on DRAM/SSD and B on NAND/SSD.",
+  "expected": "Check generation-aware contents, peak capacity, NAND unbinding and charged SSD RMW; not an optimization claim.",
+  "dsl": {
+    "kv_layout": {
+      "version": 3,
+      "objects": {
+        "A": {"version": 1, "tile": {"token": 2, "dimension": 8}, "order": ["token_outer", "dimension_outer", "token_inner", "dimension_inner"]},
+        "B": {"version": 1, "tile": {"token": 1, "dimension": 32}, "order": ["token_outer", "dimension_outer", "token_inner", "dimension_inner"]}
+      },
+      "groups": [
+        {"composition": {"kind": "concat", "order": ["A"], "alignment_bytes": 64}, "placement": {"regions": ["dram", "ssd"], "stripe_bytes": 64}},
+        {"composition": {"kind": "concat", "order": ["B"], "alignment_bytes": 64}, "placement": {"regions": ["nand", "ssd"], "stripe_bytes": 64}}
+      ]
+    },
+    "dram_address_mapping": {"version": 1, "groups": {"dram": {"version": 0, "operations": []}}}
+  }
+}

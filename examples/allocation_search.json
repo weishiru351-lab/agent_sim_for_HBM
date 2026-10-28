@@ -1,0 +1,34 @@
+{
+  "version": 3,
+  "workload": {"kind": "kv_events", "data": {
+    "version": 3,
+    "objects": {
+      "A": {"tokens": 1, "dimensions": 4, "element_bytes": 2},
+      "B": {"tokens": 1, "dimensions": 4, "element_bytes": 2}
+    },
+    "events": [
+      {"op": "create", "object": "A"},
+      {"op": "create", "object": "B"},
+      {"op": "append", "object": "B", "count": 1},
+      {"op": "read", "object": "B", "tokens": [0, 1], "dimensions": [0, 4], "group_by": "token"},
+      {"op": "invalidate", "object": "B"},
+      {"op": "append", "object": "A", "count": 1},
+      {"op": "read", "object": "A", "tokens": [0, 1], "dimensions": [0, 4], "group_by": "token"},
+      {"op": "invalidate", "object": "A"},
+      {"op": "create", "object": "B"},
+      {"op": "invalidate", "object": "B"},
+      {"op": "end"}
+    ]
+  }},
+  "hardware": {
+    "version": 1, "modules": ["m0"],
+    "targets": {"d0": {"module": "m0", "medium": "dram", "geometry": {"channels": 1, "banks_per_channel": 1, "rows": 1, "columns": 8, "granule_bytes": 8}, "clock_period_ps": 1, "mapping_group": "dram", "links": ["bus"]}},
+    "regions": {"main": {"target": "d0", "base_address": 0, "size_bytes": 16}},
+    "pools": {"memory": ["main"]},
+    "links": {"bus": {"bytes_per_beat": 8, "beat_ps": 10, "latency_ps": 0}}
+  },
+  "execution": {"kind": "serial_groups", "allocation": "policy_first_fit"},
+  "design_space": {"vary": ["allocation_policy"], "layout_options": {"pool": "memory", "alignment_bytes": [8], "chunk_bytes": [8]}},
+  "evaluation": {"backend": "fcfs", "objective": "completion_ps", "allocation_parameters": {"create_ps": 5, "invalidate_ps": 3, "reserve_ps": 7, "release_ps": 11}},
+  "budget": 20
+}

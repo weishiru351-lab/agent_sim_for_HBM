@@ -1,0 +1,687 @@
+{
+  "version": 1,
+  "kind": "development_diagnostic",
+  "is_agent_experiment": false,
+  "source_hashes": {
+    "agent_design_search/__init__.py": "fb3b12a5ebdcf3531f39cd721a475497bb072a34102f376e323cdb9d686b2e95",
+    "agent_design_search/__main__.py": "fc07896fa3bdc3f8d0551c45ef891f7a5ce758825035b59df37e26105ec66a91",
+    "agent_design_search/contracts.py": "33b49e43a2c6fef94bbc343c9481469b31be9906eac77a70b5c5e7fe05f97b0d",
+    "agent_design_search/evaluation.py": "01911ac956c06e02e8c6fe33095e29dfeef35b3ed904fe5b56f980bd628ff323",
+    "agent_design_search/exploration/__init__.py": "34f757587d77b8ba6c3a3d26fded1df2eb10d253a374d39f4bae23ba29187c8c",
+    "agent_design_search/exploration/search_algorithms.py": "626694f95f2ac892cfc264d76d20c0a8a93e31f069f5c85501bb0988f573fe16",
+    "agent_design_search/exploration/session.py": "5ea2e1e3ee4c3333841c73c7a4212c40172219a2b67ba2513ccb5440dd8f6118",
+    "agent_design_search/json_io.py": "ed7853996d2b17d12425978b84e7ef7624a469080ca612a075aad62e0233c168",
+    "agent_design_search/performance/__init__.py": "62a9125b3f2071f46c2a8a52692a2af79d1060379fc2972f0987fd430e13b503",
+    "agent_design_search/performance/fcfs.py": "7a015bbd843969b1457875c5cabc3815b0be88ab90e7e1a74ce0790074635bf2",
+    "agent_design_search/performance/line_traffic.py": "5e8760f5038e62d541eb6b8f3a0a0f1a1110d9c2fa6578da28478b8dbd261f94",
+    "agent_design_search/performance/ramulator/__init__.py": "dc88059ef0effe14715587528230fbcd47d6bc60f04fe7da567b7ba9f1fbd2b7",
+    "agent_design_search/performance/ramulator/adapter.py": "c6abcbc23b6a9cf575593ee7f90d074979b5303641694ec7dae0449b3b773fb9",
+    "agent_design_search/performance/ramulator/prepare.py": "cb30cb9796f88a32aeca28da24c98d83ed263437c4e6d9f2efc3607f6008841e",
+    "agent_design_search/spaces/__init__.py": "dad871c002b744230de31ddef197f4eb3cfd26246fe878b3ed54679475e74562",
+    "agent_design_search/spaces/dram_address_mapping/__init__.py": "bc0c46a5cef9f8169498b935f0dbabec52112d0f67a0626222e55e07ba482b87",
+    "agent_design_search/spaces/dram_address_mapping/dsl.py": "2b4802b2c5353b6036aff81f3e141ca2495d2dae9b4262d75d2314c2c7f30729",
+    "agent_design_search/spaces/dram_address_mapping/mapping_candidates.py": "e466591ad1474fd839a408800f2b3161cda74649a6de742f6b0906ef17f85d7c",
+    "agent_design_search/spaces/dram_address_mapping/mapping_task.py": "bdba8f482bca500cbc392b4ce9fe001fb8d0bfa52d636b3707afe90950e7d9c4",
+    "agent_design_search/spaces/dram_address_mapping/rtl_verification.py": "d06b93f1dfd85b37dbef343f58017a6157142f1e307321d84401454e508bd26b",
+    "agent_design_search/spaces/kv_layout/__init__.py": "be36feebd610ff83e5ef33ff2ce9f35964ffcf9ef527415a5628ff1456bc91cd",
+    "agent_design_search/spaces/kv_layout/dsl.py": "573a52f6309ad2c311d9e7acf1ef2e277bd1d7969568eaad785954cf0c23e937",
+    "agent_design_search/spaces/kv_layout/layout_task.py": "d1e3dd96adb192c6b9c1231b006e5cec50400b7680727221762557b1d00459e7",
+    "experiments/layout_study.py": "a407408530af9437be6b0e9f9856dcb4d18dd35ccc636d4ecbea3663dd37ef4b"
+  },
+  "cases": {
+    "write_only": {
+      "task": {
+        "domain": "kv_layout",
+        "version": 1,
+        "config": {
+          "tokens": 16,
+          "dimensions": 128,
+          "element_bytes": 2,
+          "line_bytes": 64,
+          "capacity_bytes": 4096,
+          "read_every": 0
+        },
+        "backend": "line-traffic-v1",
+        "executor": "append-vector_then_dimension-prefix-v1"
+      },
+      "static": {
+        "token_contiguous": {
+          "candidate_id": "a17c1340d82bc60b",
+          "dsl": {
+            "version": 1,
+            "tile": {
+              "token": 1,
+              "dimension": 128
+            },
+            "order": [
+              "token_outer",
+              "dimension_outer",
+              "token_inner",
+              "dimension_inner"
+            ]
+          },
+          "verification": {
+            "status": "pass",
+            "method": "exhaustive nested-loop placement and tagged logical execution",
+            "elements": 2048,
+            "read_elements": 0,
+            "groups": 16
+          },
+          "metrics": {
+            "backend": "line-traffic-v1",
+            "read_transactions": 0,
+            "read_useful_bytes": 0,
+            "write_transactions": 64,
+            "write_useful_bytes": 4096,
+            "transferred_bytes": 4096,
+            "allocated_bytes": 4096
+          },
+          "backend_seconds": 0.0016884999931789935,
+          "validation_seconds": 0.005340999996406026,
+          "cached": false
+        },
+        "dimension_contiguous": {
+          "candidate_id": "e289d589cdc2328e",
+          "dsl": {
+            "version": 1,
+            "tile": {
+              "token": 16,
+              "dimension": 1
+            },
+            "order": [
+              "token_outer",
+              "dimension_outer",
+              "token_inner",
+              "dimension_inner"
+            ]
+          },
+          "verification": {
+            "status": "pass",
+            "method": "exhaustive nested-loop placement and tagged logical execution",
+            "elements": 2048,
+            "read_elements": 0,
+            "groups": 16
+          },
+          "metrics": {
+            "backend": "line-traffic-v1",
+            "read_transactions": 0,
+            "read_useful_bytes": 0,
+            "write_transactions": 1024,
+            "write_useful_bytes": 4096,
+            "transferred_bytes": 65536,
+            "allocated_bytes": 4096
+          },
+          "backend_seconds": 0.0036545000039041042,
+          "validation_seconds": 0.009304799998062663,
+          "cached": false
+        },
+        "tile_4x8": {
+          "candidate_id": "64242bc9a2f3d9d8",
+          "dsl": {
+            "version": 1,
+            "tile": {
+              "token": 4,
+              "dimension": 8
+            },
+            "order": [
+              "token_outer",
+              "dimension_outer",
+              "token_inner",
+              "dimension_inner"
+            ]
+          },
+          "verification": {
+            "status": "pass",
+            "method": "exhaustive nested-loop placement and tagged logical execution",
+            "elements": 2048,
+            "read_elements": 0,
+            "groups": 16
+          },
+          "metrics": {
+            "backend": "line-traffic-v1",
+            "read_transactions": 0,
+            "read_useful_bytes": 0,
+            "write_transactions": 256,
+            "write_useful_bytes": 4096,
+            "transferred_bytes": 16384,
+            "allocated_bytes": 4096
+          },
+          "backend_seconds": 0.00178089999826625,
+          "validation_seconds": 0.00837179999507498,
+          "cached": false
+        }
+      },
+      "analytic": {
+        "result": {
+          "candidate_id": "a17c1340d82bc60b",
+          "dsl": {
+            "version": 1,
+            "tile": {
+              "token": 1,
+              "dimension": 128
+            },
+            "order": [
+              "token_outer",
+              "dimension_outer",
+              "token_inner",
+              "dimension_inner"
+            ]
+          },
+          "verification": {
+            "status": "pass",
+            "method": "exhaustive nested-loop placement and tagged logical execution",
+            "elements": 2048,
+            "read_elements": 0,
+            "groups": 16
+          },
+          "metrics": {
+            "backend": "line-traffic-v1",
+            "read_transactions": 0,
+            "read_useful_bytes": 0,
+            "write_transactions": 64,
+            "write_useful_bytes": 4096,
+            "transferred_bytes": 4096,
+            "allocated_bytes": 4096
+          },
+          "backend_seconds": 0.0016884999931789935,
+          "validation_seconds": 0.001782199993613176,
+          "cached": true
+        },
+        "selected_dsl": {
+          "version": 1,
+          "tile": {
+            "token": 1,
+            "dimension": 32
+          },
+          "order": [
+            "token_outer",
+            "dimension_outer",
+            "token_inner",
+            "dimension_inner"
+          ]
+        },
+        "predicted_bytes": 4096,
+        "formula_estimates": 5
+      },
+      "static_and_analytic_backend_calls": 3,
+      "oracle": {
+        "legal_expressions": 960,
+        "backend_calls": 290,
+        "best": {
+          "candidate_id": "a17c1340d82bc60b",
+          "dsl": {
+            "version": 1,
+            "tile": {
+              "token": 1,
+              "dimension": 1
+            },
+            "order": [
+              "token_outer",
+              "dimension_outer",
+              "token_inner",
+              "dimension_inner"
+            ]
+          },
+          "verification": {
+            "status": "pass",
+            "method": "exhaustive nested-loop placement and tagged logical execution",
+            "elements": 2048,
+            "read_elements": 0,
+            "groups": 16
+          },
+          "metrics": {
+            "backend": "line-traffic-v1",
+            "read_transactions": 0,
+            "read_useful_bytes": 0,
+            "write_transactions": 64,
+            "write_useful_bytes": 4096,
+            "transferred_bytes": 4096,
+            "allocated_bytes": 4096
+          },
+          "backend_seconds": 0.0016882000054465607,
+          "validation_seconds": 0.00524710000900086,
+          "cached": false
+        },
+        "score_digest": "efab781a3d3aaae4"
+      }
+    },
+    "read_at_end": {
+      "task": {
+        "domain": "kv_layout",
+        "version": 1,
+        "config": {
+          "tokens": 16,
+          "dimensions": 128,
+          "element_bytes": 2,
+          "line_bytes": 64,
+          "capacity_bytes": 4096,
+          "read_every": 16
+        },
+        "backend": "line-traffic-v1",
+        "executor": "append-vector_then_dimension-prefix-v1"
+      },
+      "static": {
+        "token_contiguous": {
+          "candidate_id": "eef83f4c734b8476",
+          "dsl": {
+            "version": 1,
+            "tile": {
+              "token": 1,
+              "dimension": 128
+            },
+            "order": [
+              "token_outer",
+              "dimension_outer",
+              "token_inner",
+              "dimension_inner"
+            ]
+          },
+          "verification": {
+            "status": "pass",
+            "method": "exhaustive nested-loop placement and tagged logical execution",
+            "elements": 2048,
+            "read_elements": 2048,
+            "groups": 144
+          },
+          "metrics": {
+            "backend": "line-traffic-v1",
+            "read_transactions": 2048,
+            "read_useful_bytes": 4096,
+            "write_transactions": 64,
+            "write_useful_bytes": 4096,
+            "transferred_bytes": 135168,
+            "allocated_bytes": 4096
+          },
+          "backend_seconds": 0.0016047000099206343,
+          "validation_seconds": 0.005411499994806945,
+          "cached": false
+        },
+        "dimension_contiguous": {
+          "candidate_id": "89a82d8ad93a6764",
+          "dsl": {
+            "version": 1,
+            "tile": {
+              "token": 16,
+              "dimension": 1
+            },
+            "order": [
+              "token_outer",
+              "dimension_outer",
+              "token_inner",
+              "dimension_inner"
+            ]
+          },
+          "verification": {
+            "status": "pass",
+            "method": "exhaustive nested-loop placement and tagged logical execution",
+            "elements": 2048,
+            "read_elements": 2048,
+            "groups": 144
+          },
+          "metrics": {
+            "backend": "line-traffic-v1",
+            "read_transactions": 128,
+            "read_useful_bytes": 4096,
+            "write_transactions": 1024,
+            "write_useful_bytes": 4096,
+            "transferred_bytes": 73728,
+            "allocated_bytes": 4096
+          },
+          "backend_seconds": 0.0016420000029029325,
+          "validation_seconds": 0.0048679000028641894,
+          "cached": false
+        },
+        "tile_4x8": {
+          "candidate_id": "a5e5ceccd175ca8c",
+          "dsl": {
+            "version": 1,
+            "tile": {
+              "token": 4,
+              "dimension": 8
+            },
+            "order": [
+              "token_outer",
+              "dimension_outer",
+              "token_inner",
+              "dimension_inner"
+            ]
+          },
+          "verification": {
+            "status": "pass",
+            "method": "exhaustive nested-loop placement and tagged logical execution",
+            "elements": 2048,
+            "read_elements": 2048,
+            "groups": 144
+          },
+          "metrics": {
+            "backend": "line-traffic-v1",
+            "read_transactions": 512,
+            "read_useful_bytes": 4096,
+            "write_transactions": 256,
+            "write_useful_bytes": 4096,
+            "transferred_bytes": 49152,
+            "allocated_bytes": 4096
+          },
+          "backend_seconds": 0.0017328999965684488,
+          "validation_seconds": 0.0054792000009911135,
+          "cached": false
+        }
+      },
+      "analytic": {
+        "result": {
+          "candidate_id": "a5e5ceccd175ca8c",
+          "dsl": {
+            "version": 1,
+            "tile": {
+              "token": 4,
+              "dimension": 8
+            },
+            "order": [
+              "token_outer",
+              "dimension_outer",
+              "token_inner",
+              "dimension_inner"
+            ]
+          },
+          "verification": {
+            "status": "pass",
+            "method": "exhaustive nested-loop placement and tagged logical execution",
+            "elements": 2048,
+            "read_elements": 2048,
+            "groups": 144
+          },
+          "metrics": {
+            "backend": "line-traffic-v1",
+            "read_transactions": 512,
+            "read_useful_bytes": 4096,
+            "write_transactions": 256,
+            "write_useful_bytes": 4096,
+            "transferred_bytes": 49152,
+            "allocated_bytes": 4096
+          },
+          "backend_seconds": 0.0017328999965684488,
+          "validation_seconds": 0.0015964000049280003,
+          "cached": true
+        },
+        "selected_dsl": {
+          "version": 1,
+          "tile": {
+            "token": 4,
+            "dimension": 8
+          },
+          "order": [
+            "token_outer",
+            "dimension_outer",
+            "token_inner",
+            "dimension_inner"
+          ]
+        },
+        "predicted_bytes": 49152,
+        "formula_estimates": 5
+      },
+      "static_and_analytic_backend_calls": 3,
+      "oracle": {
+        "legal_expressions": 960,
+        "backend_calls": 290,
+        "best": {
+          "candidate_id": "5e42a193a64015a2",
+          "dsl": {
+            "version": 1,
+            "tile": {
+              "token": 1,
+              "dimension": 4
+            },
+            "order": [
+              "dimension_outer",
+              "token_outer",
+              "token_inner",
+              "dimension_inner"
+            ]
+          },
+          "verification": {
+            "status": "pass",
+            "method": "exhaustive nested-loop placement and tagged logical execution",
+            "elements": 2048,
+            "read_elements": 2048,
+            "groups": 144
+          },
+          "metrics": {
+            "backend": "line-traffic-v1",
+            "read_transactions": 256,
+            "read_useful_bytes": 4096,
+            "write_transactions": 512,
+            "write_useful_bytes": 4096,
+            "transferred_bytes": 49152,
+            "allocated_bytes": 4096
+          },
+          "backend_seconds": 0.00161419999494683,
+          "validation_seconds": 0.00564940000185743,
+          "cached": false
+        },
+        "score_digest": "47e883ab370e99a7"
+      }
+    },
+    "read_each_append": {
+      "task": {
+        "domain": "kv_layout",
+        "version": 1,
+        "config": {
+          "tokens": 16,
+          "dimensions": 128,
+          "element_bytes": 2,
+          "line_bytes": 64,
+          "capacity_bytes": 4096,
+          "read_every": 1
+        },
+        "backend": "line-traffic-v1",
+        "executor": "append-vector_then_dimension-prefix-v1"
+      },
+      "static": {
+        "token_contiguous": {
+          "candidate_id": "6a32eeb808aad5a3",
+          "dsl": {
+            "version": 1,
+            "tile": {
+              "token": 1,
+              "dimension": 128
+            },
+            "order": [
+              "token_outer",
+              "dimension_outer",
+              "token_inner",
+              "dimension_inner"
+            ]
+          },
+          "verification": {
+            "status": "pass",
+            "method": "exhaustive nested-loop placement and tagged logical execution",
+            "elements": 2048,
+            "read_elements": 17408,
+            "groups": 2064
+          },
+          "metrics": {
+            "backend": "line-traffic-v1",
+            "read_transactions": 17408,
+            "read_useful_bytes": 34816,
+            "write_transactions": 64,
+            "write_useful_bytes": 4096,
+            "transferred_bytes": 1118208,
+            "allocated_bytes": 4096
+          },
+          "backend_seconds": 0.0038618999969912693,
+          "validation_seconds": 0.006591299999854527,
+          "cached": false
+        },
+        "dimension_contiguous": {
+          "candidate_id": "fad4d58360c76b3f",
+          "dsl": {
+            "version": 1,
+            "tile": {
+              "token": 16,
+              "dimension": 1
+            },
+            "order": [
+              "token_outer",
+              "dimension_outer",
+              "token_inner",
+              "dimension_inner"
+            ]
+          },
+          "verification": {
+            "status": "pass",
+            "method": "exhaustive nested-loop placement and tagged logical execution",
+            "elements": 2048,
+            "read_elements": 17408,
+            "groups": 2064
+          },
+          "metrics": {
+            "backend": "line-traffic-v1",
+            "read_transactions": 2048,
+            "read_useful_bytes": 34816,
+            "write_transactions": 1024,
+            "write_useful_bytes": 4096,
+            "transferred_bytes": 196608,
+            "allocated_bytes": 4096
+          },
+          "backend_seconds": 0.0031241999968187883,
+          "validation_seconds": 0.006674800009932369,
+          "cached": false
+        },
+        "tile_4x8": {
+          "candidate_id": "5929751457296c75",
+          "dsl": {
+            "version": 1,
+            "tile": {
+              "token": 4,
+              "dimension": 8
+            },
+            "order": [
+              "token_outer",
+              "dimension_outer",
+              "token_inner",
+              "dimension_inner"
+            ]
+          },
+          "verification": {
+            "status": "pass",
+            "method": "exhaustive nested-loop placement and tagged logical execution",
+            "elements": 2048,
+            "read_elements": 17408,
+            "groups": 2064
+          },
+          "metrics": {
+            "backend": "line-traffic-v1",
+            "read_transactions": 5120,
+            "read_useful_bytes": 34816,
+            "write_transactions": 256,
+            "write_useful_bytes": 4096,
+            "transferred_bytes": 344064,
+            "allocated_bytes": 4096
+          },
+          "backend_seconds": 0.0033657000021776184,
+          "validation_seconds": 0.007052300003124401,
+          "cached": false
+        }
+      },
+      "analytic": {
+        "result": {
+          "candidate_id": "bb6824e91316b7b8",
+          "dsl": {
+            "version": 1,
+            "tile": {
+              "token": 16,
+              "dimension": 2
+            },
+            "order": [
+              "token_outer",
+              "dimension_outer",
+              "token_inner",
+              "dimension_inner"
+            ]
+          },
+          "verification": {
+            "status": "pass",
+            "method": "exhaustive nested-loop placement and tagged logical execution",
+            "elements": 2048,
+            "read_elements": 17408,
+            "groups": 2064
+          },
+          "metrics": {
+            "backend": "line-traffic-v1",
+            "read_transactions": 2048,
+            "read_useful_bytes": 34816,
+            "write_transactions": 1024,
+            "write_useful_bytes": 4096,
+            "transferred_bytes": 196608,
+            "allocated_bytes": 4096
+          },
+          "backend_seconds": 0.0030439999973168597,
+          "validation_seconds": 0.006554200008395128,
+          "cached": false
+        },
+        "selected_dsl": {
+          "version": 1,
+          "tile": {
+            "token": 16,
+            "dimension": 2
+          },
+          "order": [
+            "token_outer",
+            "dimension_outer",
+            "token_inner",
+            "dimension_inner"
+          ]
+        },
+        "predicted_bytes": 196608,
+        "formula_estimates": 5
+      },
+      "static_and_analytic_backend_calls": 4,
+      "oracle": {
+        "legal_expressions": 960,
+        "backend_calls": 290,
+        "best": {
+          "candidate_id": "fad4d58360c76b3f",
+          "dsl": {
+            "version": 1,
+            "tile": {
+              "token": 1,
+              "dimension": 1
+            },
+            "order": [
+              "dimension_outer",
+              "token_outer",
+              "token_inner",
+              "dimension_inner"
+            ]
+          },
+          "verification": {
+            "status": "pass",
+            "method": "exhaustive nested-loop placement and tagged logical execution",
+            "elements": 2048,
+            "read_elements": 17408,
+            "groups": 2064
+          },
+          "metrics": {
+            "backend": "line-traffic-v1",
+            "read_transactions": 2048,
+            "read_useful_bytes": 34816,
+            "write_transactions": 1024,
+            "write_useful_bytes": 4096,
+            "transferred_bytes": 196608,
+            "allocated_bytes": 4096
+          },
+          "backend_seconds": 0.003170800002408214,
+          "validation_seconds": 0.007507199989049695,
+          "cached": false
+        },
+        "score_digest": "d19382596431fd51"
+      }
+    }
+  },
+  "limits": [
+    "synthetic serial gather/scatter, no cache or timing",
+    "no measured GPU/PIM/HBM performance",
+    "oracle calls separate from selection",
+    "static one-block layout; no migration or firmware"
+  ]
+}

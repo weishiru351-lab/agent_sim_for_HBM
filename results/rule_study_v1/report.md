@@ -1,14 +1,16 @@
 # 规则发现实验：联合统计有效，但仍需理解访问顺序
 
+> 历史报告：下文计划与命令保留当时语境。`hbm_toy` 命令须在恢复的 `rules` 快照根目录执行，见[历史复现](../../docs/development.md#historical-replay)；当前安排见[研究路线](../../docs/research-direction.md#roadmap)。
+
 日期：2026-10-08。Python 3.10.11，后端仍为 `toy-fcfs-v1`。本轮由当前对话提出假设、实现规则、调用工具并分析反例；没有新增自主 Agent 服务，也没有接入 Ramulator 或真实 KV 请求。
 
 **结论：旧启发式确有可解释的缺口。新规则在两个发现样例上达到位排列空间的最优值，但在验证中存在退化。此次产物是一个可复用的规则假设及其失效证据，不是 Agent 优于传统搜索的证明。**
 
-定位说明：本轮属于规则发现的支线诊断，为后续 Agent 探索提供开发案例、强基线与可选分析工具。项目主线是 [Agent 持续主导策略探索](../../docs/RESEARCH_POSITIONING.md#agent-mainline)，需要直接比较其多轮决策的效果和成本；本报告中的确定性规则结果不能代替这一证据。
+定位说明：本轮属于规则发现的支线诊断，为后续 Agent 探索提供开发案例、强基线与可选分析工具。项目主线是 [Agent 持续主导策略探索](../../docs/research-direction.md#agent-mainline)，需要直接比较其多轮决策的效果和成本；本报告中的确定性规则结果不能代替这一证据。
 
 ## 实验边界与复现
 
-原有 `activity_policy(pack_columns=True)` 与模拟器保持不变。实验代码见 [rule_study.py](../../hbm_toy/rule_study.py)，测试见 [test_rule_study.py](../../tests/test_rule_study.py)。
+原有 `activity_policy(pack_columns=True)` 与模拟器保持不变。实验代码见 [rule_study.py](https://github.com/weishiru351-lab/agent_sim_for_HBM/blob/48f2476ba20eb5988561ea6909a12d42b4598523/hbm_toy/rule_study.py)，测试见 [test_rule_study.py](https://github.com/weishiru351-lab/agent_sim_for_HBM/blob/48f2476ba20eb5988561ea6909a12d42b4598523/tests/test_rule_study.py)。
 
 - 缩小配置：6 位块地址，4 个 channel × 每 channel 2 个 bank，2 个 column × 4 个 row，64 字节粒度；每条轨迹 256 次请求，每周期到达 8 次。
 - 完整枚举 6! = **720 种位排列**，所有排列均可在原 DSL 操作数限制内表达。这里的“最优”只覆盖位排列，不包含 XOR，也不覆盖原来的 16 位空间。
@@ -125,6 +127,6 @@ python -m hbm_toy.rule_study validation --output results/my_rule_study
 1. **无需先增加 HBM 复杂度，就能让现有启发式暴露缺口。** 地址位相关性、访问顺序和阶段变化已经带来差异；名义搜索空间大小不是唯一因素。
 2. **Agent 可以帮助提出并固化规则，同时需要主动寻找反例。** 本轮留下了新规则、消融对照、适用样例和失效机制；简单程序负责重复生成策略。
 3. **尚未建立 Agent 的比较优势或规则的新颖性。** 联合统计是常规数学工具，局部搜索也能找到好解；本轮没有人工设计成本对照，也没有多个独立 Agent 运行。
-4. **后续主线转向 Agent 主导的受控探索。** 用本轮反例作为开发数据，在新的评价任务中检验 Agent 能否诊断失败、修正假设并自主选择下一步实验。联合变化统计可继续作为支线或可调用工具研究；工具是否使用及预算如何分配，应纳入 Agent 决策的对照。真实请求验证与更真实后端复核仍需补齐，具体计划见 [下一轮实验](../../docs/RESEARCH_POSITIONING.md#next-agent-study)。
+4. **后续主线转向 Agent 主导的受控探索。** 用本轮反例作为开发数据，在新的评价任务中检验 Agent 能否诊断失败、修正假设并自主选择下一步实验。联合变化统计可继续作为支线或可调用工具研究；工具是否使用及预算如何分配，应纳入 Agent 决策的对照。真实请求验证与更真实后端复核仍需补齐，具体计划见 [下一轮实验](../../docs/research-direction.md#next-agent-study)。
 
 本轮新增与原有测试共 15 项通过。覆盖全部 720 种排列的编译和逆映射、相关位造成的资源闲置、默认配置的 DSL 操作预算，以及搜索实际评价计数和重放。没有 RTL 仿真或真实 HBM 性能结论。

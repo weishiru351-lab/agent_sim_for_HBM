@@ -1,0 +1,40 @@
+{
+  "version": 3,
+  "workload": {"kind": "kv_events", "file": "kv_workload.json"},
+  "hardware": {
+    "version": 1,
+    "modules": ["m0", "m1"],
+    "targets": {
+      "d0": {"module": "m0", "medium": "dram", "geometry": {"channels": 4, "banks_per_channel": 4, "rows": 8, "columns": 8, "granule_bytes": 64}, "clock_period_ps": 1000, "mapping_group": "shared", "links": ["host", "bus0"]},
+      "n0": {"module": "m0", "medium": "nand", "geometry": {"channels": 1, "dies_per_channel": 1, "planes_per_die": 1, "blocks_per_plane": 16, "pages_per_block": 8, "page_bytes": 256}, "logical_pages": 64, "management_bytes": 8192, "links": ["host", "bus0"]},
+      "d1": {"module": "m1", "medium": "dram", "geometry": {"channels": 4, "banks_per_channel": 4, "rows": 8, "columns": 8, "granule_bytes": 64}, "clock_period_ps": 1000, "mapping_group": "shared", "links": ["host", "bus1"]},
+      "n1": {"module": "m1", "medium": "nand", "geometry": {"channels": 1, "dies_per_channel": 1, "planes_per_die": 1, "blocks_per_plane": 16, "pages_per_block": 8, "page_bytes": 256}, "logical_pages": 64, "management_bytes": 8192, "links": ["host", "bus1"]}
+    },
+    "regions": {
+      "dram0": {"target": "d0", "base_address": 0, "size_bytes": 65536},
+      "nand0": {"target": "n0", "base_address": 0, "size_bytes": 16384},
+      "dram1": {"target": "d1", "base_address": 0, "size_bytes": 65536},
+      "nand1": {"target": "n1", "base_address": 0, "size_bytes": 16384}
+    },
+    "pools": {"memory": ["dram0", "nand0", "dram1", "nand1"]},
+    "links": {
+      "host": {"bytes_per_beat": 64, "beat_ps": 2000, "latency_ps": 1000},
+      "bus0": {"bytes_per_beat": 64, "beat_ps": 1000, "latency_ps": 500},
+      "bus1": {"bytes_per_beat": 64, "beat_ps": 1000, "latency_ps": 500}
+    }
+  },
+  "execution": {"kind": "serial_groups"},
+  "design_space": {
+    "vary": ["kv_layout", "dram_address_mapping"],
+    "layout_options": {"pool": "memory", "alignment_bytes": [256], "chunk_bytes": [256, 1024]}
+  },
+  "evaluation": {
+    "backend": "fcfs",
+    "objective": "completion_ps",
+    "nand_parameters": {
+      "n0": {"read_ps": 50000000, "program_ps": 200000000, "erase_ps": 2000000000, "transfer_ps": 2000000, "lookup_ps": 1000, "merge_ps": 2000, "bind_ps": 1000},
+      "n1": {"read_ps": 50000000, "program_ps": 200000000, "erase_ps": 2000000000, "transfer_ps": 2000000, "lookup_ps": 1000, "merge_ps": 2000, "bind_ps": 1000}
+    }
+  },
+  "budget": 20
+}

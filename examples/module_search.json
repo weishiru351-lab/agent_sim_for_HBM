@@ -1,0 +1,49 @@
+{
+  "version": 3,
+  "workload": {"kind": "kv_events", "file": "kv_workload.json"},
+  "hardware": {
+    "version": 1,
+    "modules": ["m0", "m1", "m2", "m3", "m4", "m5", "m6", "m7"],
+    "targets": {
+      "d0": {"module": "m0", "medium": "dram", "geometry": {"channels": 4, "banks_per_channel": 4, "rows": 8, "columns": 8, "granule_bytes": 64}, "clock_period_ps": 1000, "mapping_group": "shared", "links": ["host", "bus0"]},
+      "d1": {"module": "m1", "medium": "dram", "geometry": {"channels": 4, "banks_per_channel": 4, "rows": 8, "columns": 8, "granule_bytes": 64}, "clock_period_ps": 1000, "mapping_group": "shared", "links": ["host", "bus1"]},
+      "d2": {"module": "m2", "medium": "dram", "geometry": {"channels": 4, "banks_per_channel": 4, "rows": 8, "columns": 8, "granule_bytes": 64}, "clock_period_ps": 1000, "mapping_group": "shared", "links": ["host", "bus2"]},
+      "d3": {"module": "m3", "medium": "dram", "geometry": {"channels": 4, "banks_per_channel": 4, "rows": 8, "columns": 8, "granule_bytes": 64}, "clock_period_ps": 1000, "mapping_group": "shared", "links": ["host", "bus3"]},
+      "d4": {"module": "m4", "medium": "dram", "geometry": {"channels": 4, "banks_per_channel": 4, "rows": 8, "columns": 8, "granule_bytes": 64}, "clock_period_ps": 1000, "mapping_group": "shared", "links": ["host", "bus4"]},
+      "d5": {"module": "m5", "medium": "dram", "geometry": {"channels": 4, "banks_per_channel": 4, "rows": 8, "columns": 8, "granule_bytes": 64}, "clock_period_ps": 1000, "mapping_group": "shared", "links": ["host", "bus5"]},
+      "d6": {"module": "m6", "medium": "dram", "geometry": {"channels": 4, "banks_per_channel": 4, "rows": 8, "columns": 8, "granule_bytes": 64}, "clock_period_ps": 1000, "mapping_group": "shared", "links": ["host", "bus6"]},
+      "d7": {"module": "m7", "medium": "dram", "geometry": {"channels": 4, "banks_per_channel": 4, "rows": 8, "columns": 8, "granule_bytes": 64}, "clock_period_ps": 1000, "mapping_group": "shared", "links": ["host", "bus7"]}
+    },
+    "regions": {
+      "r0": {"target": "d0", "base_address": 0, "size_bytes": 65536},
+      "r1": {"target": "d1", "base_address": 0, "size_bytes": 65536},
+      "r2": {"target": "d2", "base_address": 0, "size_bytes": 65536},
+      "r3": {"target": "d3", "base_address": 0, "size_bytes": 65536},
+      "r4": {"target": "d4", "base_address": 0, "size_bytes": 65536},
+      "r5": {"target": "d5", "base_address": 0, "size_bytes": 65536},
+      "r6": {"target": "d6", "base_address": 0, "size_bytes": 65536},
+      "r7": {"target": "d7", "base_address": 0, "size_bytes": 65536}
+    },
+    "pools": {"memory": ["r0", "r1", "r2", "r3", "r4", "r5", "r6", "r7"]},
+    "links": {
+      "host": {"bytes_per_beat": 64, "beat_ps": 2000, "latency_ps": 1000},
+      "bus0": {"bytes_per_beat": 64, "beat_ps": 1000, "latency_ps": 500},
+      "bus1": {"bytes_per_beat": 64, "beat_ps": 1000, "latency_ps": 500},
+      "bus2": {"bytes_per_beat": 64, "beat_ps": 1000, "latency_ps": 500},
+      "bus3": {"bytes_per_beat": 64, "beat_ps": 1000, "latency_ps": 500},
+      "bus4": {"bytes_per_beat": 64, "beat_ps": 1000, "latency_ps": 500},
+      "bus5": {"bytes_per_beat": 64, "beat_ps": 1000, "latency_ps": 500},
+      "bus6": {"bytes_per_beat": 64, "beat_ps": 1000, "latency_ps": 500},
+      "bus7": {"bytes_per_beat": 64, "beat_ps": 1000, "latency_ps": 500}
+    }
+  },
+  "execution": {"kind": "serial_groups"},
+  "design_space": {
+    "vary": ["kv_layout", "dram_address_mapping"],
+    "mapping_family": "linear",
+    "max_mapping_operations": 8,
+    "layout_options": {"pool": "memory", "alignment_bytes": [64, 256], "chunk_bytes": [64, 256, 4096]}
+  },
+  "evaluation": {"backend": "fcfs", "objective": "completion_ps"},
+  "budget": 20
+}
