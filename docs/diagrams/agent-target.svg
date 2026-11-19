@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 858" width="920" height="858" role="img" aria-labelledby="title desc">
+  <title id="title">目标架构：母 Agent 与两个子 Agent</title>
+  <desc id="desc">固定任务从上方进入母 Agent。评价入口先派发验证，验证通过后再派发性能评估。指标、反例与缓存结果汇总为反馈，继续时回到母 Agent，结束时在底部输出结果。</desc>
+  <defs>
+    <marker id="edge-tip" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="9" refY="5" orient="auto">
+      <path d="M0 0 10 5 0 10Z" fill="#50647b"/>
+    </marker>
+    <marker id="loop-tip" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="9" refY="5" orient="auto">
+      <path d="M0 0 10 5 0 10Z" fill="#2563a2"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #203247; }
+    .node-title { font-size: 16px; font-weight: 650; }
+    .node-detail, .edge-label, .feedback-label { font-size: 13px; }
+    .node-detail, .edge-label { fill: #42576c; }
+    .group-title, .feedback-label { fill: #255582; font-size: 14px; font-weight: 650; }
+    .tool { fill: #f1f5f9; stroke: #91a3b7; }
+    .agent { fill: #e8f2ff; stroke: #5584b5; }
+    .endpoint { fill: #e9f6ef; stroke: #5a927c; }
+    .decision { fill: #fff3d9; stroke: #ab813d; }
+    .group { fill: #f7faff; stroke: #c6d8ed; }
+    .edge, .loop { fill: none; stroke-width: 1.6; stroke-linejoin: round; }
+    .edge { stroke: #50647b; }
+    .loop { stroke: #2563a2; stroke-dasharray: 6 4; }
+  </style>
+  <rect x="1" y="1" width="918" height="856" rx="16" fill="#fff" stroke="#d8e2ec"/>
+  <rect class="group" x="42" y="270" width="566" height="104" rx="14"/>
+  <rect class="group" x="42" y="496" width="566" height="110" rx="14"/>
+  <path class="edge" d="M325 74 V96" marker-end="url(#edge-tip)"/>
+  <path class="edge" d="M325 152 V180" marker-end="url(#edge-tip)"/>
+  <path class="edge" d="M449 210 H630" marker-end="url(#edge-tip)"/>
+  <path class="edge" d="M325 240 V280 Q325 293 312 293 H182 Q169 293 169 306" marker-end="url(#edge-tip)"/>
+  <path class="edge" d="M276 331 H359" marker-end="url(#edge-tip)"/>
+  <path class="edge" d="M474 356 V379 Q474 390 463 390 H336 Q325 390 325 401" marker-end="url(#edge-tip)"/>
+  <path class="edge" d="M428 427 H630" marker-end="url(#edge-tip)"/>
+  <path class="edge" d="M325 453 V468 Q325 480 313 480 H161 Q149 480 149 492 V534" marker-end="url(#edge-tip)"/>
+  <path class="edge" d="M236 561 H270" marker-end="url(#edge-tip)"/>
+  <path class="edge" d="M414 561 H448" marker-end="url(#edge-tip)"/>
+  <path class="edge" d="M518 588 V608 Q518 620 506 620 H336 Q325 620 325 632" marker-end="url(#edge-tip)"/>
+  <path class="edge" d="M725 453 V661 H465" marker-end="url(#edge-tip)"/>
+  <path class="edge" d="M820 210 H840 V661 H725"/>
+  <path class="edge" d="M325 690 V713" marker-end="url(#edge-tip)"/>
+  <path class="loop" d="M440 740 H880 V124 H450" marker-end="url(#loop-tip)"/>
+  <path class="edge" d="M325 767 V798" marker-end="url(#edge-tip)"/>
+  <rect class="endpoint" x="209" y="20" width="232" height="54" rx="27"/>
+  <rect class="agent" x="200" y="96" width="250" height="56" rx="8"/>
+  <rect class="tool" x="201" y="180" width="248" height="60" rx="8"/>
+  <rect class="tool" x="630" y="184" width="190" height="52" rx="8"/>
+  <rect class="agent" x="62" y="306" width="214" height="50" rx="8"/>
+  <rect class="tool" x="359" y="306" width="229" height="50" rx="8"/>
+  <path class="decision" d="M325 401.0 428.0 427 325 453.0 222.0 427Z"/>
+  <rect class="tool" x="630" y="401" width="190" height="52" rx="8"/>
+  <rect class="agent" x="62" y="534" width="174" height="54" rx="8"/>
+  <rect class="tool" x="270" y="534" width="144" height="54" rx="8"/>
+  <rect class="tool" x="448" y="534" width="140" height="54" rx="8"/>
+  <rect class="tool" x="185" y="632" width="280" height="58" rx="8"/>
+  <path class="decision" d="M325 713.0 440.0 740 325 767.0 210.0 740Z"/>
+  <rect class="endpoint" x="156" y="798" width="338" height="40" rx="20"/>
+  <text class="node-title" x="325.0" y="42.0" text-anchor="middle">固定研究任务</text>
+  <text class="node-detail" x="325.0" y="62.0" text-anchor="middle">负载 · 硬件 · 目标与约束</text>
+  <text class="node-title" x="325.0" y="119.0" text-anchor="middle">母 Agent</text>
+  <text class="node-detail" x="325.0" y="139.0" text-anchor="middle">提出假设 · 选择候选 · 分配预算</text>
+  <text class="node-title" x="325.0" y="205.0" text-anchor="middle">统一评价入口</text>
+  <text class="node-detail" x="325.0" y="225.0" text-anchor="middle">规范化 · 查询缓存 · 管理预算</text>
+  <text class="edge-label" x="365" y="170" text-anchor="middle">候选 DSL</text>
+  <text class="edge-label" x="539" y="200" text-anchor="middle">命中缓存或输入非法</text>
+  <text class="node-title" x="725.0" y="205.0" text-anchor="middle">复用结果 / 返回错误</text>
+  <text class="node-detail" x="725.0" y="225.0" text-anchor="middle">跳过新评价</text>
+  <text class="group-title" x="58" y="294" text-anchor="start">正确性验证</text>
+  <text class="node-title" x="169.0" y="326.0" text-anchor="middle">验证子 Agent</text>
+  <text class="node-detail" x="169.0" y="346.0" text-anchor="middle">组织检查 · 分析反例</text>
+  <text class="node-title" x="473.5" y="326.0" text-anchor="middle">验证工具</text>
+  <text class="node-detail" x="473.5" y="346.0" text-anchor="middle">内容与状态检查 · 按需 RTL</text>
+  <text class="edge-label" x="273" y="263" text-anchor="middle">新候选</text>
+  <text class="edge-label" x="317" y="321" text-anchor="middle">调用</text>
+  <text class="edge-label" x="445" y="413" text-anchor="middle">验证子 Agent 报告</text>
+  <text class="node-title" x="325" y="432" text-anchor="middle">验证通过？</text>
+  <text class="edge-label" x="530" y="417" text-anchor="middle">失败</text>
+  <text class="node-title" x="725.0" y="422.0" text-anchor="middle">返回验证反例</text>
+  <text class="node-detail" x="725.0" y="442.0" text-anchor="middle">定位对象、地址或状态</text>
+  <text class="group-title" x="58" y="520" text-anchor="start">性能评估</text>
+  <text class="node-title" x="149.0" y="556.0" text-anchor="middle">性能评估子 Agent</text>
+  <text class="node-detail" x="149.0" y="576.0" text-anchor="middle">下发任务 · 解读结果</text>
+  <text class="node-title" x="342.0" y="556.0" text-anchor="middle">任务前端</text>
+  <text class="node-detail" x="342.0" y="576.0" text-anchor="middle">生成请求与依赖</text>
+  <text class="node-title" x="518.0" y="556.0" text-anchor="middle">性能后端</text>
+  <text class="node-detail" x="518.0" y="576.0" text-anchor="middle">计时模型或仿真器</text>
+  <text class="edge-label" x="227" y="472" text-anchor="middle">通过 · 入口派发性能任务</text>
+  <text class="edge-label" x="440" y="614" text-anchor="middle">性能子 Agent 报告</text>
+  <text class="node-title" x="325.0" y="656.0" text-anchor="middle">统一入口汇总反馈</text>
+  <text class="node-detail" x="325.0" y="676.0" text-anchor="middle">汇总指标、诊断、反例和预算</text>
+  <text class="node-title" x="325" y="745" text-anchor="middle">继续探索？</text>
+  <text class="feedback-label" x="795" y="730" text-anchor="middle">继续 · 调整候选</text>
+  <text class="edge-label" x="399" y="787" text-anchor="middle">结束或预算耗尽</text>
+  <text class="node-title" x="325.0" y="823.0" text-anchor="middle">保存最佳已验证候选与评价记录</text>
+</svg>

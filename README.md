@@ -19,27 +19,24 @@
 <a id="architecture"></a>
 ## 业务流程与代码
 
-下图展示一次候选评价的先后步骤；母 Agent 由外部对话承担，仓库内没有自动调用模型的服务。
-
-```mermaid
-flowchart LR
-    I["固定输入 · inputs/<br/>负载 · 硬件"] --> T["搜索任务<br/>exploration/memory_search_task.py"]
-    T --> A["母 Agent · 外部对话<br/>假设 · 完整候选 · 方向调整"]
-    A --> E["评价入口 · exploration/evaluation.py<br/>合法性 · 缓存 · 预算"]
-    T --> E
-    E --> V["check · 生成事务并检查<br/>verification/memory_contents.py 独立重放"]
-    V -->|通过| X["measure · 从初态重新执行<br/>execution/memory_system.py"]
-    X --> P["性能工具 · performance/<br/>传输计数 / 简化时序"]
-    P --> F["会话反馈<br/>exploration/session.py"]
-    V -.->|反例| F
-    E -.->|缓存命中或格式错误| F
-    F --> A
-```
-
-`check` 和 `measure` 都由 `exploration/memory_search_task.py` 调度，都会使用事务生成逻辑；前者核对内容与状态，后者从新状态执行并计时。图中的先后关系不表示验证器直接调用计时器。
-
 <a id="agent-execution-modes"></a>
-未来性能/验证子 Agent 放在 `exploration/`，负责调用工具、分析并汇报，需另测收益和协调成本。V3 的独立实验上下文不是这些运行角色。
+### 目标架构：母 Agent 与两个子 Agent
+
+目标架构从固定任务开始。母 Agent 根据每轮反馈决定是否提交下一份候选，结束时输出已验证候选中得分最好的方案。
+
+![目标架构流程图，母 Agent、验证子 Agent 和性能评估子 Agent](docs/diagrams/agent-target.svg)
+
+两个子 Agent 使用同一冻结候选。验证子 Agent 根据检查结果提交验证报告，性能评估子 Agent 根据后端指标和日志提交性能报告。
+
+### 当前原型：外部对话与确定性工具
+
+当前，外部对话负责提出候选和解读反馈。两个子 Agent 的独立上下文、工具调度和报告交接均待实现。
+
+![当前原型流程图，外部对话、评价入口、检查、计时和会话反馈](docs/diagrams/agent-current.svg)
+
+`Evaluator` 通过 `exploration/memory_search_task.py` 调用 `check` 与 `measure`。缓存命中时复用结果，候选非法、验证失败或计时出错时将相应信息直接写入会话反馈。
+
+子 Agent 的编排计划放在 `exploration/`。V3 的独立实验上下文用于隔离不同对照组的条件。
 
 策略语义集中在 `spaces/` 的 **`*_dsl.py` 文件**，统一定义原语、解析与合法性约束。`kv_layout_dsl.py` 管对象布局与初始放置，`memory_management_dsl.py` 管上层预留与迁移，`dram_dsl.py` 与 `nand_dsl.py` 并列管理两类介质的内部映射。HBM 属于 DRAM 类；SSD 是设备接口，详细模式复用 NAND 层；内部策略仅对显式开放控制器的设备可搜索。JSON 组件名保持不变，详见[运行与开发](docs/development.md)。
 
